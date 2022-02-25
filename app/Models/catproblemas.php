@@ -13,4 +13,8 @@ class catproblemas extends Model
                             'fechaAlta'
         
     ];
+    public function reporte(){
+        return $this->hasOne(reportes::class);
+    }
+    
 }

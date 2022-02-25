@@ -12,4 +12,9 @@ class detallereporte extends Model
     protected $fillable = ['iddetallereporte','diagnostico','solucion','idempleadoactualizo',
                         'fechaActualizacion','idempleadoatencion','fechaAtencion','idempleadoatendiendo',
                         'fechaAtendiendo'];
+
+     public function reportes(){
+        return $this->belongsTo(detallereporte::class);
+    }
+   
 }

@@ -12,4 +12,8 @@ class catroles extends Model
     protected $fillable = ['idcatrol','nombrerol','descripcion','fechaAlta'
         
     ];
+
+    public function empleado(){
+        return $this->belongsTo(empleados::class);
+    }
 }

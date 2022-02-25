@@ -11,4 +11,18 @@ class reportes extends Model
     protected $primarykey ='idreporte';
     protected $fillable = ['idreporte','idcatproblema','idempleadorecibio','idcatstatu',
     'iddetallereporte','idcliente','descripcionProblema','observaciones','fechaAlta'];
+
+    public function detalles(){
+        return $this->hasOne(detallereporte::class);
+    }
+
+    public function empleado(){
+        return $this->belongsTo(empleados::class);
+    }
+    public function catstatus(){
+        return $this->belongsTo(catstatus::class);
+    }
+    public function catproblemas(){
+        return $this->belongsTo(catproblemass::class);
+    }
 }
