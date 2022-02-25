@@ -8,8 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class catpoblaciones extends Model
 {
     use HasFactory;
-        protected $primarykey ='idcatpoblacion';
-        protected $fillable =['idcatpoblacion','nombrePoblacion','codigopstal','fechaAlta'];
+        public $timestamps=false;
+        protected $table = 'tblcatpoblaciones';
+        protected $primarykey ='id';
+        protected $fillable =[
+        
+            'idcatpoblacion',
+            'nombrePoblacion',
+            'codigopstal',
+            'fechaAlta'
+        ];
     //relacion uno a muchos
         public function direcciones(){
         return $this->hasMany(direcciones::class);

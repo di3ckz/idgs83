@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class catroles extends Model
 {
     use HasFactory;
-    protected $primarykey ='idcatrol';
-    protected $fillable = ['idcatrol','nombrerol','descripcion','fechaAlta'
+    public $timestamps=false;
+    protected $table = 'tblcatroles';
+    protected $primarykey ='id';
+    protected $fillable = [
+        'idcatrol',
+        'nombrerol',
+        'descripcion',
+        'fechaAlta'
         
     ];
 

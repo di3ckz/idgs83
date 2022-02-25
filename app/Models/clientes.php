@@ -8,8 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class clientes extends Model
 {
     use HasFactory;
-    protected $primarykey ='idcliente';
-    protected $fillable = ['idcliente','iddireccion','nmbre','telefono','fechaAlta'];
+    public $timestamps=false;
+    protected $table = 'tblclientes';
+    protected $primarykey ='id';
+    protected $fillable = [
+        'idcliente',
+        'iddireccion',
+        'nmbre',
+        'telefono',
+        'fechaAlta'
+    ];
 
     //relacion uno a uno
     public function direcciones(){

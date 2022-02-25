@@ -8,8 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class catstatus extends Model
 {
     use HasFactory;
-    protected $primarykey ='idcatstatu';
-    protected $fillable = ['idcatstatu','nombreStatus','descripcionStatus','fechaAlta'];
+    public $timestamps=false;
+    protected $table = 'tblcatstatus';
+    protected $primarykey ='id';
+    protected $fillable = [
+        'idcatstatu',
+        'nombreStatus',
+        'descripcionStatus',
+        'fechaAlta'
+    ];
 
     public function reporte(){
         return $this->hasOne(reportes::class);

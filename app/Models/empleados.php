@@ -8,9 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class empleados extends Model
 {
     use HasFactory;
-    protected $primarykey ='idempleado';
-    protected $fillable = ['idempleado','idcatrol','nombreUsuario','apellidoPaterno','apellidoMterno',
-                        'fechaAlta','usuario','password'];
+    public $timestamps=false;
+    protected $table = 'tblempleados';
+    protected $primarykey ='id';
+    protected $fillable = [
+        'idempleado',
+        'idcatrol',
+        'nombreUsuario',
+        'apellidoPaterno',
+        'apellidoMterno', 
+        'fechaAlta',
+        'usuario',
+        'password'
+    ];
     public function reportes(){
         return $this->hasOne(reportes::class);
     }

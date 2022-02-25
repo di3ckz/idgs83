@@ -8,10 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class detallereporte extends Model
 {
     use HasFactory;
-    protected $primarykey ='iddetallereporte';
-    protected $fillable = ['iddetallereporte','diagnostico','solucion','idempleadoactualizo',
-                        'fechaActualizacion','idempleadoatencion','fechaAtencion','idempleadoatendiendo',
-                        'fechaAtendiendo'];
+    public $timestamps=false;
+    protected $table = 'tbldetallereporte';
+    protected $primarykey ='id';
+    protected $fillable = [
+        'iddetallereporte',
+        'diagnostico',
+        'solucion',
+        'idempleadoactualizo',
+        'fechaActualizacion',
+        'idempleadoatencion',
+        'fechaAtencion',
+        'idempleadoatendiendo',
+        'fechaAtendiendo'
+    ];
 
      public function reportes(){
         return $this->belongsTo(detallereporte::class);
