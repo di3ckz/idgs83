@@ -20,7 +20,8 @@ class CatRoles extends Model
     ];
 
     public function empleado(){
-        return $this->belongsTo(empleados::class);
-        public $sequence = null;
+        return $this->belongsTo(TblEmpleados::class);
     }
+    public $sequence = null;
+
 }

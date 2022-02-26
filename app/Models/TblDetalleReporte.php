@@ -24,8 +24,9 @@ class TblDetalleReporte extends Model
     ];
 
      public function reportes(){
-        return $this->belongsTo(detallereporte::class);
-        public $sequence = null;
+        return $this->belongsTo(TblDetalleReporte::class);
     }
+    public $sequence = null;
+
    
 }

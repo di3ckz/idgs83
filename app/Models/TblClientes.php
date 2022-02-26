@@ -21,7 +21,8 @@ class TblClientes extends Model
 
     //relacion uno a uno
     public function direcciones(){
-        return $this->hasOne(clientes::class);
-        public $sequence = null;
+        return $this->hasOne(TblClientes::class);
     }
+    public $sequence = null;
+
 }

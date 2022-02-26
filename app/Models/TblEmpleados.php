@@ -23,13 +23,15 @@ class TblEmpleados extends Model
         'fechaAlta'
     ];
     public function reportes(){
-        return $this->hasOne(reportes::class);
-        public $sequence = null;
+        return $this->hasOne(TblDetalleReporte::class);
     }
+    public $sequence = null;
+
 
     public function rol(){
-        return $this->hasOne(catroles::class);
-        public $sequence = null;
+        return $this->hasOne(CatRoles::class);
     }
+    public $sequence = null;
+
 
 }

@@ -20,8 +20,9 @@ class CatPoblaciones extends Model
         ];
     //relacion uno a muchos
         public function direcciones(){
-        return $this->hasMany(direcciones::class);
-        public $sequence = null;
+        return $this->hasMany(TblDirecciones::class);
     }
+    public $sequence = null;
+
     
 }

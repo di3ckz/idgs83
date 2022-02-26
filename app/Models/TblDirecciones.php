@@ -21,11 +21,14 @@ class TblDirecciones extends Model
 
     //relacion muchos a uno
     public function catpoblaciones(){
-        return $this->belongsTo(catpoblaciones::class);
+        return $this->belongsTo(CatPoblaciones::class);
     }
+    public $sequence = null;
+
 
     public function clientes(){
-        return $this->belongsTo(clientes::class);
-        public $sequence = null;
+        return $this->belongsTo(TblClientes::class);
     }
+    public $sequence = null;
+
 }

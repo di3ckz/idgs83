@@ -19,8 +19,9 @@ class CatProblemas extends Model
         
     ];
     public function reporte(){
-        return $this->hasOne(reportes::class);
-        public $sequence = null;
+        return $this->hasOne(TblReportes::class);
     }
+    public $sequence = null;
+
     
 }
