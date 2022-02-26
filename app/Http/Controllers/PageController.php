@@ -13,7 +13,9 @@ class PageController extends Controller
 {
 
     public function obtenerInsumos () {
-        /*$reportes       = TblReportes::all();
+        /*$reportes       = TblReportes::where('FKCatStatus',1)
+                                     ->take(5)
+                                     ->get();
         $poblaciones    = CatPoblaciones::all();
         $problemas      = CatProblemas::all();
 

@@ -18,10 +18,10 @@ class CatProblemas extends Model
         'fechaAlta'
         
     ];
+    
     public function reporte(){
         return $this->hasOne(TblReportes::class);
     }
-    public $sequence = null;
 
-    
+    public $sequence = null;
 }

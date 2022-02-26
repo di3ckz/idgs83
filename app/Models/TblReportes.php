@@ -26,22 +26,18 @@ class TblReportes extends Model
     public function detalles(){
         return $this->hasOne(TblDetalleReporte::class);
     }
-    public $sequence = null;
-    
 
     public function empleado(){
         return $this->belongsTo(TblEmpleados::class);
     }
-    public $sequence = null;
 
     public function catstatus(){
         return $this->belongsTo(CatStatus::class);
     }
-    public $sequence = null;
 
     public function catproblemas(){
         return $this->belongsTo(CatProblemas::class);
     }
-    public $sequence = null;
 
+    public $sequence = null;
 }

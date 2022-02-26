@@ -14,15 +14,24 @@ class PoblacionesController extends Controller
 
         try {
 
-            DB::beginTransaction();
-                $poblacion                  = new CatPoblaciones;
-                $poblacion->nombrePoblacion = $request['nombrePoblacion'];
-                $poblacion->codigoPostal    = $request['codigoPostal'];
-                $poblacion->fechaAlta       = Carbon::now();
-                $poblacion->save();
-            DB::commit();
+            $verificarExistencia = CatPoblaciones::where('nombrePoblacion',$request['nombrePoblacion'])
+                                                 ->orWhere('nombrePoblacion','like','%'.$request['nombrePoblacion'])
+                                                 ->orWhere('nombrePoblacion','like','%'.$request['nombrePoblacion'].'%')
+                                                 ->orWhere('nombrePoblacion','like',$request['nombrePoblacion'].'%')
+                                                 ->first()
+                                                 ->get();
 
-            return view('inicio');
+            if( count($verificarExistencia) == 0 ){
+                DB::beginTransaction();
+                    $poblacion                  = new CatPoblaciones;
+                    $poblacion->nombrePoblacion = $request['nombrePoblacion'];
+                    $poblacion->codigoPostal    = $request['codigoPostal'];
+                    $poblacion->fechaAlta       = Carbon::now();
+                    $poblacion->save();
+                DB::commit();
+            }
+
+            return count($verificarExistencia) == 0 ? view('inicio')->with('mensajeError', 'Ya existe la población') : view('Registro exitoso');
 
         } catch (\Throwable $th) {
             Log::info($th);

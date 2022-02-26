@@ -23,12 +23,10 @@ class TblDirecciones extends Model
     public function catpoblaciones(){
         return $this->belongsTo(CatPoblaciones::class);
     }
-    public $sequence = null;
-
 
     public function clientes(){
         return $this->belongsTo(TblClientes::class);
     }
-    public $sequence = null;
 
+    public $sequence = null;
 }

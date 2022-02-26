@@ -12,17 +12,15 @@ class CatPoblaciones extends Model
         protected $table = 'CatPoblaciones';
         protected $primarykey ='PKCatPoblaciones';
         protected $fillable =[
-        
             'PKCatPoblaciones',
             'nombrePoblacion',
             'codigoPostal',
             'fechaAlta'
         ];
     //relacion uno a muchos
-        public function direcciones(){
+    public function direcciones(){
         return $this->hasMany(TblDirecciones::class);
     }
-    public $sequence = null;
 
-    
+    public $sequence = null;
 }
