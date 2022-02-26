@@ -10,7 +10,7 @@ class CatPoblaciones extends Model
     use HasFactory;
         public $timestamps=false;
         protected $table = 'CatPoblaciones';
-        protected $primarykey ='id';
+        protected $primarykey ='PKCatPoblaciones';
         protected $fillable =[
         
             'PKCatPoblaciones',
@@ -21,6 +21,7 @@ class CatPoblaciones extends Model
     //relacion uno a muchos
         public function direcciones(){
         return $this->hasMany(direcciones::class);
+        public $sequence = null;
     }
     
 }

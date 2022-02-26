@@ -10,7 +10,7 @@ class TblReportes extends Model
     use HasFactory;
     public $timestamps=false;
     protected $table = 'TblReportes';
-    protected $primarykey ='id';
+    protected $primarykey ='PKTblReportes';
     protected $fillable = [
         'PKTblReportes',
         'FKCatProblemas',
@@ -25,15 +25,19 @@ class TblReportes extends Model
 
     public function detalles(){
         return $this->hasOne(detallereporte::class);
+        public $sequence = null;
     }
 
     public function empleado(){
         return $this->belongsTo(empleados::class);
+        public $sequence = null;
     }
     public function catstatus(){
         return $this->belongsTo(catstatus::class);
+        public $sequence = null;
     }
     public function catproblemas(){
         return $this->belongsTo(catproblemass::class);
+        public $sequence = null;
     }
 }

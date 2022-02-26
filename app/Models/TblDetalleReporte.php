@@ -10,7 +10,7 @@ class TblDetalleReporte extends Model
     use HasFactory;
     public $timestamps=false;
     protected $table = 'TblDetalleReporte';
-    protected $primarykey ='id';
+    protected $primarykey ='PKTblDetalleReporte';
     protected $fillable = [
         'PKTblDetalleReporte',
         'diagnostico',
@@ -25,6 +25,7 @@ class TblDetalleReporte extends Model
 
      public function reportes(){
         return $this->belongsTo(detallereporte::class);
+        public $sequence = null;
     }
    
 }

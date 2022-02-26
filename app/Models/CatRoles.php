@@ -10,7 +10,7 @@ class CatRoles extends Model
     use HasFactory;
     public $timestamps=false;
     protected $table = 'CatRoles';
-    protected $primarykey ='id';
+    protected $primarykey ='PKCatRoles';
     protected $fillable = [
         'PKCatRoles',
         'nombreRol',
@@ -21,5 +21,6 @@ class CatRoles extends Model
 
     public function empleado(){
         return $this->belongsTo(empleados::class);
+        public $sequence = null;
     }
 }

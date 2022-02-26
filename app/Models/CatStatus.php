@@ -10,7 +10,7 @@ class CatStatus extends Model
     use HasFactory;
     public $timestamps=false;
     protected $table = 'CatStatus';
-    protected $primarykey ='id';
+    protected $primarykey ='PKCatStatus';
     protected $fillable = [
         'PKCatStatus',
         'nombreStatus',
@@ -20,6 +20,7 @@ class CatStatus extends Model
 
     public function reporte(){
         return $this->hasOne(reportes::class);
+        public $sequence = null;
     }
     
 }

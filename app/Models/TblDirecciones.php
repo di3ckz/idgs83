@@ -10,7 +10,7 @@ class TblDirecciones extends Model
     use HasFactory;
     public $timestamps=false;
     protected $table = 'TblDirecciones';
-    protected $primarykey ='id';
+    protected $primarykey ='PKTblDirecciones';
     protected $fillable = [
         'PKTblDirecciones',
         'FKCatPoblaciones',
@@ -26,5 +26,6 @@ class TblDirecciones extends Model
 
     public function clientes(){
         return $this->belongsTo(clientes::class);
+        public $sequence = null;
     }
 }

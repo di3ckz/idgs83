@@ -10,7 +10,7 @@ class TblClientes extends Model
     use HasFactory;
     public $timestamps=false;
     protected $table = 'TblClientes';
-    protected $primarykey ='id';
+    protected $primarykey ='PKTblClientes';
     protected $fillable = [
         'PKTblClientes',
         'FKTblDirecciones',
@@ -22,5 +22,6 @@ class TblClientes extends Model
     //relacion uno a uno
     public function direcciones(){
         return $this->hasOne(clientes::class);
+        public $sequence = null;
     }
 }
