@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Catroles extends Migration
+class CatRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class Catroles extends Migration
     public function up()
     {
         Schema::create('catroles', function (Blueprint $table) {
-            $table->increments('idcatrol');
-            $table->string('nombrerol',20);
-            $table->string('descripcion',255);
+            $table->increments('PKCatRoles');
+            $table->string('nombreRol',20);
+            $table->string('descripcionRol',255);
             $table->date('fechaAlta');
             $table->timestamps();
         });

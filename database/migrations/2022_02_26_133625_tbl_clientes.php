@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Catpoblaciones extends Migration
+class TblClientes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class Catpoblaciones extends Migration
      */
     public function up()
     {
-        Schema::create('catpoblaciones', function (Blueprint $table) {
-            $table->increments('idcatpoblacion');
-            $table->string('nombrePoblacion',20);
-            $table->string('codigopostal',5);
+        Schema::create('tblclientes', function (Blueprint $table) {
+            $table->increments('PKTblReportes');
+            $table->integer('FKCatProblemas')->unsigned();
+            $table->string('nombreCliente');
+            $table->string('telefono', 10);
             $table->date('fechaAlta');
+            $table->foreign('FKCatProblemas')->references('PKCatProblemas')->on('tblreportes');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
