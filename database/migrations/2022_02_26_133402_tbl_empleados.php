@@ -13,7 +13,7 @@ class TblEmpleados extends Migration
      */
     public function up()
     {
-        Schema::create('tblempleados', function (Blueprint $table) {
+        Schema::create('TblEmpleados', function (Blueprint $table) {
             $table->increments('PKTblEmpleados');
             $table->integer('FKCatRoles')->unsigned();
             $table->string('nombreUsuario');
@@ -22,8 +22,7 @@ class TblEmpleados extends Migration
             $table->date('fechaAlta');
             $table->string('usuario');
             $table->string('contrasenia');
-            $table->foreign('PKTblCatRoles')->references('PKTblCatRoles')->on('catroles');
-            $table->timestamps();
+            $table->foreign('FKCatRoles')->references('PKCatRoles')->on('CatRoles');
         });
     }
 

@@ -13,7 +13,7 @@ class TblReportes extends Migration
      */
     public function up()
     {
-        Schema::create('tblreporte', function (Blueprint $table) {
+        Schema::create('TblReportes', function (Blueprint $table) {
             $table->increments('PKTblReportes');
             $table->integer('FKCatProblemas')->unsigned();
             $table->integer('FKTblEmpleadosRecibio')->unsigned();
@@ -23,12 +23,11 @@ class TblReportes extends Migration
             $table->string('descripcionProblema');
             $table->string('observaciones');
             $table->date('fechaAlta');
-            $table->foreign('PKCatProblemas')->references('PKCatProblemas')->on('catproblemas');
-            $table->foreign('PKTblEmpleados')->references('PKTblEmpleados')->on('tblempleados');
-            $table->foreign('PKCatStatus')->references('PKCatStatus')->on('catstatus');
-            $table->foreign('PKTblDetalleReporte')->references('PKTblDetalleReporte')->on('tbldetallereporte');
-            $table->foreign('PKTblClientes')->references('PKTblClientes')->on('tblclientes');
-            $table->timestamps();
+            $table->foreign('FKCatProblemas')->references('PKCatProblemas')->on('CatProblemas');
+            $table->foreign('FKTblEmpleadosRecibio')->references('PKTblEmpleados')->on('TblEmpleados');
+            $table->foreign('FKCatStatus')->references('PKCatStatus')->on('CatStatus');
+            $table->foreign('FKTblDetalleReporte')->references('PKTblDetalleReporte')->on('TblDetalleReporte');
+            $table->foreign('FKTblClientes')->references('PKTblClientes')->on('TblClientes');
         }); 
     }
 

@@ -13,14 +13,13 @@ class TblClientes extends Migration
      */
     public function up()
     {
-        Schema::create('tblclientes', function (Blueprint $table) {
-            $table->increments('PKTblReportes');
-            $table->integer('FKCatProblemas')->unsigned();
+        Schema::create('TblClientes', function (Blueprint $table) {
+            $table->increments('PKTblClientes');
+            $table->integer('FKTblDirecciones')->unsigned();
             $table->string('nombreCliente');
             $table->string('telefono', 10);
             $table->date('fechaAlta');
-            $table->foreign('FKCatProblemas')->references('PKCatProblemas')->on('tblreportes');
-            $table->timestamps();
+            $table->foreign('FKTblDirecciones')->references('PKTblDirecciones')->on('TblDirecciones');
         }); 
     }
 

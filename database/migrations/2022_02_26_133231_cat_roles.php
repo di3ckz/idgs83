@@ -13,12 +13,11 @@ class CatRoles extends Migration
      */
     public function up()
     {
-        Schema::create('catroles', function (Blueprint $table) {
+        Schema::create('CatRoles', function (Blueprint $table) {
             $table->increments('PKCatRoles');
             $table->string('nombreRol',20);
             $table->string('descripcionRol',255);
             $table->date('fechaAlta');
-            $table->timestamps();
         });
     }
 

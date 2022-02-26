@@ -13,12 +13,11 @@ class CatProblemas extends Migration
      */
     public function up()
     {
-        Schema::create('catproblemas', function (Blueprint $table) {
+        Schema::create('CatProblemas', function (Blueprint $table) {
             $table->increments('PKCatProblemas');
             $table->string('nombreProblema',20);
             $table->string('descripcionProblema',255);
             $table->date('fechaAlta');
-            $table->timestamps();
         });
     }
 

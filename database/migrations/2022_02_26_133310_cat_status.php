@@ -13,12 +13,11 @@ class CatStatus extends Migration
      */
     public function up()
     {
-        Schema::create('catstatus', function (Blueprint $table) {
+        Schema::create('CatStatus', function (Blueprint $table) {
             $table->increments('PKCatStatus');
             $table->string('nombreStatus',20);
             $table->string('descripcionStatus',255);
             $table->date('fechaAlta');
-            $table->timestamps();
         });
         
     }

@@ -13,12 +13,11 @@ class CatPoblaciones extends Migration
      */
     public function up()
     {
-        Schema::create('catpoblaciones', function (Blueprint $table) {
+        Schema::create('CatPoblaciones', function (Blueprint $table) {
             $table->increments('PKCatPoblaciones');
             $table->string('nombrePoblacion',20);
             $table->string('codigoPostal',5);
             $table->date('fechaAlta');
-            $table->timestamps();
         });
     }
 

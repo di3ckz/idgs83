@@ -13,14 +13,13 @@ class TblDirecciones extends Migration
      */
     public function up()
     {
-        Schema::create('tbldirecciones', function (Blueprint $table) {
-            $table->increments('PKTblReportes');
+        Schema::create('TblDirecciones', function (Blueprint $table) {
+            $table->increments('PKTblDirecciones');
             $table->integer('FKCatPoblaciones')->unsigned();
             $table->text('coordenadas');
             $table->text('referencias');
             $table->text('direccion');
-            $table->foreign('FKCatPoblaciones')->references('PKCatPoblaciones')->on('tblcatpoblaciones');
-            $table->timestamps();
+            $table->foreign('FKCatPoblaciones')->references('PKCatPoblaciones')->on('CatPoblaciones');
         }); 
     }
 

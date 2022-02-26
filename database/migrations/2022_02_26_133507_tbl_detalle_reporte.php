@@ -13,8 +13,8 @@ class TblDetalleReporte extends Migration
      */
     public function up()
     {
-        Schema::create('tbldetallereporte', function (Blueprint $table) {
-            $table->increments('PKTblEmpleados');
+        Schema::create('TblDetalleReporte', function (Blueprint $table) {
+            $table->increments('PKTblDetalleReporte');
             $table->string('diagnostico');
             $table->string('solucion');
             $table->integer('FKTblEmpleadosActualizo')->unsigned();
@@ -23,10 +23,9 @@ class TblDetalleReporte extends Migration
             $table->date('fechaAtencion');
             $table->integer('FKTblEmpleadosAtediendo')->unsigned();
             $table->date('fechaAtendiendo');
-            $table->foreign('PKTblEmpleados')->references('PKTblEmpleados')->on('tblempleados');
-            $table->foreign('PKTblEmpleados')->references('PKTblEmpleados')->on('tblempleados');
-            $table->foreign('PKTblEmpleados')->references('PKTblEmpleados')->on('tblempleados');
-            $table->timestamps();
+            $table->foreign('FKTblEmpleadosActualizo')->references('PKTblEmpleados')->on('TblEmpleados');
+            $table->foreign('FKTblEmpleadosAtencion')->references('PKTblEmpleados')->on('TblEmpleados');
+            $table->foreign('FKTblEmpleadosAtediendo')->references('PKTblEmpleados')->on('TblEmpleados');
         });
     }
 
