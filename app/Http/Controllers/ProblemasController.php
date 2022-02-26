@@ -14,15 +14,24 @@ class ProblemasController extends Controller
 
         try {
 
-            DB::beginTransaction();
-                $poblacion                      = new CatProblemas;
-                $poblacion->nombreProblema      = $request['nombreProblema'];
-                $poblacion->descripcionProblema = $request['descripcionProblema'];
-                $poblacion->fechaAlta           = Carbon::now();
-                $poblacion->save();
-            DB::commit();
+            $verificarExistencia = CatProblemas::where('nombreProblema',$request['nombreProblema'])
+                                                 ->orWhere('nombreProblema','like','%'.$request['nombreProblema'])
+                                                 ->orWhere('nombreProblema','like','%'.$request['nombreProblema'].'%')
+                                                 ->orWhere('nombreProblema','like',$request['nombreProblema'].'%')
+                                                 ->first()
+                                                 ->get();
 
-            return view('inicio');
+            if ( count($verificarExistencia) == 0 ) {
+                DB::beginTransaction();
+                    $poblacion                      = new CatProblemas;
+                    $poblacion->nombreProblema      = $request['nombreProblema'];
+                    $poblacion->descripcionProblema = $request['descripcionProblema'];
+                    $poblacion->fechaAlta           = Carbon::now();
+                    $poblacion->save();
+                DB::commit();
+            }
+
+            return count($verificarExistencia) == 0 ? view('inicio')->with('mensajeError', 'Ya existe el problema') : view('Registro exitoso');
 
         } catch (\Throwable $th) {
             Log::info($th);

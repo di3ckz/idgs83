@@ -23,6 +23,6 @@ class TblClientes extends Model
     public function direcciones(){
         return $this->hasOne(TblClientes::class);
     }
-    public $sequence = null;
 
+    public $sequence = null;
 }
