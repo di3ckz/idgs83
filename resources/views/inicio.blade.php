@@ -81,23 +81,24 @@
                     <h4 class="modal-title"><b>Generar reporte</b></h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="" autocomplete="off" method="post">
+                    <form class="form-horizontal" action="{{ route('registrarReporte') }}" autocomplete="off" method="post">
+                        @csrf
                         <div class="form-group">
                             <label class="control-label col-sm-3">Nombre:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Nombre" required  name="nombreCliente">
+                                <input type="text" class="form-control" placeholder="Nombre"   name="nombreCliente">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Tel&eacute;fono:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Tel&eacute;fono" required onkeypress="return soloNumeros(event);" maxlength="10" name="telefono">
+                                <input type="text" class="form-control" placeholder="Tel&eacute;fono"  onkeypress="return soloNumeros(event);" maxlength="10" name="telefono">
                             </div>
                         </div>
                         <div class="form-group" style="visibility: hidden; display: none;" id="t">
                             <label class="control-label col-sm-3">Tel&eacute;fono 2:</label>
                             <div class="col-sm-9">
-                                <input id="tel2" type="text" class="form-control" placeholder="Tel&eacute;fono 2" onkeypress="return soloNumeros(event);" maxlength="10" name="telefono2">
+                                <input id="tel2" type="text" class="form-control" placeholder="Tel&eacute;fono 2 (Opcional)" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,7 +110,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Poblaci&oacute;n:</label>
                             <div class="col-sm-9">
-                                <select id="poblacion" name="id_poblacion" class="form-control" required style="background: #D5EDFF;">
+                                <select id="poblacion" name="PKCatPoblaciones" class="form-control"  style="background: #D5EDFF;">
                                     <option value="" style="visibility: hidden; display: none;">Seleccione una poblaci&oacute;n</option>
                                 </select>
                             </div>
@@ -123,39 +124,33 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Direcci&oacute;n:</label>
                             <div class="col-sm-9">
-                                <textarea rows="1" name="direccion" class="form-control" id="direccion" placeholder="Direcci&oacute;n" required></textarea>
+                                <textarea rows="1" class="form-control" id="direccion" placeholder="Direcci&oacute;n" name="direccion" ></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Referencias:</label>
                             <div class="col-sm-9">
-                                <textarea rows="1" name="referencias" class="form-control" id="referencias" placeholder="Referencias"></textarea>
+                                <textarea rows="1" class="form-control" id="referencias" placeholder="Referencias" name="referencias"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Problema:</label>
                             <div class="col-sm-9">
-                                <select id="tproblema" name="id_problema" class="form-control" required style="background: #D5EDFF;">
+                                <select id="tproblema" name="PKCatProblemas" class="form-control"  style="background: #D5EDFF;">
                                     <option value="" style="visibility: hidden; display: none;">Seleccione un problema</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div class="form-group otroProblema" style="display: none;">
-                            <label class="control-label col-sm-3">Otro problema:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="otroProblema" name="otroProblema" placeholder="Otro Problema">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Descripci&oacute;n del problema:</label>
                             <div class="col-sm-9">
-                                <textarea rows="1" name="descripcionProblema" class="form-control" id="problema" placeholder="Descripci&oacute;n del problema"></textarea>
+                                <textarea rows="1" class="form-control" id="problema" placeholder="Descripci&oacute;n del problema" name="descripcionProblema"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Observaciones:</label>
                             <div class="col-sm-9">
-                                <textarea rows="1" name="observaciones" class="form-control" id="observaciones" placeholder="Observaciones"></textarea>
+                                <textarea rows="1" class="form-control" id="observaciones" placeholder="Observaciones" name="observaciones"></textarea>
                             </div>
                         </div>
 
@@ -184,17 +179,22 @@
                 </div>
                 
                 <div class="modal-body">
-                    <form class="form-horizontal" action="" method="get" autocomplete="off">
+                    <form class="form-horizontal" action="{{ route('registrarPoblacion') }}" method="post" autocomplete="off">
                         <div class="form-group">
                             <label class="control-label col-sm-3">Nombre:</label>
                             <div class="col-sm-9">
-                                <input id="nombrePoblacion" name="npoblacion" type="text" class="form-control" placeholder="Nombre poblaci&oacute;n" required >
+                                <input id="nombrePoblacion" type="text" class="form-control" placeholder="Nombre de la poblaci&oacute;n" required name="nombrePoblacion">
                             </div>
                         </div>
-                        <p style="text-align: center;"><b id="texto" style="color: red;">No disponible</b></p>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Código postal:</label>
+                            <div class="col-sm-9">
+                                <input id="nombrePoblacion" type="text" class="form-control" placeholder="Código postal" required name="codigoPostal">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12" style="text-align:center; margin-top: 3%;">
-                                <button class="btn" id="envio" style="background: #6C3483; display: none;"><b style="color:white;">Registrar poblaci&oacute;n</b></button>
+                                <button class="btn" id="envio" style="background: #6C3483;"><b style="color:white;">Registrar poblaci&oacute;n</b></button>
                             </div>
                         </div>
                     </form>
@@ -212,21 +212,24 @@
                     <h4 class="modal-title"><b style="color: #6C3483;">Registrar problema</b></h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="" autocomplete="off" method="get">
-                        
+                    <form class="form-horizontal" action="{{ route('registrarProblema') }}" autocomplete="off" method="post">
                         <div class="form-group">
-                            <label class="control-label col-sm-3">Descripci&oacute;n:</label>
+                            <label class="control-label col-sm-3">Problema:</label>
                             <div class="col-sm-9">
-                                <input id="nombreProblema" name="dproblema" type="text" class="form-control" placeholder="Descripci&oacute;n" required >
+                                <input id="nombreProblema" type="text" class="form-control" placeholder="Problema" required name="nombreProblema">
                             </div>
                         </div>
-                        <p style="text-align: center;"><b id="texto1" style="color: red;">No disponible</b></p>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Descripción del problema:</label>
+                            <div class="col-sm-9">
+                                <input id="descripcionProblema" type="text" class="form-control" placeholder="Descripción del problema" required name="descripcionProblema">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12" style="text-align:center; margin-top: 3%;">
-                                <button class="btn" id="envio1" style="background: #6C3483; display: none;"><b style="color:white;">Registrar problema</b></button>
+                                <button class="btn" id="envio1" style="background: #6C3483;"><b style="color:white;">Registrar problema</b></button>
                             </div>
                         </div>
-
                     </form>
                 </div>
 
@@ -247,14 +250,14 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Nombre:</label>
                             <div class="col-sm-9">
-                                <input name="nombre" type="text" class="form-control" placeholder="Nombre" value="Admin" required >
+                                <input name="nombre" type="text" class="form-control" placeholder="Nombre" value="Admin"  >
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-sm-3">Apellido Paterno:</label>
                             <div class="col-sm-9">
-                                <input name="aPaterno" type="text" class="form-control" placeholder="Apellido Paterno" value="Prueba" required >
+                                <input name="aPaterno" type="text" class="form-control" placeholder="Apellido Paterno" value="Prueba"  >
                             </div>
                         </div>
 
@@ -271,7 +274,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Usuario:</label>
                             <div class="col-sm-9">
-                                <input name="usuario" type="text" class="form-control" placeholder="Usuario" value="Admin" required>
+                                <input name="usuario" type="text" class="form-control" placeholder="Usuario" value="Admin" >
                             </div>
                         </div>
 
