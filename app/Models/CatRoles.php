@@ -13,8 +13,8 @@ class CatRoles extends Model
     protected $primarykey ='id';
     protected $fillable = [
         'PKCatRoles',
-        'nombrerol',
-        'descripcion',
+        'nombreRol',
+        'descripcionRol',
         'fechaAlta'
         
     ];

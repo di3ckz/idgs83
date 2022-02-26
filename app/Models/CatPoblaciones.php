@@ -15,7 +15,7 @@ class CatPoblaciones extends Model
         
             'PKCatPoblaciones',
             'nombrePoblacion',
-            'codigopstal',
+            'codigoPostal',
             'fechaAlta'
         ];
     //relacion uno a muchos

@@ -14,7 +14,7 @@ class TblClientes extends Model
     protected $fillable = [
         'PKTblClientes',
         'FKTblDirecciones',
-        'nmbre',
+        'nombreCliente',
         'telefono',
         'fechaAlta'
     ];

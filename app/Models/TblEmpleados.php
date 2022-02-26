@@ -16,10 +16,11 @@ class TblEmpleados extends Model
         'FKCatRoles',
         'nombreUsuario',
         'apellidoPaterno',
-        'apellidoMterno', 
+        'apellidoMaterno', 
         'fechaAlta',
         'usuario',
-        'password'
+        'contrasenia',
+        'fechaAlta'
     ];
     public function reportes(){
         return $this->hasOne(reportes::class);
