@@ -9,7 +9,7 @@ class TblClientes extends Model
 {
     use HasFactory;
     public $timestamps=false;
-    protected $table = 'TblClientes';
+    protected $table = 'tblclientes';
     protected $primarykey ='PKTblClientes';
     protected $fillable = [
         'PKTblClientes',

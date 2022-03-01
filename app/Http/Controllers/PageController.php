@@ -13,7 +13,7 @@ class PageController extends Controller
 {
 
     public function obtenerInsumos () {
-        /*$reportes       = TblReportes::where('FKCatStatus',1)
+        $reportes       = TblReportes::where('FKCatStatus',1)
                                      ->take(5)
                                      ->get();
         $poblaciones    = CatPoblaciones::all();
@@ -22,7 +22,7 @@ class PageController extends Controller
         return view('inicio')
              ->with('reportes', $reportes)
              ->with('poblaciones', $poblaciones)
-             ->with('problemas', $problemas);*/
+             ->with('problemas', $problemas);
 
         return view('inicio');
     }

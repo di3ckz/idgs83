@@ -112,6 +112,9 @@
                             <div class="col-sm-9">
                                 <select id="poblacion" name="PKCatPoblaciones" class="form-control"  style="background: #D5EDFF;">
                                     <option value="" style="visibility: hidden; display: none;">Seleccione una poblaci&oacute;n</option>
+                                    @foreach($poblaciones as $poblacion)
+                                        <option value="{{$poblacion->PKCatPoblaciones}}">{{$poblacion->nombrePoblacion}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -138,6 +141,9 @@
                             <div class="col-sm-9">
                                 <select id="tproblema" name="PKCatProblemas" class="form-control"  style="background: #D5EDFF;">
                                     <option value="" style="visibility: hidden; display: none;">Seleccione un problema</option>
+                                    @foreach($problemas as $problema)
+                                        <option value="{{$problema->PKCatProblemas}}">{{$problema->nombreProblema}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -180,6 +186,7 @@
                 
                 <div class="modal-body">
                     <form class="form-horizontal" action="{{ route('registrarPoblacion') }}" method="post" autocomplete="off">
+                        @csrf
                         <div class="form-group">
                             <label class="control-label col-sm-3">Nombre:</label>
                             <div class="col-sm-9">
@@ -213,6 +220,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" action="{{ route('registrarProblema') }}" autocomplete="off" method="post">
+                        @csrf
                         <div class="form-group">
                             <label class="control-label col-sm-3">Problema:</label>
                             <div class="col-sm-9">

@@ -9,7 +9,7 @@ class CatStatus extends Model
 {
     use HasFactory;
     public $timestamps=false;
-    protected $table = 'CatStatus';
+    protected $table = 'catstatus';
     protected $primarykey ='PKCatStatus';
     protected $fillable = [
         'PKCatStatus',

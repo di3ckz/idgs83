@@ -9,7 +9,7 @@ class CatPoblaciones extends Model
 {
     use HasFactory;
         public $timestamps=false;
-        protected $table = 'CatPoblaciones';
+        protected $table = 'catpoblaciones';
         protected $primarykey ='PKCatPoblaciones';
         protected $fillable =[
             'PKCatPoblaciones',

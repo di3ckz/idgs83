@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Models\CatProblemas;
 
 class ProblemasController extends Controller
@@ -18,10 +19,9 @@ class ProblemasController extends Controller
                                                  ->orWhere('nombreProblema','like','%'.$request['nombreProblema'])
                                                  ->orWhere('nombreProblema','like','%'.$request['nombreProblema'].'%')
                                                  ->orWhere('nombreProblema','like',$request['nombreProblema'].'%')
-                                                 ->first()
-                                                 ->get();
+                                                 ->first();
 
-            if ( count($verificarExistencia) == 0 ) {
+            if ( !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ) {
                 DB::beginTransaction();
                     $poblacion                      = new CatProblemas;
                     $poblacion->nombreProblema      = $request['nombreProblema'];
@@ -31,18 +31,18 @@ class ProblemasController extends Controller
                 DB::commit();
             }
 
-            return count($verificarExistencia) == 0 ? view('inicio')->with('mensajeError', 'Ya existe el problema') : view('Registro exitoso');
+            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? back()->with('mensajeError', 'Ya existe la población') : back()->with('mensajeExito', 'Registro exitoso');
 
         } catch (\Throwable $th) {
             Log::info($th);
-            return view('inicio');
+            return back();
         }
 
     }
 
     public function eliminarProblema (CatProblemas $id) {
         $id->delete();
-        return view('inicio');
+        return back();
     }
 
 }
