@@ -327,22 +327,22 @@
             <h4 align="center"><b style="color:gray;">Reportes</b></h4>
             <hr>
             <div class="notifications">
-                @for($i = 1; $i <=5; $i++)
-                <div class="notifications__item verModalReporte" style="height: auto; padding-top: 15px; padding-bottom: 15px;" data-toggle='modal' data-target='#verModalReporte'>
-                    
-                    <div class="notifications__item__avatar">
-                        <img src="images/reportes/{{$i}}.png" />
-                    </div>
+                @foreach($reportes as $reporte)
+                    <div class="notifications__item verModalReporte" style="height: auto; padding-top: 15px; padding-bottom: 15px;" data-toggle='modal' data-target='#verModalReporte'>
+                        
+                        <div class="notifications__item__avatar">
+                            <img src="images/reportes/1.png" />
+                        </div>
 
-                    <div class="notifications__item__content">
-                        <span class="notifications__item__title"><b>Nombre de prueba {{$i}}</b></span>
-                        <span class="notifications__item__message"><b>Atarasquillo</b></span>
-                        <span class="notifications__item__message">Falla</span>
-                        <span class="notifications__item__message">10/02/2022</span>
-                    </div>
+                        <div class="notifications__item__content">
+                            <span class="notifications__item__title"><b>{{$reporte->nombreCliente}}</b></span>
+                            <span class="notifications__item__message"><b>{{$reporte->nombrePoblacion}}</b></span>
+                            <span class="notifications__item__message">{{$reporte->nombreProblema}}</span>
+                            <span class="notifications__item__message">{{$reporte->fechaAlta}}</span>
+                        </div>
 
-                </div>
-                @endfor
+                    </div>
+                @endforeach
                 <a href="#"><h4><b style="color: gray;">Ver m&aacute;s...</b></h4></a>
             </div>
         </div>

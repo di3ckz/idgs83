@@ -13,9 +13,15 @@ class PageController extends Controller
 {
 
     public function obtenerInsumos () {
-        $reportes       = TblReportes::where('FKCatStatus',1)
+        $reportes       = TblReportes::select('tblclientes.nombreCliente','catpoblaciones.nombrePoblacion','catproblemas.nombreProblema','tblreportes.fechaAlta')
+                                     ->where('FKCatStatus',1)
+                                     ->join('tblclientes','PKTblClientes','FKTblClientes')
+                                     ->join('tbldirecciones','PKTblDirecciones','FKTblDirecciones')
+                                     ->join('catpoblaciones','PKCatPoblaciones','tbldirecciones.FKCatPoblaciones')
+                                     ->join('catproblemas','PKCatProblemas','FKCatProblemas')
                                      ->take(5)
                                      ->get();
+
         $poblaciones    = CatPoblaciones::all();
         $problemas      = CatProblemas::all();
 
@@ -23,8 +29,6 @@ class PageController extends Controller
              ->with('reportes', $reportes)
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas);
-
-        return view('inicio');
     }
 
 }
