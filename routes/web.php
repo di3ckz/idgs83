@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','App\Http\Controllers\PageController@obtenerInsumos')->name('/');
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::post('/login','App\Http\Controllers\UserController@login')->name('login');
+Route::get('/logout','App\Http\Controllers\UserController@logout')->name('logout');
+
+Route::get('/inicio','App\Http\Controllers\PageController@obtenerInsumos')->name('/inicio');
 Route::name('inicio')->delete('eliminarPoblacion/{id}',[PageController::class, 'obtenerInsumos']);
 
 // Rutas modulo de control reportes

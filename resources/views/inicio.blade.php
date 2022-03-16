@@ -67,7 +67,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li data-toggle="modal" data-target="#modalUsuario"><a><span class="glyphicon glyphicon-user"></span> &nbsp;Administrador</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+                    <li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                 </ul>
             </div>
         </div>
