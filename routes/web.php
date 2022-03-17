@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('login');
 });
 
 Route::post('/login','App\Http\Controllers\UserController@login')->name('login');
@@ -34,3 +34,6 @@ Route::name('eliminarPoblacion')->delete('eliminarPoblacion/{id}',[PoblacionesCo
 // Rutas catalogo de problemas
 Route::post('registrarProblema','App\Http\Controllers\ProblemasController@registrarProblema')->name('registrarProblema');
 Route::name('eliminarProblema')->delete('eliminarProblema/{id}',[ProblemasController::class, 'eliminarProblema']);
+
+// Rutas con respecto a usuario/empleado
+Route::post('actualizarEmpleado','App\Http\Controllers\UserController@actualizarEmpleado')->name('actualizarEmpleado');

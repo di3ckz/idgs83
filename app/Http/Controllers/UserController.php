@@ -17,17 +17,46 @@ class UserController extends Controller
                                      ])
                               ->get();
 
-        session(['usuarios' => '123456']);
-
-        $var = session('usuarios');
-
-        Log::alert($var);
+        session(['usuario' => $return]);
 
         return count($return) > 0 ? redirect('inicio') : back();
     }
 
+    public function actualizarEmpleado ( Request $request ) {
+        try {
+
+            if ( !is_string($request['contrasenia']) ) {
+                $data = [
+                    'nombreEmpleado'    => $request['nombreEmpleado'],
+                    'apellidoPaterno'   => $request['apellidoPaterno'],
+                    'apellidoMaterno'   => $request['apellidoMaterno'],
+                    'usuario'           => $request['usuario']
+                ];
+            } else {
+                $data = [
+                    'nombreEmpleado'    => $request['nombreEmpleado'],
+                    'apellidoPaterno'   => $request['apellidoPaterno'],
+                    'apellidoMaterno'   => $request['apellidoMaterno'],
+                    'usuario'           => $request['usuario'],
+                    'contrasenia'       => $request['contrasenia']
+                ];
+            }
+
+            TblEmpleados::where("PKTblEmpleados",session('usuario')[0]->{'PKTblEmpleados'})
+                        ->update($data);
+
+            return $this->logout();
+
+        } catch (\Throwable $th) {
+
+            Log::info($th);
+            return back();
+            
+        }
+    }
+
     public function logout () {
-        session()->forget('usuarios');
+        session()->flush();
         return redirect('/');
     }
 

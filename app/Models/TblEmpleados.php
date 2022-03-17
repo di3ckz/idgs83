@@ -14,7 +14,7 @@ class TblEmpleados extends Model
     protected $fillable = [
         'PKTblEmpleados',
         'FKCatRoles',
-        'nombreUsuario',
+        'nombreEmpleado',
         'apellidoPaterno',
         'apellidoMaterno', 
         'fechaAlta',

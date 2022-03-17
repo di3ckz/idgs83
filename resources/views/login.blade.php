@@ -25,7 +25,7 @@
                 </div>
 
                 <br><br>
-                <center><button class="btn btn-info"><b>Entrar</b></button></center>
+                <button class="submit-btn"><b>Entrar</b></button>
 
                 <p style="color: white; text-align: center;"><b id="error"></b></p>
 
@@ -33,7 +33,7 @@
                 <div class="login slide-up">
                 <div class="center">
 
-                    <h2 class="form-title" id="login"><span>M</span>net</h2>
+                    <h2 class="form-title" id="login"><b style="color: gray;">E</b>menet</h2>
                     
                 </div>
             </div>

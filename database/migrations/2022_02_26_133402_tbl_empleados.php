@@ -16,7 +16,7 @@ class TblEmpleados extends Migration
         Schema::create('TblEmpleados', function (Blueprint $table) {
             $table->increments('PKTblEmpleados');
             $table->integer('FKCatRoles')->unsigned();
-            $table->string('nombreUsuario');
+            $table->string('nombreEmpleado');
             $table->string('apellidoPaterno');
             $table->string('apellidoMaterno');
             $table->date('fechaAlta');
