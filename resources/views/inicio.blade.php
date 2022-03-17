@@ -3,7 +3,7 @@
 <head>
     <title>Inicio</title>
 
-    @include('layouts/cabeceraGeneral')
+    @include('layouts/cabeceraInicio')
 </head>
 <body>
 

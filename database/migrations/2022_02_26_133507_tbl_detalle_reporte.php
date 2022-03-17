@@ -18,11 +18,11 @@ class TblDetalleReporte extends Migration
             $table->string('diagnostico');
             $table->string('solucion');
             $table->integer('FKTblEmpleadosActualizo')->unsigned();
-            $table->string('fechaActualizacion');
+            $table->timestamp('fechaActualizacion');
             $table->integer('FKTblEmpleadosAtencion')->unsigned();
-            $table->date('fechaAtencion');
+            $table->timestamp('fechaAtencion');
             $table->integer('FKTblEmpleadosAtediendo')->unsigned();
-            $table->date('fechaAtendiendo');
+            $table->timestamp('fechaAtendiendo');
             $table->foreign('FKTblEmpleadosActualizo')->references('PKTblEmpleados')->on('TblEmpleados');
             $table->foreign('FKTblEmpleadosAtencion')->references('PKTblEmpleados')->on('TblEmpleados');
             $table->foreign('FKTblEmpleadosAtediendo')->references('PKTblEmpleados')->on('TblEmpleados');

@@ -17,6 +17,7 @@ class UserController extends Controller
                                      ])
                               ->get();
 
+        session()->flush();
         session(['usuario' => $return]);
 
         return count($return) > 0 ? redirect('inicio') : back();
