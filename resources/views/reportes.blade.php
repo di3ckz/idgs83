@@ -9,7 +9,26 @@
 
     @include('layouts/navbarPrincipal')
 
-    <div class="col-md-12">
+    <div class="col-md-12" style="margin-top: 70px;">
+        <!--div class="col-sm-1">
+            <div class="form-group">
+                <label>Folio</label>
+                <input id="searchNo" type="text" class="form-control" placeholder="No." maxlength="10">
+            </div>
+        </div-->
+        <div class="col-sm-10">
+            <div class="form-group">
+                <label>Buscar en Reportes {{ $status }}</label>
+                <input id="search" type="text" class="form-control" placeholder="Buscar en Reportes {{ $status }}" maxlength="30">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label>Reporte</label>
+                <a href="excel.php?generar=reportesAtendidos"><button class="btn btn-info form-control"><img src="/images/reporte.png" alt="" width="22px"></button></a>
+            </div>
+        </div>
+
         <table class="table" style="margin-top:30px; text-align: center;" id="mytable">
             <thead class="table-header" style="background:gray;">
                 <tr>
@@ -69,13 +88,13 @@
                                 <td class="table-data verModalReporte"><b></b>
                                     <a target="_blank" href="https://www.google.es/maps?q={{ $item->coordenadas }}">
                                         <div style="width: 100%; height: 100%;">
-                                            <img src="images/maps.png" alt="" width="22px">
+                                            <img src="/images/maps.png" alt="" width="22px">
                                         </div>
                                     </a>
                                 </td>
                             @else
                                 <td class="table-data verModalReporte" data-toggle='modal' data-target='#verModalReporte' id="{{ $item->folio }}">
-                                    <img src="images/sinmaps.png" alt="" width="22px">
+                                    <img src="/images/sinmaps.png" alt="" width="22px">
                                 </td>
                             @endif
 
@@ -83,7 +102,7 @@
                                 <td style="text-align: center;">
                                     <a href="controllers/actualizaciones.php?accion=retomarr&id_reporte={{ $item->folio }}">
                                         <div style="width: 100%; height: 100%;">
-                                            <img src="images/retomar.png" alt="" width="22px">
+                                            <img src="/images/retomar.png" alt="" width="22px">
                                         </div>
                                     </a>
                                 </td>
@@ -91,13 +110,13 @@
                                 <td class="table-data verModalReporte">                
                                     <a href="controllers/actualizaciones.php?accion=atender&id_reporte={{ $item->folio }}">
                                         <div style="width: 100%; height: 100%;">
-                                            <img src="images/atender.png" alt="" width="22px">
+                                            <img src="/images/atender.png" alt="" width="22px">
                                         </div>
                                     </a>
                                 </td>
                             @else
                                 <td class="table-data verModalReporte">
-                                    <img src="images/incompleto.png" alt="" width="22px">
+                                    <img src="/images/incompleto.png" alt="" width="22px">
                                 </td>
                             @endif
 
@@ -106,7 +125,5 @@
             </tbody>
         </table>
     </div>
-
-    <script src="js/funcionalidadModales.js"></script>
 </body>
 </html>

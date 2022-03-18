@@ -5,7 +5,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Inicio</a></li>
+                <li class="active"><a href="{{ url('inicio') }}">Inicio</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Reportes <span class="caret"></span></a>
                     <ul class="dropdown-menu">

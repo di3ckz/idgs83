@@ -99,3 +99,5 @@
         </div>
     </div>
 </div>
+
+<script src="/js/funcionalidadModales.js"></script>

@@ -13,14 +13,17 @@ use App\Models\CatProblemas;
 class PageController extends Controller
 {
     private function obtenerTblReportes () {
-        return TblReportes::select('tblclientes.nombreCliente','catpoblaciones.nombrePoblacion','catproblemas.nombreProblema','tblreportes.fechaAlta')
+        $return = TblReportes::select('tblclientes.nombreCliente', 'tblclientes.apellidoPaterno', 'tblclientes.apellidoMaterno','catpoblaciones.nombrePoblacion','catproblemas.nombreProblema',DB::raw("date_format(tblreportes.fechaAlta,'%d-%m-%Y') as fechaAlta"))
                             ->where('FKCatStatus',1)
                             ->join('tblclientes','PKTblClientes','FKTblClientes')
                             ->join('tbldirecciones','PKTblDirecciones','FKTblDirecciones')
                             ->join('catpoblaciones','PKCatPoblaciones','tbldirecciones.FKCatPoblaciones')
                             ->join('catproblemas','PKCatProblemas','FKCatProblemas')
-                            ->take(5)
-                            ->get();
+                            ->take(5);
+
+                            Log::alert($return->toSql());
+
+                            return $return->get();
     }
 
     private function obtenerTblCatPoblaciones () {
@@ -49,6 +52,9 @@ class PageController extends Controller
     public function obtenerInsumosReportes( $status ) {
         if ( session()->has('usuario') ) {
             $reportes = DB::select('SELECT * FROM generalReportes WHERE status = "'.$status.'"');
+
+            Log::alert($reportes);
+
             $poblaciones    = $this->obtenerTblCatPoblaciones();
             $problemas      = $this->obtenerTblCatProblemas();
 
