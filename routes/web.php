@@ -39,5 +39,5 @@ Route::name('eliminarProblema')->delete('eliminarProblema/{id}',[ProblemasContro
 Route::post('actualizarEmpleado','App\Http\Controllers\UserController@actualizarEmpleado')->name('actualizarEmpleado');
 
 // Rutas para la navegación de los reportes
-Route::get('/insumosReportes/{status}','App\Http\Controllers\PageController@obtenerInsumosReportes')->name('insumosReportes');
+Route::get('/reportes/{status}','App\Http\Controllers\PageController@obtenerInsumosReportes')->name('reportes');
 //Route::name('insumosReportes')->get('insumosReportes/{status}',[PageController::class, 'obtenerInsumosReportes']);

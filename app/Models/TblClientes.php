@@ -15,6 +15,8 @@ class TblClientes extends Model
         'PKTblClientes',
         'FKTblDirecciones',
         'nombreCliente',
+        'apellidoPaterno',
+        'apellidoMaterno',
         'telefono',
         'fechaAlta'
     ];

@@ -17,6 +17,8 @@ class TblClientes extends Migration
             $table->increments('PKTblClientes');
             $table->integer('FKTblDirecciones')->unsigned();
             $table->string('nombreCliente');
+            $table->string('apellidoPaterno');
+            $table->string('apellidoMaterno');
             $table->string('telefono', 10);
             $table->date('fechaAlta');
             $table->foreign('FKTblDirecciones')->references('PKTblDirecciones')->on('TblDirecciones');

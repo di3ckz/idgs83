@@ -18,7 +18,7 @@
         </div-->
         <div class="col-sm-10">
             <div class="form-group">
-                <label>Buscar en Reportes {{ $status }}</label>
+                <label>Buscar en Reportes {{ $status }}s</label>
                 <input id="search" type="text" class="form-control" placeholder="Buscar en Reportes {{ $status }}" maxlength="30">
             </div>
         </div>
@@ -65,7 +65,7 @@
                                 {{ $item->folio }}
                             </td>
                             <td class="table-data verModalReporte" data-toggle='modal' data-target='#verModalReporte' id="{{ $item->folio }}">
-                                {{ $item->nombreCliente }}
+                                {{ $item->nombreCliente }} {{ $item->apellidoPaterno }}
                             </td>
                             <td class="table-data">
                                 <a href="tel:{{ $item->telefono }}">

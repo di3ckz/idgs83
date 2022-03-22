@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="notifications__item__content">
-                            <span class="notifications__item__title"><b>{{$reporte->nombreCliente}}</b></span>
+                            <span class="notifications__item__title"><b>{{$reporte->nombreCliente}} {{$reporte->apellidoPaterno}} {{$reporte->apellidoMaterno}}</b></span>
                             <span class="notifications__item__message"><b>{{$reporte->nombrePoblacion}}</b></span>
                             <span class="notifications__item__message">{{$reporte->nombreProblema}}</span>
                             <span class="notifications__item__message">{{$reporte->fechaAlta}}</span>

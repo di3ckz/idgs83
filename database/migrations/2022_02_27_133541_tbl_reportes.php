@@ -22,7 +22,7 @@ class TblReportes extends Migration
             $table->integer('FKTblClientes')->unsigned();
             $table->string('descripcionProblema');
             $table->string('observaciones');
-            $table->date('fechaAlta');
+            $table->timestamp('fechaAlta');
             $table->foreign('FKCatProblemas')->references('PKCatProblemas')->on('CatProblemas');
             $table->foreign('FKTblEmpleadosRecibio')->references('PKTblEmpleados')->on('TblEmpleados');
             $table->foreign('FKCatStatus')->references('PKCatStatus')->on('CatStatus');

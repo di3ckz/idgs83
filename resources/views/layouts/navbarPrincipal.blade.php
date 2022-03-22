@@ -10,8 +10,8 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">Reportes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li data-toggle="modal" data-target="#modalReporte"><a>Generar reporte</a></li>
-                        <li><a href="{{ url('insumosReportes/Pendiente') }}">Pendientes</a></li>
-                        <li><a href="{{ url('insumosReportes/Atendido') }}">Atendidos</a></li>
+                        <li><a href="{{ url('reportes/Pendiente') }}">Pendientes</a></li>
+                        <li><a href="{{ url('reportes/Atendido') }}">Atendidos</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
