@@ -125,5 +125,7 @@
             </tbody>
         </table>
     </div>
+
+    @include('layouts/modalConsultaReporte')
 </body>
 </html>

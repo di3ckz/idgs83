@@ -52,6 +52,7 @@ class PageController extends Controller
     public function obtenerInsumosReportes( $status ) {
         if ( session()->has('usuario') ) {
             $reportes = DB::select('SELECT * FROM generalReportes WHERE status = "'.$status.'"');
+            $detalleReporte = DB::select('SELECT * FROM generalReportes WHERE status = "'.$status.'" LIMIT 1');
 
             $poblaciones    = $this->obtenerTblCatPoblaciones();
             $problemas      = $this->obtenerTblCatProblemas();
@@ -60,7 +61,8 @@ class PageController extends Controller
                  ->with('status', $status)
                  ->with('reportes', $reportes)
                  ->with('poblaciones', $poblaciones)
-                 ->with('problemas', $problemas);
+                 ->with('problemas', $problemas)
+                 ->with('detalleReporte', $detalleReporte);
         } else {
             return view('login');
         }
