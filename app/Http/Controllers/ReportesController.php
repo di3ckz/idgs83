@@ -57,8 +57,40 @@ class ReportesController extends Controller
 
     }
 
+    public function actualizarReporte (Request $request) {
+        Log::alert($request);
+
+        try {
+
+            $data = [
+                'nombreCliente'       => $request['nombreCliente'],
+                'apellidoPaterno'     => $request['apellidoPaterno'],
+                'apellidoMaterno'     => $request['apellidoMaterno'],
+                'telefono'            => $request['telefono'],
+                'telefonoOpcional'    => $request['telefonoOpcional'],
+                'FKCatPoblaciones'    => $request['PKCatPoblaciones'],
+                'coordenadas'         => $request['coordenadas'],
+                'direccion'           => $request['direccion'],
+                'referencias'         => $request['referencias'],
+                'FKCatProblemas'      => $request['PKCatProblemas'],
+                'descripcionProblema' => $request['descripcionProblema'],
+                'observaciones'       => $request['observaciones'],
+                'diagnostico'         => $request['diagnostico'],
+                'solucion'            => $request['solucion']
+            ];
+
+            DB::beginTransaction();
+                
+            DB::commit();
+            
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
     public function obtenerDetalleReporte ( $id ) {
-        Log::alert($id);
         return DB::select('SELECT * FROM generalReportes WHERE folio = '.$id);
     }
 

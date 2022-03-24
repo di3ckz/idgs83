@@ -35,7 +35,7 @@ $(document).ready(function(){
             $(".telefonoOcional").empty();
             let fragmento = `
             <div class="form-group tel2">
-                <label class="control-label col-sm-3">Tel&eacute;fono 2:</label>
+                <label class="control-label col-sm-3">Teléfono Opcional:</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control parametrotelefonoOpcional" id="telefono23" placeholder="`+r[0].telefonoOpcional+`" value="`+r[0].telefonoOpcional+`" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
                 </div>
@@ -52,9 +52,9 @@ $(document).ready(function(){
             $(".telefonoOcional").empty();
             let fragmento = `
             <div class="form-group tel2" style="visibility:hidden; display:none;">
-                <label class="control-label col-sm-3">Tel&eacute;fono 2:</label>
+                <label class="control-label col-sm-3">Teléfono Opcional:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Tel&eacute;fono 2" id="telefono23" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
+                    <input type="text" class="form-control" placeholder="Sin Teléfono Opcional" id="telefono23" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
                 </div>
             </div>
             <div class="form-group">
@@ -83,27 +83,29 @@ $(document).ready(function(){
             $.inArray(key, exepciones) != -1 ? $(".parametro"+key).attr('placeholder', r[0][key]).text(r[0][key]) : $(".parametro"+key).attr('placeholder', r[0][key]).val(r[0][key]) ;
         })
 
-        $(".empleadoRecibio").append(r[0].empleadoRecibio);
+        $(".empleadoRecibio").empty().append(r[0].empleadoRecibio);
         
         if ( r[0].empleadoActualizo != "" && r[0].empleadoActualizo != null ) {
             $(".apartadoActualizo").show().css('visibility','visible');
-            $(".empleadoActualizo").append(r[0].empleadoActualizo);
+            $(".empleadoActualizo").empty().append(r[0].empleadoActualizo);
         } else {
             $(".apartadoActualizo").hide().css('visibility','hidden');
         }
 
         if ( r[0].empleadoRealizo != "" && r[0].empleadoRealizo != null ) {
             $(".apartadoAtendido").show().css('visibility','visible');
-            $(".empleadoRealizo").append(r[0].empleadoRealizo);
+            $(".empleadoRealizo").empty().append(r[0].empleadoRealizo);
         } else {
             $(".apartadoAtendido").hide().css('visibility','hidden');
         }
-
+        
         let nombreEmpleadoSession = $('#nombreEmpleadoSession').val();
         
+        let insert = "";
         $(".apartadoBotones").empty();
+
         if ( r[0].status == 'Atendido') {
-            let insert = `
+            insert += `
                 <div class="col-sm-5">
                     <button class="btn form-control" style="margin-top: 15px; background: #FFA26D; font-weight: bold; color: white;">Actualizar</button>
                 </div>
@@ -116,9 +118,8 @@ $(document).ready(function(){
                     <button data-dismiss="modal" class="btn form-control" style="margin-top: 15px; background: #FF6A6A; font-weight: bold; color: white;"><b>X</b></button>
                 </div>
             `;
-            $(".apartadoBotones").append(insert);
         } else if ( r[0].diagnostico != "" && r[0].diagnostico != null && r[0].solucion != "" && r[0].solucion != null ) {
-            insert = `
+            insert += `
                 <div class="col-sm-4">
                     <button class="btn form-control" style="margin-top: 15px; background: #FFA26D; font-weight: bold; color: white;">Actualizar</button>
                 </div>
@@ -127,71 +128,63 @@ $(document).ready(function(){
                     <a href="controllers/actualizaciones.php?accion=atender&id_reporte=`+r[0].folio+`" class="btn form-control" style="margin-top: 15px; background: mediumaquamarine; font-weight: bold; color: white;">Atender</a>
                 </div>
             `;
-            $(".apartadoBotones").append(insert);
             if ( r[0].empleadoAtendiendo == "" || r[0].empleadoAtendiendo == null ) {
-                insert = `
+                insert += `
                     <div class="col-sm-2">
                         <a href="controllers/actualizaciones.php?accion=atendiendo&id_reporte=`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-                $(".apartadoBotones").append(insert);
             } else if ( r[0].empleadoAtendiendo == nombreEmpleadoSession ) {
-                insert = `
+                insert += `
                     <div class="col-sm-2">
                         <a href="controllers/actualizaciones.php?accion=desatender&id_reporte=`+r[0].folio+`" class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-                $(".apartadoBotones").append(insert);
             } else {
-                insert = `
+                insert += `
                     <div class="col-sm-2">
                         <a class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-                $(".apartadoBotones").append(insert);
             }
-            insert = `
+            insert += `
                 <div class="col-sm-2">
                     <button data-dismiss="modal" class="btn form-control" style="margin-top: 15px; background: #FF6A6A; font-weight: bold; color: white;"><b>X</b></button>
                 </div>
             `;
-            $(".apartadoBotones").append(insert);
         } else {
-            insert = `
+            insert += `
                 <div class="col-sm-8">
                     <button class="btn form-control" style="margin-top: 15px; background: #FFA26D; font-weight: bold; color: white;">Actualizar</button>
                 </div>
             `;
-            $(".apartadoBotones").append(insert);
             if ( r[0].empleadoAtendiendo == "" || r[0].empleadoAtendiendo == null ) {
-                insert = `
+                insert += `
                     <div class="col-sm-2">
                         <a href="controllers/actualizaciones.php?accion=atendiendo&id_reporte=`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-                $(".apartadoBotones").append(insert);
             } else if ( r[0].empleadoAtendiendo == nombreEmpleadoSession ) {
-                insert = `
+                insert += `
                     <div class="col-sm-2">
                         <a href="controllers/actualizaciones.php?accion=desatender&id_reporte=`+r[0].folio+`" class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-                $(".apartadoBotones").append(insert);
             } else {
-                insert = `
+                insert += `
                     <div class="col-sm-2">
                         <a class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-                $(".apartadoBotones").append(insert);
             }
-            insert = `
+            insert += `
                 <div class="col-sm-2">
                     <button data-dismiss="modal" class="btn form-control" style="margin-top: 15px; background: #FF6A6A; font-weight: bold; color: white;"><b>X</b></button>
                 </div>
             `;
-            $(".apartadoBotones").append(insert);
         }
+
+        $(".apartadoBotones").append(insert);
     }
 
     $(".verModalInstalacion").click( function(){

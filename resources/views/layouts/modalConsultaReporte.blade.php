@@ -6,39 +6,40 @@
                 <h4 data-dismiss="modal" class="modal-title"><b class="tituloPrincipalModal"></b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="controllers/actualizaciones.php?accion=reporte&id_reporte={{ $detalleReporte[0]->folio }}" autocomplete="off" method="post">
+                <form class="form-horizontal" action="{{ route('actualizarReporte') }}" autocomplete="off" method="post">
+                    @csrf
                     <div class="form-group">
                         <label class="control-label col-sm-3">Folio:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrofolio" readonly>
+                            <input type="text" class="form-control parametrofolio" readonly style="background: white;">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Nombre:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametronombreCliente" name="nombreCliente">
+                            <input type="text" class="form-control parametronombreCliente" name="nombreCliente" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Apellido Paterno:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametroapellidoPaterno" name="apellidoPaterno">
+                            <input type="text" class="form-control parametroapellidoPaterno" name="apellidoPaterno" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Apellido Materno:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametroapellidoMaterno" name="apellidoMaterno">
+                            <input type="text" class="form-control parametroapellidoMaterno" name="apellidoMaterno" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Tel&eacute;fono:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrotelefono" onkeypress="return soloNumeros(event);" maxlength="10" name="telefono">
+                            <input type="text" class="form-control parametrotelefono" onkeypress="return soloNumeros(event);" maxlength="10" name="telefono" required>
                         </div>
                     </div>
 
@@ -49,7 +50,7 @@
                         <div class="col-sm-9">
                             <!-- ver el porque de la variable cont-->
                             <!--select name="id_poblacion" class="form-control poblacion" required style="background: #FFDFDF;" id="<?php //echo $cont;?>"-->
-                            <select name="id_poblacion" class="form-control poblacion" required style="background: #FFDFDF;">
+                            <select name="PKCatPoblaciones" class="form-control poblacion" required style="background: #FFDFDF;">
                                 <option class="poblacionParametro" style="visibility: hidden; display: none;"></option>
                                 @foreach($poblaciones as $poblacion)
                                     <option value="{{$poblacion->PKCatPoblaciones}}">{{$poblacion->nombrePoblacion}}</option>
@@ -68,14 +69,14 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Direcci&oacute;n:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control parametrodireccion" name="direccion" id="direccion"></textarea>
+                            <textarea rows="1" class="form-control parametrodireccion" name="direccion" id="direccion" required></textarea>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="control-label col-sm-3">Referencias:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control parametroreferencias" name="referencias" id="referencias"></textarea>
+                            <textarea rows="1" class="form-control parametroreferencias" name="referencias" id="referencias" required></textarea>
                         </div>
                     </div>
                     <h6 align="center">
@@ -87,7 +88,7 @@
                         <div class="col-sm-9">
                             <!-- ver el porque de la variable cont-->
                             <!--select name="id_problema" class="form-control tproblema" required style="background: #FFDFDF;" id="<?php //echo $cont;?>"-->
-                            <select name="id_problema" class="form-control tproblema" required style="background: #FFDFDF;">
+                            <select name="PKCatProblemas" class="form-control tproblema" required style="background: #FFDFDF;">
                                 <option class="problemaParametro" style="visibility: hidden; display: none;"></option>
                                 @foreach($problemas as $problema)
                                     <option value="{{ $problema->PKCatProblemas }}">{{ $problema->nombreProblema }}</option>
@@ -133,13 +134,13 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Fecha:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrofechaAlta" readonly>
+                            <input type="text" class="form-control parametrofechaAlta" readonly style="background: white;">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Hora:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrohoraAlta" readonly>
+                            <input type="text" class="form-control parametrohoraAlta" readonly style="background: white;">
                         </div>
                     </div>
 
@@ -153,13 +154,13 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Fecha:</label>
                             <div class="col-sm-9">
-                            <input type="text" class="form-control parametrofechaActualizacion" readonly>
+                            <input type="text" class="form-control parametrofechaActualizacion" readonly style="background: white;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Hora:</label>
                             <div class="col-sm-9">
-                            <input type="text" class="form-control parametrohoraActualizacion" readonly>
+                            <input type="text" class="form-control parametrohoraActualizacion" readonly style="background: white;">
                             </div>
                         </div>
                     </section>
@@ -174,13 +175,13 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Fecha:</label>
                             <div class="col-sm-9">
-                            <input type="text" class="form-control parametrofechaAtencion" readonly>
+                            <input type="text" class="form-control parametrofechaAtencion" readonly style="background: white;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3">Hora:</label>
                             <div class="col-sm-9">
-                            <input type="text" class="form-control parametrohoraAtencion" readonly>
+                            <input type="text" class="form-control parametrohoraAtencion" readonly style="background: white;">
                             </div>
                         </div>
                     </section>

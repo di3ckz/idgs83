@@ -42,4 +42,8 @@ Route::post('actualizarEmpleado','App\Http\Controllers\UserController@actualizar
 Route::get('/reportes/{status}','App\Http\Controllers\PageController@obtenerInsumosReportes')->name('reportes');
 //Route::name('insumosReportes')->get('insumosReportes/{status}',[PageController::class, 'obtenerInsumosReportes']);
 
+//obtener detalle de cada reportes según se presione un click
 Route::get('/detalleReporte/{id}','App\Http\Controllers\ReportesController@obtenerDetalleReporte')->name('detalleReporte');
+
+//actualizar reporte en curso desde el modal
+Route::post('actualizarReporte','App\Http\Controllers\ReportesController@actualizarReporte')->name('actualizarReporte');
