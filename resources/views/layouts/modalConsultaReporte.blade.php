@@ -11,35 +11,35 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Folio:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrofolio" readonly style="background: white;">
+                            <input type="text" class="form-control parametrofolio" name="PKTblReportes" readonly style="background: white;">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Nombre:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametronombreCliente" name="nombreCliente" required>
+                            <input type="text" class="form-control parametronombreCliente" name="nombreCliente" readonly style="background: white;">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Apellido Paterno:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametroapellidoPaterno" name="apellidoPaterno" required>
+                            <input type="text" class="form-control parametroapellidoPaterno" name="apellidoPaterno" readonly style="background: white;">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Apellido Materno:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametroapellidoMaterno" name="apellidoMaterno" required>
+                            <input type="text" class="form-control parametroapellidoMaterno" name="apellidoMaterno" readonly style="background: white;">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Tel&eacute;fono:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrotelefono" onkeypress="return soloNumeros(event);" maxlength="10" name="telefono" required>
+                            <input type="text" class="form-control parametrotelefono" onkeypress="return soloNumeros(event);" maxlength="10" name="telefono" readonly style="background: white;">
                         </div>
                     </div>
 
@@ -50,11 +50,8 @@
                         <div class="col-sm-9">
                             <!-- ver el porque de la variable cont-->
                             <!--select name="id_poblacion" class="form-control poblacion" required style="background: #FFDFDF;" id="<?php //echo $cont;?>"-->
-                            <select name="PKCatPoblaciones" class="form-control poblacion" required style="background: #FFDFDF;">
+                            <select name="PKCatPoblaciones" class="form-control poblacion" readonly style="background: #FFDFDF;">
                                 <option class="poblacionParametro" style="visibility: hidden; display: none;"></option>
-                                @foreach($poblaciones as $poblacion)
-                                    <option value="{{$poblacion->PKCatPoblaciones}}">{{$poblacion->nombrePoblacion}}</option>
-                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -62,21 +59,21 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Coordenadas:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control parametrocoordenadas" style="background: #6DB3FF; color: white;" onkeypress="return soloNumerosp(event);" name="coordenadas">
+                            <input type="text" class="form-control parametrocoordenadas" style="background: #6DB3FF; color: white;" onkeypress="return soloNumerosp(event);" name="coordenadas" readonly style="background: white;">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="control-label col-sm-3">Direcci&oacute;n:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control parametrodireccion" name="direccion" id="direccion" required></textarea>
+                            <textarea rows="1" class="form-control parametrodireccion" name="direccion" id="direccion" readonly style="background: white;"></textarea>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="control-label col-sm-3">Referencias:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control parametroreferencias" name="referencias" id="referencias" required></textarea>
+                            <textarea rows="1" class="form-control parametroreferencias" name="referencias" id="referencias" readonly style="background: white;"></textarea>
                         </div>
                     </div>
                     <h6 align="center">
@@ -88,11 +85,8 @@
                         <div class="col-sm-9">
                             <!-- ver el porque de la variable cont-->
                             <!--select name="id_problema" class="form-control tproblema" required style="background: #FFDFDF;" id="<?php //echo $cont;?>"-->
-                            <select name="PKCatProblemas" class="form-control tproblema" required style="background: #FFDFDF;">
+                            <select name="PKCatProblemas" class="form-control tproblema" readonly style="background: #FFDFDF;">
                                 <option class="problemaParametro" style="visibility: hidden; display: none;"></option>
-                                @foreach($problemas as $problema)
-                                    <option value="{{ $problema->PKCatProblemas }}">{{ $problema->nombreProblema }}</option>
-                                @endforeach
                             </select>
                         </div>
                     </div>

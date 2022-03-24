@@ -10,6 +10,7 @@ use App\Models\TblDirecciones;
 use App\Models\TblClientes;
 use App\Models\TblDetalleReporte;
 use App\Models\TblReportes;
+use App\Http\Controllers\PageController;
 
 class ReportesController extends Controller
 {
@@ -58,32 +59,27 @@ class ReportesController extends Controller
     }
 
     public function actualizarReporte (Request $request) {
-        Log::alert($request);
-
         try {
 
-            $data = [
-                'nombreCliente'       => $request['nombreCliente'],
-                'apellidoPaterno'     => $request['apellidoPaterno'],
-                'apellidoMaterno'     => $request['apellidoMaterno'],
-                'telefono'            => $request['telefono'],
-                'telefonoOpcional'    => $request['telefonoOpcional'],
-                'FKCatPoblaciones'    => $request['PKCatPoblaciones'],
-                'coordenadas'         => $request['coordenadas'],
-                'direccion'           => $request['direccion'],
-                'referencias'         => $request['referencias'],
-                'FKCatProblemas'      => $request['PKCatProblemas'],
-                'descripcionProblema' => $request['descripcionProblema'],
-                'observaciones'       => $request['observaciones'],
-                'diagnostico'         => $request['diagnostico'],
-                'solucion'            => $request['solucion']
-            ];
-
             DB::beginTransaction();
-                
+                $dataReporte = [
+                    'descripcionProblema' => $request['descripcionProblema'],
+                    'observaciones'       => $request['observaciones']
+                ];
+                TblReportes::where('PKTblReportes', $request['PKTblReportes'])
+                           ->update($dataReporte);
+
+                $dataDetalleReporte = [
+                    'diagnostico'               => $request['diagnostico'],
+                    'solucion'                  => $request['solucion'],
+                    'FKTblEmpleadosActualizo'   => session('usuario')[0]->{'PKTblEmpleados'},
+                    'fechaActualizacion'        => Carbon::now()
+                ];
+                TblDetalleReporte::where('PKTblDetalleReporte', DB::raw('(SELECT FKTblDetalleReporte FROM tblreportes WHERE PKTblReportes = '.$request["PKTblReportes"].')'))
+                                 ->update($dataDetalleReporte);
             DB::commit();
-            
-            return back();
+
+            return redirect('/reportes/Pendiente');
         } catch (\Throwable $th) {
             Log::info($th);
             return back();

@@ -37,30 +37,7 @@ $(document).ready(function(){
             <div class="form-group tel2">
                 <label class="control-label col-sm-3">Teléfono Opcional:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control parametrotelefonoOpcional" id="telefono23" placeholder="`+r[0].telefonoOpcional+`" value="`+r[0].telefonoOpcional+`" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-9" style="float: right;">
-                    <input type="button" class="btn form-control" value="+" style="background: mediumaquamarine; color: white; font-weight: bold; display: none;" id="mas3" onclick="mas()">
-                    <input type="button" class="btn form-control" value="-" style="background: mediumaquamarine; color: white; font-weight: bold;" id="menos3" onclick="menos()">
-                </div>
-            </div>
-            `;
-            $(".telefonoOcional").html(fragmento);
-        } else {
-            $(".telefonoOcional").empty();
-            let fragmento = `
-            <div class="form-group tel2" style="visibility:hidden; display:none;">
-                <label class="control-label col-sm-3">Teléfono Opcional:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Sin Teléfono Opcional" id="telefono23" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-9" style="float: right;">
-                    <input type="button" class="btn form-control" value="+" style="background: mediumaquamarine; color: white; font-weight: bold;" id="mas3" onclick="mas()">
-                    <input type="button" class="btn form-control" value="-" style="background: mediumaquamarine; color: white; font-weight: bold; display: none;" id="menos3" onclick="menos()">
+                    <input type="text" class="form-control parametrotelefonoOpcional" id="telefono23" placeholder="`+r[0].telefonoOpcional+`" value="`+r[0].telefonoOpcional+`" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional" readonly style="background: white;">
                 </div>
             </div>
             `;

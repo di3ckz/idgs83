@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-03-2022 a las 18:44:16
+-- Tiempo de generación: 24-03-2022 a las 21:47:18
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -115,6 +115,7 @@ CREATE TABLE `generalreportes` (
 ,`apellidoPaterno` varchar(255)
 ,`apellidoMaterno` varchar(255)
 ,`telefono` varchar(10)
+,`telefonoOpcional` varchar(255)
 ,`PKCatPoblaciones` int(10) unsigned
 ,`nombrePoblacion` varchar(20)
 ,`coordenadas` text
@@ -136,7 +137,8 @@ CREATE TABLE `generalreportes` (
 ,`fechaAtencion` varchar(10)
 ,`horaAtencion` varchar(13)
 ,`empleadoAtendiendo` varchar(511)
-,`fechaAtendiendo` timestamp
+,`fechaAtendiendo` varchar(10)
+,`horaAtendiendo` varchar(13)
 ,`status` varchar(20)
 );
 
@@ -208,7 +210,7 @@ CREATE TABLE `tblclientes` (
 --
 
 INSERT INTO `tblclientes` (`PKTblClientes`, `FKTblDirecciones`, `nombreCliente`, `apellidoPaterno`, `apellidoMaterno`, `telefono`, `telefonoOpcional`, `fechaAlta`) VALUES
-(3, 6, 'asd', 'sdf', 'ert', '23423', '', '2022-03-01'),
+(3, 6, 'asd', 'sdf', 'ert', '23423', '345345345', '2022-03-01'),
 (4, 7, 'Adrián', 'Villa', 'Reyes', '7292271384', '', '2022-03-18');
 
 -- --------------------------------------------------------
@@ -235,7 +237,7 @@ CREATE TABLE `tbldetallereporte` (
 
 INSERT INTO `tbldetallereporte` (`PKTblDetalleReporte`, `diagnostico`, `solucion`, `FKTblEmpleadosActualizo`, `fechaActualizacion`, `FKTblEmpleadosAtencion`, `fechaAtencion`, `FKTblEmpleadosAtediendo`, `fechaAtendiendo`) VALUES
 (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(5, 'asd', 'asdasd', 1, '2022-03-25 02:24:28', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -307,7 +309,7 @@ CREATE TABLE `tblreportes` (
 
 INSERT INTO `tblreportes` (`PKTblReportes`, `FKCatProblemas`, `FKTblEmpleadosRecibio`, `FKCatStatus`, `FKTblDetalleReporte`, `FKTblClientes`, `descripcionProblema`, `observaciones`, `fechaAlta`) VALUES
 (3, 1, 1, 1, 4, 3, 'asdasd', 'asdasd', '2022-03-01 06:00:00'),
-(4, 1, 1, 1, 5, 4, 'No tiene internet hace dos días', 'Ninguna', '2022-03-18 06:00:00');
+(4, 1, 1, 1, 5, 4, 'No tiene internet hace dos días', 'Ningunaasdasdasd', '2022-03-24 19:34:25');
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,7 @@ INSERT INTO `tblreportes` (`PKTblReportes`, `FKCatProblemas`, `FKTblEmpleadosRec
 --
 DROP TABLE IF EXISTS `generalreportes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `generalreportes`  AS SELECT `reporte`.`PKTblReportes` AS `folio`, `cliente`.`nombreCliente` AS `nombreCliente`, `cliente`.`apellidoPaterno` AS `apellidoPaterno`, `cliente`.`apellidoMaterno` AS `apellidoMaterno`, `cliente`.`telefono` AS `telefono`, `poblacion`.`PKCatPoblaciones` AS `PKCatPoblaciones`, `poblacion`.`nombrePoblacion` AS `nombrePoblacion`, `direccion`.`coordenadas` AS `coordenadas`, `direccion`.`direccion` AS `direccion`, `direccion`.`referencias` AS `referencias`, `problema`.`PKCatProblemas` AS `PKCatProblemas`, `problema`.`nombreProblema` AS `nombreProblema`, `reporte`.`descripcionProblema` AS `descripcionProblema`, `reporte`.`observaciones` AS `observaciones`, `detallereporte`.`diagnostico` AS `diagnostico`, `detallereporte`.`solucion` AS `solucion`, concat(`empleadorecibio`.`nombreEmpleado`,' ',`empleadorecibio`.`apellidoPaterno`) AS `empleadoRecibio`, date_format(`reporte`.`fechaAlta`,'%d-%m-%Y') AS `fechaAlta`, date_format(`reporte`.`fechaAlta`,'%s:%i:%H') AS `horaAlta`, concat(`empleadoactualizo`.`nombreEmpleado`,' ',`empleadoactualizo`.`apellidoPaterno`) AS `empleadoActualizo`, date_format(`detallereporte`.`fechaActualizacion`,'%d-%m-%Y') AS `fechaActualizacion`, date_format(`detallereporte`.`fechaActualizacion`,'%s:%i:%H') AS `horaActualizacion`, concat(`empleadorealizo`.`nombreEmpleado`,' ',`empleadorealizo`.`apellidoPaterno`) AS `empleadoRealizo`, date_format(`detallereporte`.`fechaAtencion`,'%d-%m-%Y') AS `fechaAtencion`, date_format(`detallereporte`.`fechaAtencion`,'%s:%i:%H') AS `horaAtencion`, concat(`empleadoatendiendo`.`nombreEmpleado`,' ',`empleadoatendiendo`.`apellidoPaterno`) AS `empleadoAtendiendo`, `detallereporte`.`fechaAtendiendo` AS `fechaAtendiendo`, `status`.`nombreStatus` AS `status` FROM ((((((((((`tblreportes` `reporte` join `tblclientes` `cliente` on(`cliente`.`PKTblClientes` = `reporte`.`FKTblClientes`)) join `tbldirecciones` `direccion` on(`direccion`.`PKTblDirecciones` = `cliente`.`FKTblDirecciones`)) join `catpoblaciones` `poblacion` on(`poblacion`.`PKCatPoblaciones` = `direccion`.`FKCatPoblaciones`)) join `catproblemas` `problema` on(`problema`.`PKCatProblemas` = `reporte`.`FKCatProblemas`)) join `tbldetallereporte` `detallereporte` on(`detallereporte`.`PKTblDetalleReporte` = `reporte`.`FKTblDetalleReporte`)) left join `tblempleados` `empleadorecibio` on(`empleadorecibio`.`PKTblEmpleados` = `reporte`.`FKTblEmpleadosRecibio`)) left join `tblempleados` `empleadoactualizo` on(`empleadoactualizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosActualizo`)) left join `tblempleados` `empleadorealizo` on(`empleadorealizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtencion`)) left join `tblempleados` `empleadoatendiendo` on(`empleadoatendiendo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtediendo`)) join `catstatus` `status` on(`status`.`PKCatStatus` = `reporte`.`FKCatStatus`)) ORDER BY `reporte`.`PKTblReportes` DESC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `generalreportes`  AS SELECT `reporte`.`PKTblReportes` AS `folio`, `cliente`.`nombreCliente` AS `nombreCliente`, `cliente`.`apellidoPaterno` AS `apellidoPaterno`, `cliente`.`apellidoMaterno` AS `apellidoMaterno`, `cliente`.`telefono` AS `telefono`, `cliente`.`telefonoOpcional` AS `telefonoOpcional`, `poblacion`.`PKCatPoblaciones` AS `PKCatPoblaciones`, `poblacion`.`nombrePoblacion` AS `nombrePoblacion`, `direccion`.`coordenadas` AS `coordenadas`, `direccion`.`direccion` AS `direccion`, `direccion`.`referencias` AS `referencias`, `problema`.`PKCatProblemas` AS `PKCatProblemas`, `problema`.`nombreProblema` AS `nombreProblema`, `reporte`.`descripcionProblema` AS `descripcionProblema`, `reporte`.`observaciones` AS `observaciones`, `detallereporte`.`diagnostico` AS `diagnostico`, `detallereporte`.`solucion` AS `solucion`, concat(`empleadorecibio`.`nombreEmpleado`,' ',`empleadorecibio`.`apellidoPaterno`) AS `empleadoRecibio`, date_format(`reporte`.`fechaAlta`,'%d-%m-%Y') AS `fechaAlta`, date_format(`reporte`.`fechaAlta`,'%H:%i:%S') AS `horaAlta`, concat(`empleadoactualizo`.`nombreEmpleado`,' ',`empleadoactualizo`.`apellidoPaterno`) AS `empleadoActualizo`, date_format(`detallereporte`.`fechaActualizacion`,'%d-%m-%Y') AS `fechaActualizacion`, date_format(`detallereporte`.`fechaActualizacion`,'%H:%i:%S') AS `horaActualizacion`, concat(`empleadorealizo`.`nombreEmpleado`,' ',`empleadorealizo`.`apellidoPaterno`) AS `empleadoRealizo`, date_format(`detallereporte`.`fechaAtencion`,'%d-%m-%Y') AS `fechaAtencion`, date_format(`detallereporte`.`fechaAtencion`,'%H:%i:%S') AS `horaAtencion`, concat(`empleadoatendiendo`.`nombreEmpleado`,' ',`empleadoatendiendo`.`apellidoPaterno`) AS `empleadoAtendiendo`, date_format(`detallereporte`.`fechaAtendiendo`,'%d-%m-%Y') AS `fechaAtendiendo`, date_format(`detallereporte`.`fechaAtendiendo`,'%H:%i:%S') AS `horaAtendiendo`, `status`.`nombreStatus` AS `status` FROM ((((((((((`tblreportes` `reporte` join `tblclientes` `cliente` on(`cliente`.`PKTblClientes` = `reporte`.`FKTblClientes`)) join `tbldirecciones` `direccion` on(`direccion`.`PKTblDirecciones` = `cliente`.`FKTblDirecciones`)) join `catpoblaciones` `poblacion` on(`poblacion`.`PKCatPoblaciones` = `direccion`.`FKCatPoblaciones`)) join `catproblemas` `problema` on(`problema`.`PKCatProblemas` = `reporte`.`FKCatProblemas`)) join `tbldetallereporte` `detallereporte` on(`detallereporte`.`PKTblDetalleReporte` = `reporte`.`FKTblDetalleReporte`)) left join `tblempleados` `empleadorecibio` on(`empleadorecibio`.`PKTblEmpleados` = `reporte`.`FKTblEmpleadosRecibio`)) left join `tblempleados` `empleadoactualizo` on(`empleadoactualizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosActualizo`)) left join `tblempleados` `empleadorealizo` on(`empleadorealizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtencion`)) left join `tblempleados` `empleadoatendiendo` on(`empleadoatendiendo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtediendo`)) join `catstatus` `status` on(`status`.`PKCatStatus` = `reporte`.`FKCatStatus`)) ORDER BY `reporte`.`PKTblReportes` DESC ;
 
 --
 -- Índices para tablas volcadas

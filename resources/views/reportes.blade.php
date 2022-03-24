@@ -51,16 +51,14 @@
                 @foreach ($reportes as $item)
                 
                     @if ( !empty($item->empleadoRealizo) )
-                        {{ $titulo = "style='background:#ECFFE1;'"; }}
+                        <tr class="table-row" style='background:#ECFFE1;'>
                     @elseif ( !empty($item->diagnostico) || !empty($item->solucion) )
-                        {{ $titulo = "style='background:#E1F5FF;'"; }}
+                        <tr class="table-row" style='background:#E1F5FF;'>
                     @elseif ( !empty($item->empleadoAtendiendo) )
-                        {{ $titulo = "style='background:#FFEDE2;'"; }}
+                        <tr class="table-row" style='background:#FFEDE2;'>
                     @else
-                        {{$titulo = "";}}
+                        <tr class="table-row">
                     @endif
-                    
-                        <tr class="table-row" {{$titulo}}>
                             <td class="table-data verModalReporte" data-toggle='modal' data-target='#verModalReporte' id="{{ $item->folio }}">
                                 {{ $item->folio }}
                             </td>
