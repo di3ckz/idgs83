@@ -41,3 +41,5 @@ Route::post('actualizarEmpleado','App\Http\Controllers\UserController@actualizar
 // Rutas para la navegación de los reportes
 Route::get('/reportes/{status}','App\Http\Controllers\PageController@obtenerInsumosReportes')->name('reportes');
 //Route::name('insumosReportes')->get('insumosReportes/{status}',[PageController::class, 'obtenerInsumosReportes']);
+
+Route::get('/detalleReporte/{id}','App\Http\Controllers\ReportesController@obtenerDetalleReporte')->name('detalleReporte');

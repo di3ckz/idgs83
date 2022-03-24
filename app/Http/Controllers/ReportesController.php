@@ -57,6 +57,11 @@ class ReportesController extends Controller
 
     }
 
+    public function obtenerDetalleReporte ( $id ) {
+        Log::alert($id);
+        return DB::select('SELECT * FROM generalReportes WHERE folio = '.$id);
+    }
+
     public function eliminarReporte (TblReportes $id) {
         $id->delete();
         return back();
