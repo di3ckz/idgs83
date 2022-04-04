@@ -17,7 +17,7 @@
             <hr>
             <div class="notifications">
                 @foreach($reportes as $reporte)
-                    <div class="notifications__item verModalReporte" style="height: auto; padding-top: 15px; padding-bottom: 15px;" data-toggle='modal' data-target='#verModalReporte'>
+                    <div class="notifications__item verModalReporte" id="{{ $reporte->folio }}" style="height: auto; padding-top: 15px; padding-bottom: 15px;" data-toggle='modal' data-target='#verModalReporte'>
                         
                         <div class="notifications__item__avatar">
                             <img src="images/reportes/1.png" />
@@ -37,6 +37,6 @@
         </div>
     </div>
 
-    <script src="js/funcionalidadModales.js"></script>
+    @include('layouts/modalConsultaReporte')
 </body>
 </html>

@@ -175,9 +175,4 @@ class ReportesController extends Controller
         }
     }
 
-    public function eliminarReporte (TblReportes $id) {
-        $id->delete();
-        return back();
-    }
-
 }

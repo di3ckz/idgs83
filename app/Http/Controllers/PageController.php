@@ -15,6 +15,7 @@ class PageController extends Controller
 {
     private function obtenerTblReportes () {
         return DB::select('SELECT
+                                  folio,
                                   nombreCliente,
                                   apellidoPaterno,
                                   apellidoMaterno,
@@ -28,11 +29,11 @@ class PageController extends Controller
     }
 
     private function obtenerTblCatPoblaciones () {
-        return CatPoblaciones::all();
+        return CatPoblaciones::where('Activo', 1)->get();
     }
 
     private function obtenerTblCatProblemas () {
-        return CatProblemas::all();
+        return CatProblemas::where('Activo', 1)->get();
     }
 
     public function obtenerInsumos () {
@@ -70,7 +71,7 @@ class PageController extends Controller
     }
 
     public function obtenerInsumosRoles ( ) {
-        $roles = CatRoles::all();
+        $roles = CatRoles::where('Activo', 1)->get();
 
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
