@@ -15,8 +15,8 @@ class CatProblemas extends Model
         'PKCatProblemas',
         'nombreProblema',
         'descripcionProblema',
-        'fechaAlta'
-        
+        'fechaAlta',
+        'Activo'
     ];
     
     public function reporte(){

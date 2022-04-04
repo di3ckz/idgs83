@@ -15,7 +15,8 @@ class CatPoblaciones extends Model
             'PKCatPoblaciones',
             'nombrePoblacion',
             'codigoPostal',
-            'fechaAlta'
+            'fechaAlta',
+            'Activo'
         ];
     //relacion uno a muchos
     public function direcciones(){

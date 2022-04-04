@@ -26,29 +26,29 @@
         @foreach ($poblaciones as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
                     {{ $item->PKCatPoblaciones }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
                     {{ $item->nombrePoblacion }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
                     {{ $item->codigoPostal }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
                     {{ $item->fechaAlta }}
                 </td>
 
-                @if ( $item->Activo != 1)
-                    <td class="table-data verModalRol">
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-info"><b>Activar</b></button>
+                @if ( $item->Activo == 1)
+                    <td class="table-data">
+                        <a href="/inactivarPoblacion/{{ $item->PKCatPoblaciones }}">
+                            <button class="btn btn-danger"><b>Inactivar</b></button>
                         </a>
                     </td>
                 @else
-                    <td class="table-data verModalRol">
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-danger"><b>Inactivar</b></button>
+                    <td class="table-data">
+                        <a href="/activarPoblacion/{{ $item->PKCatPoblaciones }}">
+                            <button class="btn btn-info"><b>Activar</b></button>
                         </a>
                     </td>
                 @endif

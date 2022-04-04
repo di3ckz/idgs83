@@ -23,11 +23,12 @@ class ProblemasController extends Controller
 
             if ( !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ) {
                 DB::beginTransaction();
-                    $poblacion                      = new CatProblemas;
-                    $poblacion->nombreProblema      = $request['nombreProblema'];
-                    $poblacion->descripcionProblema = $request['descripcionProblema'];
-                    $poblacion->fechaAlta           = Carbon::now();
-                    $poblacion->save();
+                    $problema                      = new CatProblemas;
+                    $problema->nombreProblema      = $request['nombreProblema'];
+                    $problema->descripcionProblema = $request['descripcionProblema'];
+                    $problema->fechaAlta           = Carbon::now();
+                    $problema->Activo              = 1;
+                    $problema->save();
                 DB::commit();
             }
 
@@ -38,6 +39,31 @@ class ProblemasController extends Controller
             return back();
         }
 
+    }
+
+    public function inactivarProblema ( $id ) {
+        try {
+            CatProblemas::where('PKCatProblemas', $id)
+                        ->update(['Activo' => 0]);
+            
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+        
+    }
+
+    public function activarProblema ( $id ) {
+        try {
+            CatProblemas::where('PKCatProblemas', $id)
+                        ->update(['Activo' => 1]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
     }
 
 }

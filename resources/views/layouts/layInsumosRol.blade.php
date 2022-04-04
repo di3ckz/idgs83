@@ -39,16 +39,16 @@
                     {{ $item->fechaAlta }}
                 </td>
 
-                @if ( $item->Activo != 1)
-                    <td class="table-data verModalRol">
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-info"><b>Activar</b></button>
+                @if ( $item->Activo == 1)
+                    <td class="table-data">
+                        <a href="/inactivarRol/{{ $item->PKCatRoles }}">
+                            <button class="btn btn-danger"><b>Inactivar</b></button>
                         </a>
                     </td>
                 @else
-                    <td class="table-data verModalRol">
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-danger"><b>Inactivar</b></button>
+                    <td class="table-data">
+                        <a href="/activarRol/{{ $item->PKCatRoles }}">
+                            <button class="btn btn-info"><b>Activar</b></button>
                         </a>
                     </td>
                 @endif

@@ -29,6 +29,7 @@ class PoblacionesController extends Controller
                     $poblacion->nombrePoblacion = $request['nombrePoblacion'];
                     $poblacion->codigoPostal    = $request['codigoPostal'];
                     $poblacion->fechaAlta       = Carbon::now();
+                    $poblacion->Activo          = 1;
                     $poblacion->save();
                 DB::commit();
             }
@@ -42,9 +43,29 @@ class PoblacionesController extends Controller
 
     }
 
-    public function eliminarPoblacion (CatPoblaciones $id) {
-        $id->delete();
-        return back();
+    public function inactivarPoblacion ( $id ) {
+        try {
+            CatPoblaciones::where('PKCatPoblaciones', $id)
+                        ->update(['Activo' => 0]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+        
+    }
+
+    public function activarPoblacion ( $id ) {
+        try {
+            CatPoblaciones::where('PKCatPoblaciones', $id)
+                        ->update(['Activo' => 1]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
     }
 
 }

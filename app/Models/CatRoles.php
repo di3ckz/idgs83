@@ -15,8 +15,8 @@ class CatRoles extends Model
         'PKCatRoles',
         'nombreRol',
         'descripcionRol',
-        'fechaAlta'
-        
+        'fechaAlta',
+        'Activo'
     ];
 
     public function empleado(){

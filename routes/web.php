@@ -59,3 +59,13 @@ Route::get('/atendiendo/{id}','App\Http\Controllers\ReportesController@atendiend
 Route::get('/desatendiendo/{id}','App\Http\Controllers\ReportesController@desatendiendoReporte')->name('desatendiendo');
 Route::get('/atender/{id}','App\Http\Controllers\ReportesController@atenderReporte')->name('atender');
 Route::get('/retomar/{id}','App\Http\Controllers\ReportesController@retomarReporte')->name('retomar');
+
+// rutas para servicios de estado en insumos
+Route::get('/inactivarRol/{id}','App\Http\Controllers\RolesController@inactivarRol')->name('inactivarRol');
+Route::get('/activarRol/{id}','App\Http\Controllers\RolesController@activarRol')->name('activarRol');
+
+Route::get('/inactivarProblema/{id}','App\Http\Controllers\ProblemasController@inactivarProblema')->name('inactivarProblema');
+Route::get('/activarProblema/{id}','App\Http\Controllers\ProblemasController@activarProblema')->name('activarProblema');
+
+Route::get('/inactivarPoblacion/{id}','App\Http\Controllers\PoblacionesController@inactivarPoblacion')->name('inactivarPoblacion');
+Route::get('/activarPoblacion/{id}','App\Http\Controllers\PoblacionesController@activarPoblacion')->name('activarPoblacion');

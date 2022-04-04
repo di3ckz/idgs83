@@ -26,29 +26,29 @@
         @foreach ($problemas as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
                     {{ $item->PKCatProblemas }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
                     {{ $item->nombreProblema }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
                     {{ $item->descripcionProblema }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
                     {{ $item->fechaAlta }}
                 </td>
 
-                @if ( $item->Activo != 1)
-                    <td class="table-data verModalRol">
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-info"><b>Activar</b></button>
+                @if ( $item->Activo == 1)
+                    <td class="table-data">
+                        <a href="/inactivarProblema/{{ $item->PKCatProblemas }}">
+                            <button class="btn btn-danger"><b>Inactivar</b></button>
                         </a>
                     </td>
                 @else
-                    <td class="table-data verModalRol">
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-danger"><b>Inactivar</b></button>
+                    <td class="table-data">
+                        <a href="/activarProblema/{{ $item->PKCatProblemas }}">
+                            <button class="btn btn-info"><b>Activar</b></button>
                         </a>
                     </td>
                 @endif
