@@ -27,13 +27,16 @@ $(document).ready(function(){
         if ( r[0].empleadoAtendiendo != "" && r[0].empleadoAtendiendo != null ) {
             
             let html = '<p style="color: #DC5700;">Atendiendo:<b> '+r[0].empleadoAtendiendo+' - </b> '+r[0].fechaAtendiendo+' <b style="color: black;">|</b> '+r[0].horaAtendiendo;
-            $(".colorFondoTitulo").append(html).css('background','#FFEDE2');
+            $(".colorFondoTitulo").css('background','#FFEDE2');
+            $("#atendiendo").empty().html(html);
+        } else {
+            $(".colorFondoTitulo").css('background','');
+            $("#atendiendo").empty();
         }
 
         $(".tituloPrincipalModal").text(r[0].nombreCliente+' '+r[0].apellidoPaterno+' '+r[0].apellidoMaterno);
 
         if ( r[0].telefonoOpcional != "" && r[0].telefonoOpcional != null ) {
-            $(".telefonoOcional").empty();
             let fragmento = `
             <div class="form-group tel2">
                 <label class="control-label col-sm-3">Teléfono Opcional:</label>
@@ -42,7 +45,7 @@ $(document).ready(function(){
                 </div>
             </div>
             `;
-            $(".telefonoOcional").html(fragmento);
+            $(".telefonoOcional").empty().html(fragmento);
         }
 
         $(".poblacionParametro").val(r[0].PKCatPoblaciones).text(r[0].nombrePoblacion);
@@ -77,7 +80,7 @@ $(document).ready(function(){
             $(".apartadoAtendido").hide().css('visibility','hidden');
         }
         
-        let nombreEmpleadoSession = $('#nombreEmpleadoSession').val();
+        let PKTblEmpleado = $('#PKTblEmpleado').val();
         
         let insert = "";
         $(".apartadoBotones").empty();
@@ -88,7 +91,7 @@ $(document).ready(function(){
                     <button class="btn form-control" style="margin-top: 15px; background: #FFA26D; font-weight: bold; color: white;">Actualizar</button>
                 </div>
                 <div class="col-sm-4">
-                    <a href="controllers/actualizaciones.php?accion=retomarr&id_reporte=`+r[0].folio+`">
+                    <a href="/retomar/`+r[0].folio+`">
                         <input class="btn form-control" style="margin-top: 15px; background: mediumaquamarine; font-weight: bold; color: white;" value="Retomar">
                     </a>
                 </div>
@@ -103,7 +106,7 @@ $(document).ready(function(){
                 </div>
                             
                 <div class="col-sm-4">
-                    <a href="controllers/actualizaciones.php?accion=atender&id_reporte=`+r[0].folio+`" class="btn form-control" style="margin-top: 15px; background: mediumaquamarine; font-weight: bold; color: white;">Atender</a>
+                    <a href="/atender/`+r[0].folio+`" class="btn form-control" style="margin-top: 15px; background: mediumaquamarine; font-weight: bold; color: white;">Atender</a>
                 </div>
             `;
             if ( r[0].empleadoAtendiendo == "" || r[0].empleadoAtendiendo == null ) {
@@ -112,10 +115,10 @@ $(document).ready(function(){
                     <a href="/atendiendo/`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-            } else if ( r[0].empleadoAtendiendo == nombreEmpleadoSession ) {
+            } else if ( r[0].PKTblEmpleadosAtediendo == PKTblEmpleado ) {
                 insert += `
                     <div class="col-sm-2">
-                        <a href="controllers/actualizaciones.php?accion=desatender&id_reporte=`+r[0].folio+`" class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
+                        <a href="/desatendiendo/`+r[0].folio+`" class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
             } else {
@@ -142,10 +145,10 @@ $(document).ready(function(){
                     <a href="/atendiendo/`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
-            } else if ( r[0].empleadoAtendiendo == nombreEmpleadoSession ) {
+            } else if ( r[0].PKTblEmpleadosAtediendo == PKTblEmpleado ) {
                 insert += `
                     <div class="col-sm-2">
-                        <a href="controllers/actualizaciones.php?accion=desatender&id_reporte=`+r[0].folio+`" class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
+                        <a href="/desatendiendo/`+r[0].folio+`" class="btn btn-danger form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
             } else {

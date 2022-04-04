@@ -98,22 +98,22 @@
 
                             @if ( !empty($item->empleadoRealizo) )
                                 <td style="text-align: center;">
-                                    <a href="controllers/actualizaciones.php?accion=retomarr&id_reporte={{ $item->folio }}">
+                                    <a href="/retomar/{{ $item->folio }}">
                                         <div style="width: 100%; height: 100%;">
                                             <img src="/images/retomar.png" alt="" width="22px">
                                         </div>
                                     </a>
                                 </td>
                             @elseif ( !empty($item->diagnostico) || !empty($item->solucion) )
-                                <td class="table-data verModalReporte">                
-                                    <a href="controllers/actualizaciones.php?accion=atender&id_reporte={{ $item->folio }}">
+                                <td class="table-data">                
+                                    <a href="/atender/{{ $item->folio }}">
                                         <div style="width: 100%; height: 100%;">
                                             <img src="/images/atender.png" alt="" width="22px">
                                         </div>
                                     </a>
                                 </td>
                             @else
-                                <td class="table-data verModalReporte">
+                                <td class="table-data">
                                     <img src="/images/incompleto.png" alt="" width="22px">
                                 </td>
                             @endif

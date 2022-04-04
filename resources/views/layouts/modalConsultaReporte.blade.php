@@ -1,9 +1,10 @@
-<input type="hidden" id="nombreEmpleadoSession" value="{{ session('usuario')[0]->{'nombreEmpleado'} }}">
+<input type="hidden" id="PKTblEmpleado" value="{{ session('usuario')[0]->{'PKTblEmpleados'} }}">
 <div id="verModalReporte" class="modal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header colorFondoTitulo" style="text-align: center;">
                 <h4 data-dismiss="modal" class="modal-title"><b class="tituloPrincipalModal"></b></h4>
+                <section id="atendiendo" style="margin-top: 0px;"></section>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="{{ route('actualizarReporte') }}" autocomplete="off" method="post">

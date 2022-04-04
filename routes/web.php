@@ -48,5 +48,8 @@ Route::get('/detalleReporte/{id}','App\Http\Controllers\ReportesController@obten
 //actualizar reporte en curso desde el modal
 Route::post('actualizarReporte','App\Http\Controllers\ReportesController@actualizarReporte')->name('actualizarReporte');
 
-//ruta para servicio atendiendo
+//rutas para servicios de estado reporte
 Route::get('/atendiendo/{id}','App\Http\Controllers\ReportesController@atendiendoReporte')->name('atendiendo');
+Route::get('/desatendiendo/{id}','App\Http\Controllers\ReportesController@desatendiendoReporte')->name('desatendiendo');
+Route::get('/atender/{id}','App\Http\Controllers\ReportesController@atenderReporte')->name('atender');
+Route::get('/retomar/{id}','App\Http\Controllers\ReportesController@retomarReporte')->name('retomar');
