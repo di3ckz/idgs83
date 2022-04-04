@@ -82,7 +82,14 @@ Route::post('actualizarRol','App\Http\Controllers\RolesController@actualizarRol'
 // insumos para pagina usuarios
 Route::get('/obtenerUsuarios','App\Http\Controllers\PageController@obtenerUsuarios')->name('obtenerUsuarios');
 
+// insumos para clientes
+Route::get('/obtenerClientes','App\Http\Controllers\PageController@obtenerClientes')->name('obtenerClientes');
+
 // acciones para usuarios
-Route::get('/inactivarUsuario/{id}','App\Http\Controllers\UserController@inactivarUsuario')->name('inactivarUsuario');
+
 Route::get('/activarUsuario/{id}','App\Http\Controllers\UserController@activarUsuario')->name('activarUsuario');
 Route::post('registrarUsuario','App\Http\Controllers\UserController@registrarUsuario')->name('registrarUsuario');
+
+// acciones para clientes
+Route::get('/inactivarCliente/{id}','App\Http\Controllers\ClientesController@inactivarCliente')->name('inactivarCliente');
+Route::get('/activarCliente/{id}','App\Http\Controllers\ClientesController@activarCliente')->name('activarCliente');

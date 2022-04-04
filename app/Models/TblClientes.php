@@ -18,7 +18,8 @@ class TblClientes extends Model
         'apellidoPaterno',
         'apellidoMaterno',
         'telefono',
-        'fechaAlta'
+        'fechaAlta',
+        'Activo'
     ];
 
     //relacion uno a uno

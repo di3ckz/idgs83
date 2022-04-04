@@ -20,7 +20,7 @@
         <div class="col-sm-10">
             <div class="form-group">
                 <label>Buscar en Usuarios</label>
-                <input id="search" type="text" class="form-control" placeholder="Buscar en Roles" maxlength="30">
+                <input id="search" type="text" class="form-control" placeholder="Buscar en Usuarios" maxlength="30">
             </div>
         </div>
         <div class="col-sm-2">

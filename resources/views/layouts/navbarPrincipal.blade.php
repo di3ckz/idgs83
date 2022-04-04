@@ -27,10 +27,16 @@
                     </ul>
                 </li>
                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Clientes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li data-toggle="modal" data-target="#modalUsuarioRegistro"><a>Agregar Cliente</a></li>
+                        <li data-toggle="modal"><a href="{{ url('obtenerClientes') }}">Ver todos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li data-toggle="modal" data-target="#modalUsuarioRegistro"><a>Agregar Usuario</a></li>
-                        <hr>
                         <li data-toggle="modal"><a href="{{ url('obtenerUsuarios') }}">Ver todos</a></li>
                     </ul>
                 </li>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\TblReportes;
 use App\Models\TblEmpleados;
+use App\Models\TblClientes;
 use App\Models\CatPoblaciones;
 use App\Models\CatProblemas;
 use App\Models\CatRoles;
@@ -157,6 +158,29 @@ class PageController extends Controller
         }
         return view('usuarios')
              ->with('usuarios', $usuarios)
+             ->with('poblaciones', $poblaciones)
+             ->with('problemas', $problemas)
+             ->with('roles', $roles);
+    }
+
+    public function obtenerClientes () {
+        $poblaciones    = $this->obtenerTblCatPoblaciones();
+        $problemas      = $this->obtenerTblCatProblemas();
+        $roles          = $this->obtenerTblCatRoles();
+
+        $clientes = TblClientes::select('tblclientes.PKTblClientes', 'tblclientes.nombreCliente', 'tblclientes.apellidoPaterno', 'tblclientes.apellidoMaterno', 'tblclientes.telefono', 'tblclientes.telefonoOpcional', 'tblclientes.fechaAlta', 'tblclientes.Activo', 'tbldirecciones.coordenadas', 'tbldirecciones.referencias', 'tbldirecciones.direccion', 'catpoblaciones.nombrePoblacion')
+                               ->join('tbldirecciones','tbldirecciones.PKTblDirecciones','tblclientes.FKTblDirecciones')
+                               ->join('catpoblaciones','catpoblaciones.PKCatPoblaciones','tbldirecciones.FKCatPoblaciones')
+                               ->get();
+
+        $cont = 0;
+        foreach ($clientes as $item) {
+            $clientes[$cont]['fechaAlta'] = Carbon::parse($clientes[$cont]['fechaAlta'])->format('d-m-Y');
+            $cont += 1;
+        }
+
+        return view('clientes')
+             ->with('clientes', $clientes)
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
              ->with('roles', $roles);
