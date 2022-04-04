@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2022 a las 19:27:15
+-- Tiempo de generación: 04-04-2022 a las 21:31:13
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -87,7 +87,7 @@ CREATE TABLE `catroles` (
 
 INSERT INTO `catroles` (`PKCatRoles`, `nombreRol`, `descripcionRol`, `fechaAlta`, `Activo`) VALUES
 (1, 'Administrador', 'asdasdasd', '2022-03-01', 1),
-(2, 'Técnico', 'asdfasd', '2022-04-04', 0);
+(2, 'Técnico', 'asdfasd', '2022-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -210,16 +210,18 @@ CREATE TABLE `tblclientes` (
   `apellidoMaterno` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telefono` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefonoOpcional` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fechaAlta` date NOT NULL
+  `fechaAlta` date NOT NULL,
+  `Activo` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tblclientes`
 --
 
-INSERT INTO `tblclientes` (`PKTblClientes`, `FKTblDirecciones`, `nombreCliente`, `apellidoPaterno`, `apellidoMaterno`, `telefono`, `telefonoOpcional`, `fechaAlta`) VALUES
-(3, 6, 'asd', 'sdf', 'ert', '23423', '345345345', '2022-03-01'),
-(4, 7, 'Adrián', 'Villa', 'Reyes', '7292271384', '', '2022-03-18');
+INSERT INTO `tblclientes` (`PKTblClientes`, `FKTblDirecciones`, `nombreCliente`, `apellidoPaterno`, `apellidoMaterno`, `telefono`, `telefonoOpcional`, `fechaAlta`, `Activo`) VALUES
+(3, 6, 'asd', 'sdf', 'ert', '23423', '345345345', '2022-03-01', 1),
+(4, 7, 'Adrián', 'Villa', 'Reyes', '7292271384', '', '2022-03-18', 1),
+(5, 9, 'asd', 'asdasd', 'sdfsdf', '234234', NULL, '2022-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -245,7 +247,8 @@ CREATE TABLE `tbldetallereporte` (
 
 INSERT INTO `tbldetallereporte` (`PKTblDetalleReporte`, `diagnostico`, `solucion`, `FKTblEmpleadosActualizo`, `fechaActualizacion`, `FKTblEmpleadosAtencion`, `fechaAtencion`, `FKTblEmpleadosAtediendo`, `fechaAtendiendo`) VALUES
 (4, 'asdwedwe', 'asd', 1, '2022-04-04 06:28:16', NULL, NULL, NULL, NULL),
-(5, NULL, NULL, 1, '2022-04-04 07:10:05', NULL, NULL, 1, '2022-04-04 07:09:54');
+(5, NULL, NULL, 1, '2022-04-04 07:10:05', NULL, NULL, 1, '2022-04-04 07:09:54'),
+(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -267,7 +270,8 @@ CREATE TABLE `tbldirecciones` (
 
 INSERT INTO `tbldirecciones` (`PKTblDirecciones`, `FKCatPoblaciones`, `coordenadas`, `referencias`, `direccion`) VALUES
 (6, 1, '34234', 'asdasd', 'ewrwer'),
-(7, 1, '19.268649, -99.491644', 'A 50 metros del comedor comunitario', 'Calzada Guadalupe Victoria 54');
+(7, 1, '19.268649, -99.491644', 'A 50 metros del comedor comunitario', 'Calzada Guadalupe Victoria 54'),
+(9, 3, '1234234', 'rwerwer', '234234');
 
 -- --------------------------------------------------------
 
@@ -295,7 +299,7 @@ INSERT INTO `tblempleados` (`PKTblEmpleados`, `FKCatRoles`, `nombreEmpleado`, `a
 (1, 1, 'Adrián', 'Villa', 'Reyes', '2022-03-01', 'mclovin', '1234', 1),
 (2, 1, 'asd', 'asdasd', 'asdasd', '2022-04-04', 'asd', 'asd', 0),
 (3, 1, 'Fabiola', 'Hernandez', 'Montiel', '2022-04-04', 'Fabi', '1234', 1),
-(4, 2, 'sdf', 'sdfsdf', 'sdfsdf', '2022-04-04', 'sdf', 'sdf', 0);
+(4, 2, 'sdf wef wefw', 'sdfsdf', 'sdfsdf', '2022-04-04', 'sdf', 'sdf', 0);
 
 -- --------------------------------------------------------
 
@@ -459,19 +463,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `tblclientes`
 --
 ALTER TABLE `tblclientes`
-  MODIFY `PKTblClientes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `PKTblClientes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbldetallereporte`
 --
 ALTER TABLE `tbldetallereporte`
-  MODIFY `PKTblDetalleReporte` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `PKTblDetalleReporte` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbldirecciones`
 --
 ALTER TABLE `tbldirecciones`
-  MODIFY `PKTblDirecciones` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `PKTblDirecciones` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tblempleados`
