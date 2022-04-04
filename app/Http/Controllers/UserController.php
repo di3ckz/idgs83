@@ -33,33 +33,7 @@ class UserController extends Controller
                 $temporal = TblEmpleados::where('PKTblEmpleados', $request['PKTblEmpleados'])
                                         ->get();
 
-                if ( !is_string($request['contrasenia']) ) {
-                    $data = [
-                        'nombreEmpleado'    => $request['nombreEmpleado'],
-                        'apellidoPaterno'   => $request['apellidoPaterno'],
-                        'apellidoMaterno'   => $request['apellidoMaterno'],
-                        'FKCatRoles'        => $request['FKCatRoles'],
-                        'usuario'           => $request['usuario']
-                    ];
-                } else {
-                    $data = [
-                        'nombreEmpleado'    => $request['nombreEmpleado'],
-                        'apellidoPaterno'   => $request['apellidoPaterno'],
-                        'apellidoMaterno'   => $request['apellidoMaterno'],
-                        'usuario'           => $request['usuario'],
-                        'FKCatRoles'        => $request['FKCatRoles'],
-                        'contrasenia'       => $request['contrasenia']
-                    ];
-                }
-
-                TblEmpleados::where("PKTblEmpleados",session('usuario')[0]->{'PKTblEmpleados'})
-                            ->update($data);
-
-                return $request['FKCatRoles'] == $temporal[0]['FKCatRoles'] ? back() : $this->logout();
-
-            } else {
-
-                if ( !is_string($request['contrasenia']) ) {
+                if ( !is_string($request['contrasenia']) && !empty($request['FKCatRoles']) ) {
                     $data = [
                         'nombreEmpleado'    => $request['nombreEmpleado'],
                         'apellidoPaterno'   => $request['apellidoPaterno'],
@@ -81,7 +55,31 @@ class UserController extends Controller
                 TblEmpleados::where("PKTblEmpleados", $request['PKTblEmpleados'])
                             ->update($data);
 
-                return back();
+                return $request['FKCatRoles'] == 1 || $temporal[0]['FKCatRoles'] == 1 ? $this->logout() : back();
+
+            } else {
+
+                if ( !is_string($request['contrasenia']) ) {
+                    $data = [
+                        'nombreEmpleado'    => $request['nombreEmpleado'],
+                        'apellidoPaterno'   => $request['apellidoPaterno'],
+                        'apellidoMaterno'   => $request['apellidoMaterno'],
+                        'usuario'           => $request['usuario']
+                    ];
+                } else {
+                    $data = [
+                        'nombreEmpleado'    => $request['nombreEmpleado'],
+                        'apellidoPaterno'   => $request['apellidoPaterno'],
+                        'apellidoMaterno'   => $request['apellidoMaterno'],
+                        'usuario'           => $request['usuario'],
+                        'contrasenia'       => $request['contrasenia']
+                    ];
+                }
+
+                TblEmpleados::where("PKTblEmpleados", session('usuario')[0]->{'PKTblEmpleados'})
+                            ->update($data);
+
+                return $this->logout();
                 
             }
 

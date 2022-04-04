@@ -42,18 +42,24 @@ class PageController extends Controller
         return CatRoles::where('Activo', 1)->get();
     }
 
+    private function obtenerTblClientes () {
+        return TblClientes::where('Activo', 1)->get();
+    }
+
     public function obtenerInsumos () {
         if ( session()->has('usuario') ) {
             $reportes       = $this->obtenerTblReportes();
             $poblaciones    = $this->obtenerTblCatPoblaciones();
             $problemas      = $this->obtenerTblCatProblemas();
             $roles          = $this->obtenerTblCatRoles();
+            $clientes       = $this->obtenerTblClientes();
 
             return view('inicio')
                 ->with('reportes', $reportes)
                 ->with('poblaciones', $poblaciones)
                 ->with('problemas', $problemas)
-                ->with('roles', $roles);
+                ->with('roles', $roles)
+                ->with('clientes', $clientes);
         } else {
             return view('login');
         }
@@ -67,6 +73,7 @@ class PageController extends Controller
             $poblaciones    = $this->obtenerTblCatPoblaciones();
             $problemas      = $this->obtenerTblCatProblemas();
             $roles          = $this->obtenerTblCatRoles();
+            $clientes       = $this->obtenerTblClientes();
 
             return view('reportes')
                  ->with('status', $status)
@@ -74,7 +81,8 @@ class PageController extends Controller
                  ->with('poblaciones', $poblaciones)
                  ->with('problemas', $problemas)
                  ->with('detalleReporte', $detalleReporte)
-                 ->with('roles', $roles);
+                 ->with('roles', $roles)
+                 ->with('clientes', $clientes);
         } else {
             return view('login');
         }
@@ -85,6 +93,7 @@ class PageController extends Controller
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
         $roles          = $this->obtenerTblCatRoles();
+        $clientes       = $this->obtenerTblClientes();
 
         $cont = 0;
         foreach ($roles as $item) {
@@ -97,7 +106,8 @@ class PageController extends Controller
              ->with('troles', $troles)
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
-             ->with('roles', $roles);
+             ->with('roles', $roles)
+             ->with('clientes', $clientes);
     }
 
     public function obtenerInsumosProblemas () {
@@ -106,6 +116,7 @@ class PageController extends Controller
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
         $roles          = $this->obtenerTblCatRoles();
+        $clientes       = $this->obtenerTblClientes();
 
         $cont = 0;
         foreach ($tProblemas as $item) {
@@ -118,7 +129,8 @@ class PageController extends Controller
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
              ->with('tProblemas', $tProblemas)
-             ->with('roles', $roles);
+             ->with('roles', $roles)
+             ->with('clientes', $clientes);
     }
 
     public function obtenerInsumosPoblaciones () {
@@ -126,6 +138,7 @@ class PageController extends Controller
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
         $roles          = $this->obtenerTblCatRoles();
+        $clientes       = $this->obtenerTblClientes();
 
         $cont = 0;
         foreach ($tPoblaciones as $item) {
@@ -138,13 +151,15 @@ class PageController extends Controller
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
              ->with('tPoblaciones', $tPoblaciones)
-             ->with('roles', $roles);
+             ->with('roles', $roles)
+             ->with('clientes', $clientes);
     }
 
     public function obtenerUsuarios () {
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
         $roles          = $this->obtenerTblCatRoles();
+        $clientes       = $this->obtenerTblClientes();
 
         $usuarios = TblEmpleados::select('PKTblEmpleados','nombreRol', 'nombreEmpleado', 'apellidoPaterno', 'apellidoMaterno', 'tblempleados.fechaAlta', 'usuario', 'tblempleados.Activo')
                             ->join('catroles','PKCatRoles','FKCatRoles')
@@ -160,13 +175,15 @@ class PageController extends Controller
              ->with('usuarios', $usuarios)
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
-             ->with('roles', $roles);
+             ->with('roles', $roles)
+             ->with('clientes', $clientes);
     }
 
     public function obtenerClientes () {
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
         $roles          = $this->obtenerTblCatRoles();
+        $clientes       = $this->obtenerTblClientes();
 
         $clientes = TblClientes::select('tblclientes.PKTblClientes', 'tblclientes.nombreCliente', 'tblclientes.apellidoPaterno', 'tblclientes.apellidoMaterno', 'tblclientes.telefono', 'tblclientes.telefonoOpcional', 'tblclientes.fechaAlta', 'tblclientes.Activo', 'tbldirecciones.coordenadas', 'tbldirecciones.referencias', 'tbldirecciones.direccion', 'catpoblaciones.nombrePoblacion')
                                ->join('tbldirecciones','tbldirecciones.PKTblDirecciones','tblclientes.FKTblDirecciones')
@@ -180,10 +197,11 @@ class PageController extends Controller
         }
 
         return view('clientes')
-             ->with('clientes', $clientes)
+             ->with('tclientes', $clientes)
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
-             ->with('roles', $roles);
+             ->with('roles', $roles)
+             ->with('clientes', $clientes);
     }
 
 }

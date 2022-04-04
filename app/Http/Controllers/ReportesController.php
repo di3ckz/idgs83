@@ -20,33 +20,21 @@ class ReportesController extends Controller
         try {
 
             DB::beginTransaction();
-                $direccion                      = new TblDirecciones;
-                $direccion->FKCatPoblaciones    = $request['PKCatPoblaciones'];
-                $direccion->coordenadas         = $request['coordenadas'];
-                $direccion->referencias         = $request['referencias'];
-                $direccion->direccion           = $request['direccion'];
-                $direccion->save();
 
                 $detalle = new TblDetalleReporte;
                 $detalle->save();
 
-                $cliente                    = new TblClientes;
-                $cliente->FKTblDirecciones  = $direccion->id;
-                $cliente->nombreCliente     = $request['nombreCliente'];
-                $cliente->telefono          = $request['telefono'];
-                $cliente->fechaAlta         = Carbon::now();
-                $cliente->save();
-
                 $reporte                            = new TblReportes;
                 $reporte->FKCatProblemas            = $request['PKCatProblemas'];
-                $reporte->FKTblEmpleadosRecibio     = 1; // esto cambiara una vez implementado el login
+                $reporte->FKTblEmpleadosRecibio     = session('usuario')[0]->{'PKTblEmpleados'}; // esto cambiara una vez implementado el login
                 $reporte->FKCatStatus               = 1; // es el primer status por defecto para recien registrado
                 $reporte->FKTblDetalleReporte       = $detalle->id;
-                $reporte->FKTblClientes             = $cliente->id;
+                $reporte->FKTblClientes             = $request['PKTblClientes'];
                 $reporte->descripcionProblema       = $request['descripcionProblema'];
                 $reporte->observaciones             = $request['observaciones'];
                 $reporte->fechaAlta                 = Carbon::now();
                 $var = $reporte->save();
+                
             DB::commit();
 
             return back();

@@ -33,13 +33,6 @@
                         <li data-toggle="modal"><a href="{{ url('obtenerClientes') }}">Ver todos</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li data-toggle="modal" data-target="#modalUsuarioRegistro"><a>Agregar Usuario</a></li>
-                        <li data-toggle="modal"><a href="{{ url('obtenerUsuarios') }}">Ver todos</a></li>
-                    </ul>
-                </li>
                 <!--li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">M&aacute;s <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -49,6 +42,13 @@
                 </li-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li data-toggle="modal" data-target="#modalUsuarioRegistro"><a>Agregar Usuario</a></li>
+                        <li data-toggle="modal"><a href="{{ url('obtenerUsuarios') }}">Ver todos</a></li>
+                    </ul>
+                </li>
                 <li data-toggle="modal" data-target="#modalUsuario"><a><span class="glyphicon glyphicon-user"></span> &nbsp;{{ session('usuario')[0]->{'nombreEmpleado'} }} {{ session('usuario')[0]->{'apellidoPaterno'} }}</a></li>
                 <li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
             </ul>

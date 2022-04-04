@@ -43,22 +43,22 @@
             </thead>
             <tbody class="table-content">
 
-                @foreach ($clientes as $item)
+                @foreach ($tclientes as $item)
 
                     <tr class="table-row">
-                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblClientes }}">
+                        <td class="table-data" id="{{ $item->PKTblClientes }}">
                             {{ $item->PKTblClientes }}
                         </td>
-                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblClientes }}">
+                        <td class="table-data" id="{{ $item->PKTblClientes }}">
                             {{ $item->nombreCliente }} {{ $item->apellidoPaterno }}
                         </td>
-                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblClientes }}">
+                        <td class="table-data" id="{{ $item->PKTblClientes }}">
                             {{ $item->telefono }}
                         </td>
-                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblClientes }}">
+                        <td class="table-data" id="{{ $item->PKTblClientes }}">
                             {{ $item->fechaAlta }}
                         </td>
-                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblClientes }}">
+                        <td class="table-data" id="{{ $item->PKTblClientes }}">
                             {{ $item->nombrePoblacion }}
                         </td>
 

@@ -3,7 +3,7 @@
 
         <div class="modal-content">
             <div class="modal-header" data-dismiss="modal" style="text-align: center;">
-                <h4 class="modal-title"><b>Administrador</b></h4>
+                <h4 class="modal-title"><b> {{ session('usuario')[0]->{'nombreEmpleado'} }} {{ session('usuario')[0]->{'apellidoPaterno'} }} {{ session('usuario')[0]->{'apellidoMaterno'} }} </b></h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="{{ route('actualizarEmpleado') }}" autocomplete="off" method="post">

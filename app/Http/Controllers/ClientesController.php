@@ -25,9 +25,6 @@ class ClientesController extends Controller
                 $direccion->direccion           = $request['direccion'];
                 $direccion->save();
 
-                $detalle = new TblDetalleReporte;
-                $detalle->save();
-
                 $cliente                    = new TblClientes;
                 $cliente->FKTblDirecciones  = $direccion->id;
                 $cliente->nombreCliente     = $request['nombreCliente'];
