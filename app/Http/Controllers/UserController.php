@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\TblEmpleados;
 
@@ -54,6 +55,66 @@ class UserController extends Controller
             return back();
             
         }
+    }
+
+    public function registrarUsuario ( Request $request ) {
+        try {
+
+            $verificarExistencia = TblEmpleados::where([
+                                        ['usuario',$request['usuario']],
+                                        ['contrasenia',$request['contrasenia']]
+                                    ])->first();
+
+            if( !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ){
+                DB::beginTransaction();
+                    $usuario                    = new TblEmpleados;
+                    $usuario->FKCatRoles        = $request['FKCatRoles'];
+                    $usuario->nombreEmpleado    = $request['nombreEmpleado'];
+                    $usuario->apellidoPaterno   = $request['apellidoPaterno'];
+                    $usuario->apellidoMaterno   = $request['apellidoMaterno'];
+                    $usuario->fechaAlta         = $request['fechaAlta'];
+                    $usuario->usuario           = $request['usuario'];
+                    $usuario->contrasenia       = $request['contrasenia'];
+                    $usuario->fechaAlta         = Carbon::now();
+                    $usuario->Activo            = 1;
+                    $var = $usuario->save();
+                DB::commit();
+            }
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
+    public function inactivarUsuario ( $id ) {
+        try {
+            TblEmpleados::where('PKTblEmpleados', $id)
+                        ->update(['Activo' => 0]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+        
+    }
+
+    public function activarUsuario ( $id ) {
+        try {
+            TblEmpleados::where('PKTblEmpleados', $id)
+                        ->update(['Activo' => 1]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
+    public function detalleUsuario ( $PKTblEmpleados ) {
+        return TblEmpleados::where( 'PKTblEmpleados', $PKTblEmpleados )->get();
     }
 
     public function logout () {

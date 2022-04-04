@@ -23,7 +23,7 @@
     </thead>
     <tbody class="table-content">
 
-        @foreach ($roles as $item)
+        @foreach ($troles as $item)
 
             <tr class="table-row">
                 <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKCatRoles }}">

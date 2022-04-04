@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\TblReportes;
+use App\Models\TblEmpleados;
 use App\Models\CatPoblaciones;
 use App\Models\CatProblemas;
 use App\Models\CatRoles;
@@ -36,16 +37,22 @@ class PageController extends Controller
         return CatProblemas::where('Activo', 1)->get();
     }
 
+    private function obtenerTblCatRoles () {
+        return CatRoles::where('Activo', 1)->get();
+    }
+
     public function obtenerInsumos () {
         if ( session()->has('usuario') ) {
             $reportes       = $this->obtenerTblReportes();
             $poblaciones    = $this->obtenerTblCatPoblaciones();
             $problemas      = $this->obtenerTblCatProblemas();
+            $roles          = $this->obtenerTblCatRoles();
 
             return view('inicio')
                 ->with('reportes', $reportes)
                 ->with('poblaciones', $poblaciones)
-                ->with('problemas', $problemas);
+                ->with('problemas', $problemas)
+                ->with('roles', $roles);
         } else {
             return view('login');
         }
@@ -58,22 +65,25 @@ class PageController extends Controller
 
             $poblaciones    = $this->obtenerTblCatPoblaciones();
             $problemas      = $this->obtenerTblCatProblemas();
+            $roles          = $this->obtenerTblCatRoles();
 
             return view('reportes')
                  ->with('status', $status)
                  ->with('reportes', $reportes)
                  ->with('poblaciones', $poblaciones)
                  ->with('problemas', $problemas)
-                 ->with('detalleReporte', $detalleReporte);
+                 ->with('detalleReporte', $detalleReporte)
+                 ->with('roles', $roles);
         } else {
             return view('login');
         }
     }
 
     public function obtenerInsumosRoles () {
-        $roles = CatRoles::all();
+        $troles         = CatRoles::all();
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
+        $roles          = $this->obtenerTblCatRoles();
 
         $cont = 0;
         foreach ($roles as $item) {
@@ -83,9 +93,10 @@ class PageController extends Controller
 
         return view('insumos')
              ->with('busqueda','Roles')
-             ->with('roles', $roles)
+             ->with('troles', $troles)
              ->with('poblaciones', $poblaciones)
-             ->with('problemas', $problemas);
+             ->with('problemas', $problemas)
+             ->with('roles', $roles);
     }
 
     public function obtenerInsumosProblemas () {
@@ -93,10 +104,11 @@ class PageController extends Controller
 
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
+        $roles          = $this->obtenerTblCatRoles();
 
         $cont = 0;
-        foreach ($problemas as $item) {
-            $problemas[$cont]['fechaAlta'] = Carbon::parse($problemas[$cont]['fechaAlta'])->format('d-m-Y');
+        foreach ($tProblemas as $item) {
+            $tProblemas[$cont]['fechaAlta'] = Carbon::parse($tProblemas[$cont]['fechaAlta'])->format('d-m-Y');
             $cont += 1;
         }
 
@@ -104,17 +116,19 @@ class PageController extends Controller
              ->with('busqueda','Problemas')
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
-             ->with('tProblemas', $tProblemas);
+             ->with('tProblemas', $tProblemas)
+             ->with('roles', $roles);
     }
 
     public function obtenerInsumosPoblaciones () {
         $tPoblaciones   = CatPoblaciones::all();
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
+        $roles          = $this->obtenerTblCatRoles();
 
         $cont = 0;
-        foreach ($poblaciones as $item) {
-            $poblaciones[$cont]['fechaAlta'] = Carbon::parse($poblaciones[$cont]['fechaAlta'])->format('d-m-Y');
+        foreach ($tPoblaciones as $item) {
+            $tPoblaciones[$cont]['fechaAlta'] = Carbon::parse($tPoblaciones[$cont]['fechaAlta'])->format('d-m-Y');
             $cont += 1;
         }
 
@@ -122,7 +136,30 @@ class PageController extends Controller
              ->with('busqueda','Poblaciones')
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas)
-             ->with('tPoblaciones', $tPoblaciones);
+             ->with('tPoblaciones', $tPoblaciones)
+             ->with('roles', $roles);
+    }
+
+    public function obtenerUsuarios () {
+        $poblaciones    = $this->obtenerTblCatPoblaciones();
+        $problemas      = $this->obtenerTblCatProblemas();
+        $roles          = $this->obtenerTblCatRoles();
+
+        $usuarios = TblEmpleados::select('PKTblEmpleados','nombreRol', 'nombreEmpleado', 'apellidoPaterno', 'apellidoMaterno', 'tblempleados.fechaAlta', 'usuario', 'tblempleados.Activo')
+                            ->join('catroles','PKCatRoles','FKCatRoles')
+                            ->orderBy('PKTblEmpleados','DESC')
+                            ->get();
+
+        $cont = 0;
+        foreach ($usuarios as $item) {
+            $usuarios[$cont]['fechaAlta'] = Carbon::parse($usuarios[$cont]['fechaAlta'])->format('d-m-Y');
+            $cont += 1;
+        }
+        return view('usuarios')
+             ->with('usuarios', $usuarios)
+             ->with('poblaciones', $poblaciones)
+             ->with('problemas', $problemas)
+             ->with('roles', $roles);
     }
 
 }

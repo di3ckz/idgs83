@@ -20,7 +20,8 @@ class TblEmpleados extends Model
         'fechaAlta',
         'usuario',
         'contrasenia',
-        'fechaAlta'
+        'fechaAlta',
+        'Activo'
     ];
     
     public function reportes(){

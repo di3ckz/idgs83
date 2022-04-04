@@ -26,6 +26,14 @@
                         <li data-toggle="modal"><a href="{{ url('obtenerInsumosRoles') }}">Roles</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li data-toggle="modal" data-target="#modalUsuarioRegistro"><a>Agregar Usuario</a></li>
+                        <hr>
+                        <li data-toggle="modal"><a href="{{ url('obtenerUsuarios') }}">Ver todos</a></li>
+                    </ul>
+                </li>
                 <!--li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">M&aacute;s <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -48,3 +56,4 @@
 @include('layouts/modalProblema')
 @include('layouts/modalRol')
 @include('layouts/modalUsuario')
+@include('layouts/modalUsuarioRegistro')
