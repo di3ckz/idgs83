@@ -65,4 +65,8 @@ class RolesController extends Controller
         }
     }
 
+    public function detalleRol ( $PKCatRoles ) {
+        return CatRoles::where( 'PKCatRoles', $PKCatRoles )->get();
+    }
+
 }

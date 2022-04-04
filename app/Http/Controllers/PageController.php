@@ -70,9 +70,8 @@ class PageController extends Controller
         }
     }
 
-    public function obtenerInsumosRoles ( ) {
-        $roles = CatRoles::where('Activo', 1)->get();
-
+    public function obtenerInsumosRoles () {
+        $roles = CatRoles::all();
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
 
@@ -89,7 +88,9 @@ class PageController extends Controller
              ->with('problemas', $problemas);
     }
 
-    public function obtenerInsumosProblemas ( ) {
+    public function obtenerInsumosProblemas () {
+        $tProblemas = CatProblemas::all();
+
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
 
@@ -102,10 +103,12 @@ class PageController extends Controller
         return view('insumos')
              ->with('busqueda','Problemas')
              ->with('poblaciones', $poblaciones)
-             ->with('problemas', $problemas);
+             ->with('problemas', $problemas)
+             ->with('tProblemas', $tProblemas);
     }
 
-    public function obtenerInsumosPoblaciones ( ) {
+    public function obtenerInsumosPoblaciones () {
+        $tPoblaciones   = CatPoblaciones::all();
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
 
@@ -118,7 +121,8 @@ class PageController extends Controller
         return view('insumos')
              ->with('busqueda','Poblaciones')
              ->with('poblaciones', $poblaciones)
-             ->with('problemas', $problemas);
+             ->with('problemas', $problemas)
+             ->with('tPoblaciones', $tPoblaciones);
     }
 
 }

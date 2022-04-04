@@ -26,23 +26,23 @@
         @foreach ($roles as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->PKCatRoles }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->nombreRol }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->descripcionRol }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->folio }}">
+                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->fechaAlta }}
                 </td>
 
                 @if ( $item->Activo == 1)
                     <td class="table-data">
                         <a href="/inactivarRol/{{ $item->PKCatRoles }}">
-                            <button class="btn btn-danger"><b>Inactivar</b></button>
+                            <button class="btn btn-warning"><b>Inactivar</b></button>
                         </a>
                     </td>
                 @else

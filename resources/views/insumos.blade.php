@@ -25,6 +25,6 @@
         @endif
     </div>
 
-    @include('layouts/modalConsultaReporte')
+    @include('layouts/modalConsultaPoblacion')
 </body>
 </html>

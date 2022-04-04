@@ -168,6 +168,46 @@ $(document).ready(function(){
         $(".apartadoBotones").append(insert);
     }
 
+    $(".verModalInsumoPoblacion").click( function(){
+
+        let id = $(this).attr("id");
+
+        $(".asd").css('filter','grayscale(0.1) blur(10px)');
+        console.log(id);
+        $.ajax({
+            url:'/detallePoblacion/'+id,
+            type:'get',
+            success:  function (detallePoblacion) {
+                mapToFormInsumoRol(detallePoblacion);
+                $(".asd").css('filter','');
+            },
+            statusCode: {
+               404: function() {
+                  alert('web not found');
+               }
+            },
+            error:function(x,xs,xt){
+               window.open(JSON.stringify(x));
+               //alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+            }
+         });
+    });
+
+    function mapToFormInsumoRol ( pob ) {
+        console.log(pob);
+        $("#PKCatPoblaciones").val(pob[0].PKCatPoblaciones);
+        $(".parametroNombrePoblacion").val(pob[0].nombrePoblacion);
+        $(".parametroCP").val(pob[0].codigoPostal);
+
+        if (pob[0].Activo == 1) {
+            html = '<a style="width: 100%;" class="btn form-conrtol btn-warning" href="/inactivarPoblacion/'+pob[0].PKCatPoblaciones+'"><b style="color:white;">Inactivar</b></a>';
+            $(".btnAccion").empty().html(html);
+        } else {
+            html = '<a style="width: 100%;" class="btn form-conrtol btn-info" href="/activarPoblacion/'+pob[0].PKCatPoblaciones+'"><b style="color:white;">Activar</b></a>';
+            $(".btnAccion").empty().html(html);
+        }
+    }
+
     $(".verModalInstalacion").click( function(){
         $(".seccionModalInstalacion").empty();
         

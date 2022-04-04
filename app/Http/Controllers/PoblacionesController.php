@@ -68,4 +68,24 @@ class PoblacionesController extends Controller
         }
     }
 
+    public function detallePoblacion ( $PKCatPoblaciones ) {
+        return CatPoblaciones::where( 'PKCatPoblaciones', $PKCatPoblaciones )->get();
+    }
+
+    public function actualizarPoblacion ( Request $request ) {
+
+        try {
+            CatPoblaciones::where('PKCatPoblaciones',  $request['PKCatPoblaciones'])
+                            ->update([
+                                'nombrePoblacion'   => $request['nombrePoblacion'],
+                                'codigoPostal'      => $request['codigoPostal']
+                            ]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
 }

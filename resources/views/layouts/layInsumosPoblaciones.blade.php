@@ -23,26 +23,26 @@
     </thead>
     <tbody class="table-content">
 
-        @foreach ($poblaciones as $item)
+        @foreach ($tPoblaciones as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
+                <td class="table-data verModalInsumoPoblacion" data-toggle='modal' data-target='#verModalInsumoPoblacion' id="{{ $item->PKCatPoblaciones }}">
                     {{ $item->PKCatPoblaciones }}
                 </td>
-                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
+                <td class="table-data verModalInsumoPoblacion" data-toggle='modal' data-target='#verModalInsumoPoblacion' id="{{ $item->PKCatPoblaciones }}">
                     {{ $item->nombrePoblacion }}
                 </td>
-                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
+                <td class="table-data verModalInsumoPoblacion" data-toggle='modal' data-target='#verModalInsumoPoblacion' id="{{ $item->PKCatPoblaciones }}">
                     {{ $item->codigoPostal }}
                 </td>
-                <td class="table-data verModalPoblacion" data-toggle='modal' data-target='#verModalPoblacion' id="{{ $item->folio }}">
+                <td class="table-data verModalInsumoPoblacion" data-toggle='modal' data-target='#verModalInsumoPoblacion' id="{{ $item->PKCatPoblaciones }}">
                     {{ $item->fechaAlta }}
                 </td>
 
                 @if ( $item->Activo == 1)
                     <td class="table-data">
                         <a href="/inactivarPoblacion/{{ $item->PKCatPoblaciones }}">
-                            <button class="btn btn-danger"><b>Inactivar</b></button>
+                            <button class="btn btn-warning"><b>Inactivar</b></button>
                         </a>
                     </td>
                 @else

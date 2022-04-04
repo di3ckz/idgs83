@@ -21,7 +21,6 @@ Route::post('/login','App\Http\Controllers\UserController@login')->name('login')
 Route::get('/logout','App\Http\Controllers\UserController@logout')->name('logout');
 
 Route::get('/inicio','App\Http\Controllers\PageController@obtenerInsumos')->name('inicio');
-//Route::name('inicio')->delete('eliminarPoblacion/{id}',[PageController::class, 'obtenerInsumos']);
 
 // Rutas modulo de control reportes
 Route::post('registrarReporte','App\Http\Controllers\ReportesController@registrarReporte')->name('registrarReporte');
@@ -41,7 +40,6 @@ Route::post('actualizarEmpleado','App\Http\Controllers\UserController@actualizar
 
 // Rutas para la navegación de los reportes
 Route::get('/reportes/{status}','App\Http\Controllers\PageController@obtenerInsumosReportes')->name('reportes');
-//Route::name('insumosReportes')->get('insumosReportes/{status}',[PageController::class, 'obtenerInsumosReportes']);
 
 //obtener detalle de cada reportes según se presione un click
 Route::get('/detalleReporte/{id}','App\Http\Controllers\ReportesController@obtenerDetalleReporte')->name('detalleReporte');
@@ -69,3 +67,11 @@ Route::get('/activarProblema/{id}','App\Http\Controllers\ProblemasController@act
 
 Route::get('/inactivarPoblacion/{id}','App\Http\Controllers\PoblacionesController@inactivarPoblacion')->name('inactivarPoblacion');
 Route::get('/activarPoblacion/{id}','App\Http\Controllers\PoblacionesController@activarPoblacion')->name('activarPoblacion');
+
+// obtener detalle de cada insumo por click
+Route::get('/detallePoblacion/{id}','App\Http\Controllers\PoblacionesController@detallePoblacion')->name('detallePoblacion');
+Route::get('/detalleProblema/{id}','App\Http\Controllers\ProblemasController@detalleProblema')->name('detalleProblema');
+Route::get('/detalleRol/{id}','App\Http\Controllers\RolesController@detalleRol')->name('detalleRol');
+
+// Modificaciones de insumos
+Route::post('actualizarPoblacion','App\Http\Controllers\PoblacionesController@actualizarPoblacion')->name('actualizarPoblacion');

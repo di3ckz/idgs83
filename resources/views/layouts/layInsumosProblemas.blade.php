@@ -23,26 +23,26 @@
     </thead>
     <tbody class="table-content">
 
-        @foreach ($problemas as $item)
+        @foreach ($tProblemas as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->PKCatProblemas }}
                 </td>
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->nombreProblema }}
                 </td>
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->descripcionProblema }}
                 </td>
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->folio }}">
+                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->fechaAlta }}
                 </td>
 
                 @if ( $item->Activo == 1)
                     <td class="table-data">
                         <a href="/inactivarProblema/{{ $item->PKCatProblemas }}">
-                            <button class="btn btn-danger"><b>Inactivar</b></button>
+                            <button class="btn btn-warning"><b>Inactivar</b></button>
                         </a>
                     </td>
                 @else

@@ -66,4 +66,8 @@ class ProblemasController extends Controller
         }
     }
 
+    public function detalleProblema ( $PKCatProblemas ) {
+        return CatProblemas::where( 'PKCatProblemas', $PKCatProblemas )->get();
+    }
+
 }
