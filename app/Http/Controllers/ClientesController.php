@@ -15,6 +15,37 @@ use App\Http\Controllers\PageController;
 class ClientesController extends Controller
 {
 
+    public function registrarCliente ( Request $request) {
+        try {
+            DB::beginTransaction();
+                $direccion                      = new TblDirecciones;
+                $direccion->FKCatPoblaciones    = $request['PKCatPoblaciones'];
+                $direccion->coordenadas         = $request['coordenadas'];
+                $direccion->referencias         = $request['referencias'];
+                $direccion->direccion           = $request['direccion'];
+                $direccion->save();
+
+                $detalle = new TblDetalleReporte;
+                $detalle->save();
+
+                $cliente                    = new TblClientes;
+                $cliente->FKTblDirecciones  = $direccion->id;
+                $cliente->nombreCliente     = $request['nombreCliente'];
+                $cliente->apellidoPaterno   = $request['apellidoPaterno'];
+                $cliente->apellidoMaterno   = $request['apellidoMaterno'];
+                $cliente->telefono          = $request['telefono'];
+                $cliente->fechaAlta         = Carbon::now();
+                $cliente->save();
+            DB::commit();
+
+            return back();
+
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
     public function inactivarCliente ( $id ) {
         try {
             TblClientes::where('PKTblClientes', $id)

@@ -8,63 +8,23 @@
             <div class="modal-body">
                 <form class="form-horizontal" action="{{ route('registrarReporte') }}" autocomplete="off" method="post">
                     @csrf
+
                     <div class="form-group">
-                        <label class="control-label col-sm-3">Nombre:</label>
+                        <label class="control-label col-sm-3">Cliente:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Nombre"   name="nombreCliente">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">Tel&eacute;fono:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Tel&eacute;fono"  onkeypress="return soloNumeros(event);" maxlength="10" name="telefono">
-                        </div>
-                    </div>
-                    <div class="form-group" style="visibility: hidden; display: none;" id="t">
-                        <label class="control-label col-sm-3">Tel&eacute;fono 2:</label>
-                        <div class="col-sm-9">
-                            <input id="tel2" type="text" class="form-control" placeholder="Tel&eacute;fono 2 (Opcional)" onkeypress="return soloNumeros(event);" maxlength="10" name="telefonoOpcional">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-9" style="float: right;">
-                            <input type="button" class="btn form-control" value="+" style="background: #6DB3FF; color: white; font-weight: bold;" id="mas">
-                            <input type="button" class="btn form-control" value="-" style="background: #6DB3FF; color: white; font-weight: bold; display: none;" id="menos">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">Poblaci&oacute;n:</label>
-                        <div class="col-sm-9">
-                            <select id="poblacion" name="PKCatPoblaciones" class="form-control"  style="background: #D5EDFF;">
-                                <option value="" style="visibility: hidden; display: none;">Seleccione una poblaci&oacute;n</option>
-                                @foreach($poblaciones as $poblacion)
-                                    <option value="{{$poblacion->PKCatPoblaciones}}">{{$poblacion->nombrePoblacion}}</option>
+                            <select name="PKTblClientes" class="form-control" required style="background: #D5EDFF;">
+                                <option value="" style="visibility: hidden; display: none;">Seleccione un cliente</option>
+                                @foreach($clientes as $cliente)
+                                    <option value="{{$cliente->PKTblClientes}}">{{$cliente->nombreCliente}} {{$cliente->apellidoPaterno}} {{$cliente->apellidoMaterno}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">Coordenadas:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Coordenadas" onkeypress="return soloNumerosp(event);" name="coordenadas">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">Direcci&oacute;n:</label>
-                        <div class="col-sm-9">
-                            <textarea rows="1" class="form-control" id="direccion" placeholder="Direcci&oacute;n" name="direccion" ></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">Referencias:</label>
-                        <div class="col-sm-9">
-                            <textarea rows="1" class="form-control" id="referencias" placeholder="Referencias" name="referencias"></textarea>
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-sm-3">Problema:</label>
                         <div class="col-sm-9">
-                            <select id="tproblema" name="PKCatProblemas" class="form-control"  style="background: #D5EDFF;">
+                            <select id="tproblema" name="PKCatProblemas" class="form-control" required style="background: #D5EDFF;">
                                 <option value="" style="visibility: hidden; display: none;">Seleccione un problema</option>
                                 @foreach($problemas as $problema)
                                     <option value="{{$problema->PKCatProblemas}}">{{$problema->nombreProblema}}</option>
@@ -72,12 +32,14 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="control-label col-sm-3">Descripci&oacute;n del problema:</label>
                         <div class="col-sm-9">
                             <textarea rows="1" class="form-control" id="problema" placeholder="Descripci&oacute;n del problema" name="descripcionProblema"></textarea>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="control-label col-sm-3">Observaciones:</label>
                         <div class="col-sm-9">

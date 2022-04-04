@@ -3,7 +3,7 @@
 
         <div class="modal-content">
             <div class="modal-header" data-dismiss="modal" style="text-align: center;">
-                <h4 class="modal-title"><b>Registrar usuario</b></h4>
+                <h4 class="modal-title"><b>Registrar Usuario</b></h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="{{ route('registrarUsuario') }}" autocomplete="off" method="post">

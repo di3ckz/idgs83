@@ -29,7 +29,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Clientes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li data-toggle="modal" data-target="#modalUsuarioRegistro"><a>Agregar Cliente</a></li>
+                        <li data-toggle="modal" data-target="#modalClienteRegistro"><a>Agregar Cliente</a></li>
                         <li data-toggle="modal"><a href="{{ url('obtenerClientes') }}">Ver todos</a></li>
                     </ul>
                 </li>
@@ -63,3 +63,4 @@
 @include('layouts/modalRol')
 @include('layouts/modalUsuario')
 @include('layouts/modalUsuarioRegistro')
+@include('layouts/modalClienteRegistro')
