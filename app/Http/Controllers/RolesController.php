@@ -31,7 +31,7 @@ class RolesController extends Controller
                 DB::commit();
             }
 
-            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? back() : back();
+            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? redirect('obtenerInsumosRoles') : back();
 
         } catch (\Throwable $th) {
             Log::info($th);

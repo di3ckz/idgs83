@@ -33,7 +33,7 @@ class PoblacionesController extends Controller
                 DB::commit();
             }
 
-            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? back() : back();
+            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? redirect('obtenerInsumosPoblaciones') : back();
 
         } catch (\Throwable $th) {
             Log::info($th);

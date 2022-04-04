@@ -18,8 +18,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">Insumos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li data-toggle="modal" data-target="#modalPoblacion"><a>Agregar Poblaci&oacute;n</a></li>
-                        <li data-toggle="modal" data-target="#modalProblema"><a>Agregar Tipo Problema</a></li>
+                        <li data-toggle="modal" data-target="#modalProblema"><a>Agregar Problema</a></li>
                         <li data-toggle="modal" data-target="#modalRol"><a>Agregar Rol</a></li>
+                        <hr>
                         <li data-toggle="modal"><a href="{{ url('obtenerInsumosPoblaciones') }}">Poblaciones</a></li>
                         <li data-toggle="modal"><a href="{{ url('obtenerInsumosProblemas') }}">Problemas</a></li>
                         <li data-toggle="modal"><a href="{{ url('obtenerInsumosRoles') }}">Roles</a></li>

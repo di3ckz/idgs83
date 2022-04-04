@@ -75,9 +75,15 @@ class PageController extends Controller
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
 
+        $cont = 0;
+        foreach ($roles as $item) {
+            $roles[$cont]['fechaAlta'] = Carbon::parse($roles[$cont]['fechaAlta'])->format('d-m-Y');
+            $cont += 1;
+        }
+
         return view('insumos')
              ->with('busqueda','Roles')
-             ->with('roles',$roles)
+             ->with('roles', $roles)
              ->with('poblaciones', $poblaciones)
              ->with('problemas', $problemas);
     }
@@ -85,6 +91,12 @@ class PageController extends Controller
     public function obtenerInsumosProblemas ( ) {
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
+
+        $cont = 0;
+        foreach ($problemas as $item) {
+            $problemas[$cont]['fechaAlta'] = Carbon::parse($problemas[$cont]['fechaAlta'])->format('d-m-Y');
+            $cont += 1;
+        }
 
         return view('insumos')
              ->with('busqueda','Problemas')
@@ -95,6 +107,12 @@ class PageController extends Controller
     public function obtenerInsumosPoblaciones ( ) {
         $poblaciones    = $this->obtenerTblCatPoblaciones();
         $problemas      = $this->obtenerTblCatProblemas();
+
+        $cont = 0;
+        foreach ($poblaciones as $item) {
+            $poblaciones[$cont]['fechaAlta'] = Carbon::parse($poblaciones[$cont]['fechaAlta'])->format('d-m-Y');
+            $cont += 1;
+        }
 
         return view('insumos')
              ->with('busqueda','Poblaciones')
