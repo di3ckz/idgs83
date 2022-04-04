@@ -90,6 +90,28 @@ class ReportesController extends Controller
         return DB::select('SELECT * FROM generalReportes WHERE folio = '.$id);
     }
 
+    public function atendiendoReporte ( $id ) {
+        try {
+            DB::beginTransaction();
+                $var = TblReportes::where('PKTblReportes', $id)
+                    ->first();
+
+                $data = [
+                    'FKTblEmpleadosAtediendo'   => session('usuario')[0]->{'PKTblEmpleados'},
+                    'fechaAtendiendo'           => Carbon::now()
+                ];
+
+                TblDetalleReporte::where('PKTblDetalleReporte', $var->{'FKTblDetalleReporte'})
+                                ->update($data);
+            DB::commit();
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
     public function eliminarReporte (TblReportes $id) {
         $id->delete();
         return back();

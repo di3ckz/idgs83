@@ -3,12 +3,13 @@ $(document).ready(function(){
 
         let id = $(this).attr("id");
 
+        $(".asd").css('filter','grayscale(0.1) blur(10px)');
         $.ajax({
             url:'/detalleReporte/'+id,
             type:'get',
             success:  function (detalleReporte) {
-                console.log(detalleReporte);
                 mapToForm(detalleReporte);
+                $(".asd").css('filter','');
             },
             statusCode: {
                404: function() {
@@ -108,7 +109,7 @@ $(document).ready(function(){
             if ( r[0].empleadoAtendiendo == "" || r[0].empleadoAtendiendo == null ) {
                 insert += `
                     <div class="col-sm-2">
-                        <a href="controllers/actualizaciones.php?accion=atendiendo&id_reporte=`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
+                    <a href="/atendiendo/`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
             } else if ( r[0].empleadoAtendiendo == nombreEmpleadoSession ) {
@@ -138,7 +139,7 @@ $(document).ready(function(){
             if ( r[0].empleadoAtendiendo == "" || r[0].empleadoAtendiendo == null ) {
                 insert += `
                     <div class="col-sm-2">
-                        <a href="controllers/actualizaciones.php?accion=atendiendo&id_reporte=`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
+                    <a href="/atendiendo/`+r[0].folio+`" class="btn btn-primary form-control" style="margin-top: 15px;"><img src="/images/proceso.png" alt="" width="22px"></a>
                     </div>
                 `;
             } else if ( r[0].empleadoAtendiendo == nombreEmpleadoSession ) {
