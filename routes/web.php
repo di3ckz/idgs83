@@ -72,6 +72,7 @@ Route::get('/activarPoblacion/{id}','App\Http\Controllers\PoblacionesController@
 Route::get('/detallePoblacion/{id}','App\Http\Controllers\PoblacionesController@detallePoblacion')->name('detallePoblacion');
 Route::get('/detalleProblema/{id}','App\Http\Controllers\ProblemasController@detalleProblema')->name('detalleProblema');
 Route::get('/detalleRol/{id}','App\Http\Controllers\RolesController@detalleRol')->name('detalleRol');
+Route::get('/detalleUsuario/{id}','App\Http\Controllers\UserController@detalleUsuario')->name('detalleUsuario');
 
 // Modificaciones de insumos
 Route::post('actualizarPoblacion','App\Http\Controllers\PoblacionesController@actualizarPoblacion')->name('actualizarPoblacion');

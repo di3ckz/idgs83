@@ -28,27 +28,62 @@ class UserController extends Controller
     public function actualizarEmpleado ( Request $request ) {
         try {
 
-            if ( !is_string($request['contrasenia']) ) {
-                $data = [
-                    'nombreEmpleado'    => $request['nombreEmpleado'],
-                    'apellidoPaterno'   => $request['apellidoPaterno'],
-                    'apellidoMaterno'   => $request['apellidoMaterno'],
-                    'usuario'           => $request['usuario']
-                ];
+            if ( $request['PKTblEmpleados'] == session('usuario')[0]->{'PKTblEmpleados'}) {
+
+                $temporal = TblEmpleados::where('PKTblEmpleados', $request['PKTblEmpleados'])
+                                        ->get();
+
+                if ( !is_string($request['contrasenia']) ) {
+                    $data = [
+                        'nombreEmpleado'    => $request['nombreEmpleado'],
+                        'apellidoPaterno'   => $request['apellidoPaterno'],
+                        'apellidoMaterno'   => $request['apellidoMaterno'],
+                        'FKCatRoles'        => $request['FKCatRoles'],
+                        'usuario'           => $request['usuario']
+                    ];
+                } else {
+                    $data = [
+                        'nombreEmpleado'    => $request['nombreEmpleado'],
+                        'apellidoPaterno'   => $request['apellidoPaterno'],
+                        'apellidoMaterno'   => $request['apellidoMaterno'],
+                        'usuario'           => $request['usuario'],
+                        'FKCatRoles'        => $request['FKCatRoles'],
+                        'contrasenia'       => $request['contrasenia']
+                    ];
+                }
+
+                TblEmpleados::where("PKTblEmpleados",session('usuario')[0]->{'PKTblEmpleados'})
+                            ->update($data);
+
+                return $request['FKCatRoles'] == $temporal[0]['FKCatRoles'] ? back() : $this->logout();
+
             } else {
-                $data = [
-                    'nombreEmpleado'    => $request['nombreEmpleado'],
-                    'apellidoPaterno'   => $request['apellidoPaterno'],
-                    'apellidoMaterno'   => $request['apellidoMaterno'],
-                    'usuario'           => $request['usuario'],
-                    'contrasenia'       => $request['contrasenia']
-                ];
+
+                if ( !is_string($request['contrasenia']) ) {
+                    $data = [
+                        'nombreEmpleado'    => $request['nombreEmpleado'],
+                        'apellidoPaterno'   => $request['apellidoPaterno'],
+                        'apellidoMaterno'   => $request['apellidoMaterno'],
+                        'FKCatRoles'        => $request['FKCatRoles'],
+                        'usuario'           => $request['usuario']
+                    ];
+                } else {
+                    $data = [
+                        'nombreEmpleado'    => $request['nombreEmpleado'],
+                        'apellidoPaterno'   => $request['apellidoPaterno'],
+                        'apellidoMaterno'   => $request['apellidoMaterno'],
+                        'usuario'           => $request['usuario'],
+                        'FKCatRoles'        => $request['FKCatRoles'],
+                        'contrasenia'       => $request['contrasenia']
+                    ];
+                }
+
+                TblEmpleados::where("PKTblEmpleados", $request['PKTblEmpleados'])
+                            ->update($data);
+
+                return back();
+                
             }
-
-            TblEmpleados::where("PKTblEmpleados",session('usuario')[0]->{'PKTblEmpleados'})
-                        ->update($data);
-
-            return $this->logout();
 
         } catch (\Throwable $th) {
 
@@ -115,7 +150,10 @@ class UserController extends Controller
     }
 
     public function detalleUsuario ( $PKTblEmpleados ) {
-        return TblEmpleados::where( 'PKTblEmpleados', $PKTblEmpleados )->get();
+        return TblEmpleados::select('PKTblEmpleados','nombreRol', 'nombreEmpleado', 'apellidoPaterno', 'apellidoMaterno', 'tblempleados.fechaAlta', 'usuario', 'tblempleados.Activo', 'contrasenia', 'FKCatRoles')
+                           ->join('catroles','PKCatRoles','FKCatRoles')
+                           ->where( 'PKTblEmpleados', $PKTblEmpleados )
+                           ->get();
     }
 
     public function logout () {

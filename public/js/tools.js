@@ -284,6 +284,41 @@ $(document).ready(function(){
         }
     }
 
+    $(".verModalDetalleUsuario").click( function(){
+
+        let id = $(this).attr("id");
+
+        $(".asd").css('filter','grayscale(0.1) blur(10px)');
+        $.ajax({
+            url:'/detalleUsuario/'+id,
+            type:'get',
+            success:  function (detalleUsuario) {
+                mapToFormInsumoUsuario(detalleUsuario);
+                $(".asd").css('filter','');
+            },
+            statusCode: {
+               404: function() {
+                  alert('web not found');
+               }
+            },
+            error:function(x,xs,xt){
+               window.open(JSON.stringify(x));
+               //alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+            }
+         });
+    });
+
+    function mapToFormInsumoUsuario ( usu ) {
+        $("#PKTblEmpleados").val(usu[0].PKTblEmpleados);
+        $(".parametroNombreEmpleado").val(usu[0].nombreEmpleado);
+        $(".parametroAPaterno").val(usu[0].apellidoPaterno);
+        $(".parametroAMaterno").val(usu[0].apellidoMaterno);
+        $(".rolParametro").text(usu[0].nombreRol);
+        $(".rolParametro").attr('value', usu[0].FKCatRoles);
+        $(".parametroUsuario").val(usu[0].usuario);
+        $(".parametroUsuario").val(usu[0].usuario);
+    }
+
     $(".verModalInstalacion").click( function(){
         $(".seccionModalInstalacion").empty();
         

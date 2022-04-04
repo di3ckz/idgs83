@@ -48,25 +48,25 @@
                 @foreach ($usuarios as $item)
 
                     <tr class="table-row">
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->PKTblEmpleados }}
                         </td>
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->nombreRol }}
                         </td>
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->nombreEmpleado }}
                         </td>
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->apellidoPaterno }}
                         </td>
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->apellidoMaterno }}
                         </td>
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->usuario }}
                         </td>
-                        <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKTblEmpleados }}">
+                        <td class="table-data verModalDetalleUsuario" data-toggle='modal' data-target='#verModalDetalleUsuario' id="{{ $item->PKTblEmpleados }}">
                             {{ $item->fechaAlta }}
                         </td>
 

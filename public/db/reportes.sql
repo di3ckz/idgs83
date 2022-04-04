@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2022 a las 02:49:33
+-- Tiempo de generación: 04-04-2022 a las 19:27:15
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -31,16 +31,18 @@ CREATE TABLE `catpoblaciones` (
   `PKCatPoblaciones` int(10) UNSIGNED NOT NULL,
   `nombrePoblacion` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `codigoPostal` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fechaAlta` date NOT NULL
+  `fechaAlta` date NOT NULL,
+  `Activo` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `catpoblaciones`
 --
 
-INSERT INTO `catpoblaciones` (`PKCatPoblaciones`, `nombrePoblacion`, `codigoPostal`, `fechaAlta`) VALUES
-(1, 'Acazulco', '52753', '2021-06-08'),
-(2, 'asd', '234', '2022-03-01');
+INSERT INTO `catpoblaciones` (`PKCatPoblaciones`, `nombrePoblacion`, `codigoPostal`, `fechaAlta`, `Activo`) VALUES
+(1, 'Aasd', '52753', '2021-06-08', 0),
+(2, 'asd', '234', '2022-03-01', 0),
+(3, 'Acazulco werwer', '52753', '2022-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -52,16 +54,18 @@ CREATE TABLE `catproblemas` (
   `PKCatProblemas` int(10) UNSIGNED NOT NULL,
   `nombreProblema` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcionProblema` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fechaAlta` date NOT NULL
+  `fechaAlta` date NOT NULL,
+  `Activo` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `catproblemas`
 --
 
-INSERT INTO `catproblemas` (`PKCatProblemas`, `nombreProblema`, `descripcionProblema`, `fechaAlta`) VALUES
-(1, 'Antena movida', 'asdasd', '2022-03-01'),
-(2, 'asd', 'asd', '2022-03-01');
+INSERT INTO `catproblemas` (`PKCatProblemas`, `nombreProblema`, `descripcionProblema`, `fechaAlta`, `Activo`) VALUES
+(1, 'Antena movidafgh', 'asdasd', '2022-03-01', 0),
+(2, 'asd', 'asd', '2022-03-01', 0),
+(3, 'Cable roto', 'asderg', '2022-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -73,15 +77,17 @@ CREATE TABLE `catroles` (
   `PKCatRoles` int(10) UNSIGNED NOT NULL,
   `nombreRol` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcionRol` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fechaAlta` date NOT NULL
+  `fechaAlta` date NOT NULL,
+  `Activo` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `catroles`
 --
 
-INSERT INTO `catroles` (`PKCatRoles`, `nombreRol`, `descripcionRol`, `fechaAlta`) VALUES
-(1, 'Administrador', 'asdasd', '2022-03-01');
+INSERT INTO `catroles` (`PKCatRoles`, `nombreRol`, `descripcionRol`, `fechaAlta`, `Activo`) VALUES
+(1, 'Administrador', 'asdasdasd', '2022-03-01', 1),
+(2, 'Técnico', 'asdfasd', '2022-04-04', 0);
 
 -- --------------------------------------------------------
 
@@ -101,7 +107,8 @@ CREATE TABLE `catstatus` (
 --
 
 INSERT INTO `catstatus` (`PKCatStatus`, `nombreStatus`, `descripcionStatus`, `fechaAlta`) VALUES
-(1, 'Pendiente', 'asdasd', '2022-03-01');
+(1, 'Pendiente', 'asdasd', '2022-03-01'),
+(2, 'Atendido', 'asdwed', '2022-05-03');
 
 -- --------------------------------------------------------
 
@@ -136,6 +143,7 @@ CREATE TABLE `generalreportes` (
 ,`empleadoRealizo` varchar(511)
 ,`fechaAtencion` varchar(10)
 ,`horaAtencion` varchar(13)
+,`PKTblEmpleadosAtediendo` int(10) unsigned
 ,`empleadoAtendiendo` varchar(511)
 ,`fechaAtendiendo` varchar(10)
 ,`horaAtendiendo` varchar(13)
@@ -236,8 +244,8 @@ CREATE TABLE `tbldetallereporte` (
 --
 
 INSERT INTO `tbldetallereporte` (`PKTblDetalleReporte`, `diagnostico`, `solucion`, `FKTblEmpleadosActualizo`, `fechaActualizacion`, `FKTblEmpleadosAtencion`, `fechaAtencion`, `FKTblEmpleadosAtediendo`, `fechaAtendiendo`) VALUES
-(4, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-03-25 07:09:14'),
-(5, NULL, NULL, 1, '2022-03-25 06:36:50', NULL, NULL, 1, '2022-03-25 07:07:58');
+(4, 'asdwedwe', 'asd', 1, '2022-04-04 06:28:16', NULL, NULL, NULL, NULL),
+(5, NULL, NULL, 1, '2022-04-04 07:10:05', NULL, NULL, 1, '2022-04-04 07:09:54');
 
 -- --------------------------------------------------------
 
@@ -275,15 +283,19 @@ CREATE TABLE `tblempleados` (
   `apellidoMaterno` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fechaAlta` date NOT NULL,
   `usuario` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contrasenia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `contrasenia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Activo` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tblempleados`
 --
 
-INSERT INTO `tblempleados` (`PKTblEmpleados`, `FKCatRoles`, `nombreEmpleado`, `apellidoPaterno`, `apellidoMaterno`, `fechaAlta`, `usuario`, `contrasenia`) VALUES
-(1, 1, 'Adrián', 'Villa', 'Reyes', '2022-03-01', 'mclovin', '1234');
+INSERT INTO `tblempleados` (`PKTblEmpleados`, `FKCatRoles`, `nombreEmpleado`, `apellidoPaterno`, `apellidoMaterno`, `fechaAlta`, `usuario`, `contrasenia`, `Activo`) VALUES
+(1, 1, 'Adrián', 'Villa', 'Reyes', '2022-03-01', 'mclovin', '1234', 1),
+(2, 1, 'asd', 'asdasd', 'asdasd', '2022-04-04', 'asd', 'asd', 0),
+(3, 1, 'Fabiola', 'Hernandez', 'Montiel', '2022-04-04', 'Fabi', '1234', 1),
+(4, 2, 'sdf', 'sdfsdf', 'sdfsdf', '2022-04-04', 'sdf', 'sdf', 0);
 
 -- --------------------------------------------------------
 
@@ -308,8 +320,8 @@ CREATE TABLE `tblreportes` (
 --
 
 INSERT INTO `tblreportes` (`PKTblReportes`, `FKCatProblemas`, `FKTblEmpleadosRecibio`, `FKCatStatus`, `FKTblDetalleReporte`, `FKTblClientes`, `descripcionProblema`, `observaciones`, `fechaAlta`) VALUES
-(3, 1, 1, 1, 4, 3, 'asdasd', 'asdasd', '2022-03-01 06:00:00'),
-(4, 1, 1, 1, 5, 4, 'No tiene internet hace dos días', 'Ningunaasdasdasd', '2022-03-24 19:34:25');
+(3, 1, 1, 1, 4, 3, 'asdasd', 'asdasd', '2022-04-04 05:14:18'),
+(4, 1, 1, 1, 5, 4, 'No tiene internet hace dos días', 'Ningunaasdasdasd', '2022-04-04 02:09:45');
 
 -- --------------------------------------------------------
 
@@ -318,7 +330,7 @@ INSERT INTO `tblreportes` (`PKTblReportes`, `FKCatProblemas`, `FKTblEmpleadosRec
 --
 DROP TABLE IF EXISTS `generalreportes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `generalreportes`  AS SELECT `reporte`.`PKTblReportes` AS `folio`, `cliente`.`nombreCliente` AS `nombreCliente`, `cliente`.`apellidoPaterno` AS `apellidoPaterno`, `cliente`.`apellidoMaterno` AS `apellidoMaterno`, `cliente`.`telefono` AS `telefono`, `cliente`.`telefonoOpcional` AS `telefonoOpcional`, `poblacion`.`PKCatPoblaciones` AS `PKCatPoblaciones`, `poblacion`.`nombrePoblacion` AS `nombrePoblacion`, `direccion`.`coordenadas` AS `coordenadas`, `direccion`.`direccion` AS `direccion`, `direccion`.`referencias` AS `referencias`, `problema`.`PKCatProblemas` AS `PKCatProblemas`, `problema`.`nombreProblema` AS `nombreProblema`, `reporte`.`descripcionProblema` AS `descripcionProblema`, `reporte`.`observaciones` AS `observaciones`, `detallereporte`.`diagnostico` AS `diagnostico`, `detallereporte`.`solucion` AS `solucion`, concat(`empleadorecibio`.`nombreEmpleado`,' ',`empleadorecibio`.`apellidoPaterno`) AS `empleadoRecibio`, date_format(`reporte`.`fechaAlta`,'%d-%m-%Y') AS `fechaAlta`, date_format(`reporte`.`fechaAlta`,'%H:%i:%S') AS `horaAlta`, concat(`empleadoactualizo`.`nombreEmpleado`,' ',`empleadoactualizo`.`apellidoPaterno`) AS `empleadoActualizo`, date_format(`detallereporte`.`fechaActualizacion`,'%d-%m-%Y') AS `fechaActualizacion`, date_format(`detallereporte`.`fechaActualizacion`,'%H:%i:%S') AS `horaActualizacion`, concat(`empleadorealizo`.`nombreEmpleado`,' ',`empleadorealizo`.`apellidoPaterno`) AS `empleadoRealizo`, date_format(`detallereporte`.`fechaAtencion`,'%d-%m-%Y') AS `fechaAtencion`, date_format(`detallereporte`.`fechaAtencion`,'%H:%i:%S') AS `horaAtencion`, concat(`empleadoatendiendo`.`nombreEmpleado`,' ',`empleadoatendiendo`.`apellidoPaterno`) AS `empleadoAtendiendo`, date_format(`detallereporte`.`fechaAtendiendo`,'%d-%m-%Y') AS `fechaAtendiendo`, date_format(`detallereporte`.`fechaAtendiendo`,'%H:%i:%S') AS `horaAtendiendo`, `status`.`nombreStatus` AS `status` FROM ((((((((((`tblreportes` `reporte` join `tblclientes` `cliente` on(`cliente`.`PKTblClientes` = `reporte`.`FKTblClientes`)) join `tbldirecciones` `direccion` on(`direccion`.`PKTblDirecciones` = `cliente`.`FKTblDirecciones`)) join `catpoblaciones` `poblacion` on(`poblacion`.`PKCatPoblaciones` = `direccion`.`FKCatPoblaciones`)) join `catproblemas` `problema` on(`problema`.`PKCatProblemas` = `reporte`.`FKCatProblemas`)) join `tbldetallereporte` `detallereporte` on(`detallereporte`.`PKTblDetalleReporte` = `reporte`.`FKTblDetalleReporte`)) left join `tblempleados` `empleadorecibio` on(`empleadorecibio`.`PKTblEmpleados` = `reporte`.`FKTblEmpleadosRecibio`)) left join `tblempleados` `empleadoactualizo` on(`empleadoactualizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosActualizo`)) left join `tblempleados` `empleadorealizo` on(`empleadorealizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtencion`)) left join `tblempleados` `empleadoatendiendo` on(`empleadoatendiendo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtediendo`)) join `catstatus` `status` on(`status`.`PKCatStatus` = `reporte`.`FKCatStatus`)) ORDER BY `reporte`.`PKTblReportes` DESC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `generalreportes`  AS SELECT `reporte`.`PKTblReportes` AS `folio`, `cliente`.`nombreCliente` AS `nombreCliente`, `cliente`.`apellidoPaterno` AS `apellidoPaterno`, `cliente`.`apellidoMaterno` AS `apellidoMaterno`, `cliente`.`telefono` AS `telefono`, `cliente`.`telefonoOpcional` AS `telefonoOpcional`, `poblacion`.`PKCatPoblaciones` AS `PKCatPoblaciones`, `poblacion`.`nombrePoblacion` AS `nombrePoblacion`, `direccion`.`coordenadas` AS `coordenadas`, `direccion`.`direccion` AS `direccion`, `direccion`.`referencias` AS `referencias`, `problema`.`PKCatProblemas` AS `PKCatProblemas`, `problema`.`nombreProblema` AS `nombreProblema`, `reporte`.`descripcionProblema` AS `descripcionProblema`, `reporte`.`observaciones` AS `observaciones`, `detallereporte`.`diagnostico` AS `diagnostico`, `detallereporte`.`solucion` AS `solucion`, concat(`empleadorecibio`.`nombreEmpleado`,' ',`empleadorecibio`.`apellidoPaterno`) AS `empleadoRecibio`, date_format(`reporte`.`fechaAlta`,'%d-%m-%Y') AS `fechaAlta`, date_format(`reporte`.`fechaAlta`,'%H:%i:%S') AS `horaAlta`, concat(`empleadoactualizo`.`nombreEmpleado`,' ',`empleadoactualizo`.`apellidoPaterno`) AS `empleadoActualizo`, date_format(`detallereporte`.`fechaActualizacion`,'%d-%m-%Y') AS `fechaActualizacion`, date_format(`detallereporte`.`fechaActualizacion`,'%H:%i:%S') AS `horaActualizacion`, concat(`empleadorealizo`.`nombreEmpleado`,' ',`empleadorealizo`.`apellidoPaterno`) AS `empleadoRealizo`, date_format(`detallereporte`.`fechaAtencion`,'%d-%m-%Y') AS `fechaAtencion`, date_format(`detallereporte`.`fechaAtencion`,'%H:%i:%S') AS `horaAtencion`, `empleadoatendiendo`.`PKTblEmpleados` AS `PKTblEmpleadosAtediendo`, concat(`empleadoatendiendo`.`nombreEmpleado`,' ',`empleadoatendiendo`.`apellidoPaterno`) AS `empleadoAtendiendo`, date_format(`detallereporte`.`fechaAtendiendo`,'%d-%m-%Y') AS `fechaAtendiendo`, date_format(`detallereporte`.`fechaAtendiendo`,'%H:%i:%S') AS `horaAtendiendo`, `status`.`nombreStatus` AS `status` FROM ((((((((((`tblreportes` `reporte` join `tblclientes` `cliente` on(`cliente`.`PKTblClientes` = `reporte`.`FKTblClientes`)) join `tbldirecciones` `direccion` on(`direccion`.`PKTblDirecciones` = `cliente`.`FKTblDirecciones`)) join `catpoblaciones` `poblacion` on(`poblacion`.`PKCatPoblaciones` = `direccion`.`FKCatPoblaciones`)) join `catproblemas` `problema` on(`problema`.`PKCatProblemas` = `reporte`.`FKCatProblemas`)) join `tbldetallereporte` `detallereporte` on(`detallereporte`.`PKTblDetalleReporte` = `reporte`.`FKTblDetalleReporte`)) left join `tblempleados` `empleadorecibio` on(`empleadorecibio`.`PKTblEmpleados` = `reporte`.`FKTblEmpleadosRecibio`)) left join `tblempleados` `empleadoactualizo` on(`empleadoactualizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosActualizo`)) left join `tblempleados` `empleadorealizo` on(`empleadorealizo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtencion`)) left join `tblempleados` `empleadoatendiendo` on(`empleadoatendiendo`.`PKTblEmpleados` = `detallereporte`.`FKTblEmpleadosAtediendo`)) join `catstatus` `status` on(`status`.`PKCatStatus` = `reporte`.`FKCatStatus`)) ORDER BY `reporte`.`PKTblReportes` DESC ;
 
 --
 -- Índices para tablas volcadas
@@ -411,25 +423,25 @@ ALTER TABLE `tblreportes`
 -- AUTO_INCREMENT de la tabla `catpoblaciones`
 --
 ALTER TABLE `catpoblaciones`
-  MODIFY `PKCatPoblaciones` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PKCatPoblaciones` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `catproblemas`
 --
 ALTER TABLE `catproblemas`
-  MODIFY `PKCatProblemas` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PKCatProblemas` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `catroles`
 --
 ALTER TABLE `catroles`
-  MODIFY `PKCatRoles` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PKCatRoles` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `catstatus`
 --
 ALTER TABLE `catstatus`
-  MODIFY `PKCatStatus` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PKCatStatus` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -465,7 +477,7 @@ ALTER TABLE `tbldirecciones`
 -- AUTO_INCREMENT de la tabla `tblempleados`
 --
 ALTER TABLE `tblempleados`
-  MODIFY `PKTblEmpleados` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PKTblEmpleados` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tblreportes`
