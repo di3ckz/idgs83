@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Models\TblReportes;
 use App\Models\CatPoblaciones;
 use App\Models\CatProblemas;
+use App\Models\CatRoles;
 
 class PageController extends Controller
 {
@@ -49,7 +50,7 @@ class PageController extends Controller
         }
     }
 
-    public function obtenerInsumosReportes( $status ) {
+    public function obtenerInsumosReportes ( $status ) {
         if ( session()->has('usuario') ) {
             $reportes = DB::select('SELECT * FROM generalReportes WHERE status = "'.$status.'"');
             $detalleReporte = DB::select('SELECT * FROM generalReportes WHERE status = "'.$status.'" LIMIT 1');
@@ -66,6 +67,39 @@ class PageController extends Controller
         } else {
             return view('login');
         }
+    }
+
+    public function obtenerInsumosRoles ( ) {
+        $roles = CatRoles::all();
+
+        $poblaciones    = $this->obtenerTblCatPoblaciones();
+        $problemas      = $this->obtenerTblCatProblemas();
+
+        return view('insumos')
+             ->with('busqueda','Roles')
+             ->with('roles',$roles)
+             ->with('poblaciones', $poblaciones)
+             ->with('problemas', $problemas);
+    }
+
+    public function obtenerInsumosProblemas ( ) {
+        $poblaciones    = $this->obtenerTblCatPoblaciones();
+        $problemas      = $this->obtenerTblCatProblemas();
+
+        return view('insumos')
+             ->with('busqueda','Problemas')
+             ->with('poblaciones', $poblaciones)
+             ->with('problemas', $problemas);
+    }
+
+    public function obtenerInsumosPoblaciones ( ) {
+        $poblaciones    = $this->obtenerTblCatPoblaciones();
+        $problemas      = $this->obtenerTblCatProblemas();
+
+        return view('insumos')
+             ->with('busqueda','Poblaciones')
+             ->with('poblaciones', $poblaciones)
+             ->with('problemas', $problemas);
     }
 
 }

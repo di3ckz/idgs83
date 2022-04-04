@@ -32,7 +32,7 @@
 
                     </div>
                 @endforeach
-                <a href="#"><h4><b style="color: gray;">Ver m&aacute;s...</b></h4></a>
+                <a href="javascript:void(0);"><h4><b style="color: gray;">Ver m&aacute;s...</b></h4></a>
             </div>
         </div>
     </div>

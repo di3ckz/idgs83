@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="alert alert-warning" style="text-align: justify;">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <a href="javascript:void(0);" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <p style="padding-right: 25px;">
                             <strong>Atenci&oacute;n!</strong> Para realizar alguna actualizaci&oacute;n de su informaci&oacute;n posteriormente se tendr&aacute; que loguear nuevamente para aplicar los cambios.
                         </p>

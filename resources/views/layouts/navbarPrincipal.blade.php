@@ -20,9 +20,9 @@
                         <li data-toggle="modal" data-target="#modalPoblacion"><a>Agregar Poblaci&oacute;n</a></li>
                         <li data-toggle="modal" data-target="#modalProblema"><a>Agregar Tipo Problema</a></li>
                         <li data-toggle="modal" data-target="#modalRol"><a>Agregar Rol</a></li>
-                        <li data-toggle="modal"><a>Poblaciones</a></li>
-                        <li data-toggle="modal"><a>Problemas</a></li>
-                        <li data-toggle="modal"><a>Roles</a></li>
+                        <li data-toggle="modal"><a href="{{ url('obtenerInsumosPoblaciones') }}">Poblaciones</a></li>
+                        <li data-toggle="modal"><a href="{{ url('obtenerInsumosProblemas') }}">Problemas</a></li>
+                        <li data-toggle="modal"><a href="{{ url('obtenerInsumosRoles') }}">Roles</a></li>
                     </ul>
                 </li>
                 <!--li class="dropdown">

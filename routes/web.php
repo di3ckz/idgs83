@@ -49,6 +49,11 @@ Route::get('/detalleReporte/{id}','App\Http\Controllers\ReportesController@obten
 //actualizar reporte en curso desde el modal
 Route::post('actualizarReporte','App\Http\Controllers\ReportesController@actualizarReporte')->name('actualizarReporte');
 
+// Cambiar a vista de insumos correspondiente
+Route::get('/obtenerInsumosRoles','App\Http\Controllers\PageController@obtenerInsumosRoles')->name('obtenerInsumosRoles');
+Route::get('/obtenerInsumosProblemas','App\Http\Controllers\PageController@obtenerInsumosProblemas')->name('obtenerInsumosProblemas');
+Route::get('/obtenerInsumosPoblaciones','App\Http\Controllers\PageController@obtenerInsumosPoblaciones')->name('obtenerInsumosPoblaciones');
+
 //rutas para servicios de estado reporte
 Route::get('/atendiendo/{id}','App\Http\Controllers\ReportesController@atendiendoReporte')->name('atendiendo');
 Route::get('/desatendiendo/{id}','App\Http\Controllers\ReportesController@desatendiendoReporte')->name('desatendiendo');

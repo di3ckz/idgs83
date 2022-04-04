@@ -25,19 +25,19 @@
         <div class="col-sm-2">
             <div class="form-group">
                 <label>Reporte</label>
-                <a href="excel.php?generar=reportesAtendidos"><button class="btn btn-info form-control"><img src="/images/reporte.png" alt="" width="22px"></button></a>
+                <a href="javascript:void(0);"><button class="btn btn-info form-control"><img src="/images/reporte.png" alt="" width="22px"></button></a>
             </div>
         </div>
 
         <table class="table" style="margin-top:30px; text-align: center;" id="mytable">
             <thead class="table-header" style="background:gray;">
                 <tr>
-                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="bnm" class="filter__link filter__link--number" href="#">Folio</a></th>
-                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="cliente" class="filter__link" href="#">Cliente</a></th>
+                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="bnm" class="filter__link filter__link--number" href="javascript:void(0);">Folio</a></th>
+                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="cliente" class="filter__link" href="javascript:void(0);">Cliente</a></th>
                     <th style="text-align: center;"><a style="color: white;">Tel&eacute;fono</a></th>
-                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="qwe" class="filter__link" href="#">Problema</a></th>
+                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="qwe" class="filter__link" href="javascript:void(0);">Problema</a></th>
                     <th style="text-align: center;"><a style="color: white;">Fecha</a></th>
-                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="ert" class="filter__link" href="#">Poblaci&oacute;n</a></th>
+                    <th class="header__item" style="text-align: center;"><a style="color: white;" id="ert" class="filter__link" href="javascript:void(0);">Poblaci&oacute;n</a></th>
                     <th style="text-align: center;"><a style="color: white;">Maps</a></th>
                     @if ( $status == 'Pendiente')
                         <th style="text-align: center;"><a style="color: white;">Atender</a></th>
