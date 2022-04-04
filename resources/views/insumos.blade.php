@@ -26,5 +26,7 @@
     </div>
 
     @include('layouts/modalConsultaPoblacion')
+    @include('layouts/modalConsultaProblema')
+    @include('layouts/modalConsultaRol')
 </body>
 </html>

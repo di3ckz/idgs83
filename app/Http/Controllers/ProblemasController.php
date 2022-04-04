@@ -70,4 +70,20 @@ class ProblemasController extends Controller
         return CatProblemas::where( 'PKCatProblemas', $PKCatProblemas )->get();
     }
 
+    public function actualizarProblema ( Request $request ) {
+
+        try {
+            CatProblemas::where('PKCatProblemas',  $request['PKCatProblemas'])
+                        ->update([
+                            'nombreProblema'        => $request['nombreProblema'],
+                            'descripcionProblema'   => $request['descripcionProblema']
+                        ]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
 }

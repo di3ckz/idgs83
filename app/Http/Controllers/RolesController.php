@@ -69,4 +69,20 @@ class RolesController extends Controller
         return CatRoles::where( 'PKCatRoles', $PKCatRoles )->get();
     }
 
+    public function actualizarRol ( Request $request ) {
+
+        try {
+            CatRoles::where('PKCatRoles',  $request['PKCatRoles'])
+                    ->update([
+                        'nombreRol'        => $request['nombreRol'],
+                        'descripcionRol'   => $request['descripcionRol']
+                    ]);
+
+            return back();
+        } catch (\Throwable $th) {
+            Log::info($th);
+            return back();
+        }
+    }
+
 }

@@ -173,7 +173,6 @@ $(document).ready(function(){
         let id = $(this).attr("id");
 
         $(".asd").css('filter','grayscale(0.1) blur(10px)');
-        console.log(id);
         $.ajax({
             url:'/detallePoblacion/'+id,
             type:'get',
@@ -194,7 +193,6 @@ $(document).ready(function(){
     });
 
     function mapToFormInsumoRol ( pob ) {
-        console.log(pob);
         $("#PKCatPoblaciones").val(pob[0].PKCatPoblaciones);
         $(".parametroNombrePoblacion").val(pob[0].nombrePoblacion);
         $(".parametroCP").val(pob[0].codigoPostal);
@@ -204,6 +202,82 @@ $(document).ready(function(){
             $(".btnAccion").empty().html(html);
         } else {
             html = '<a style="width: 100%;" class="btn form-conrtol btn-info" href="/activarPoblacion/'+pob[0].PKCatPoblaciones+'"><b style="color:white;">Activar</b></a>';
+            $(".btnAccion").empty().html(html);
+        }
+    }
+
+    $(".verModalInsumoProblema").click( function(){
+
+        let id = $(this).attr("id");
+
+        $(".asd").css('filter','grayscale(0.1) blur(10px)');
+        $.ajax({
+            url:'/detalleProblema/'+id,
+            type:'get',
+            success:  function (detalleProblema) {
+                mapToFormInsumoRol(detalleProblema);
+                $(".asd").css('filter','');
+            },
+            statusCode: {
+               404: function() {
+                  alert('web not found');
+               }
+            },
+            error:function(x,xs,xt){
+               window.open(JSON.stringify(x));
+               //alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+            }
+         });
+    });
+
+    function mapToFormInsumoRol ( pro ) {
+        $("#PKCatProblemas").val(pro[0].PKCatProblemas);
+        $(".parametroNombreProblema").val(pro[0].nombreProblema);
+        $(".parametroDescripcion").val(pro[0].descripcionProblema);
+
+        if (pro[0].Activo == 1) {
+            html = '<a style="width: 100%;" class="btn form-conrtol btn-warning" href="/inactivarProblema/'+pro[0].PKCatProblemas+'"><b style="color:white;">Inactivar</b></a>';
+            $(".btnAccion").empty().html(html);
+        } else {
+            html = '<a style="width: 100%;" class="btn form-conrtol btn-info" href="/activarProblema/'+pro[0].PKCatProblemas+'"><b style="color:white;">Activar</b></a>';
+            $(".btnAccion").empty().html(html);
+        }
+    }
+
+    $(".verModalInsumoRol").click( function(){
+
+        let id = $(this).attr("id");
+
+        $(".asd").css('filter','grayscale(0.1) blur(10px)');
+        $.ajax({
+            url:'/detalleRol/'+id,
+            type:'get',
+            success:  function (detalleRol) {
+                mapToFormInsumoRol(detalleRol);
+                $(".asd").css('filter','');
+            },
+            statusCode: {
+               404: function() {
+                  alert('web not found');
+               }
+            },
+            error:function(x,xs,xt){
+               window.open(JSON.stringify(x));
+               //alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+            }
+         });
+    });
+
+    function mapToFormInsumoRol ( rol ) {
+        $("#PKCatRoles").val(rol[0].PKCatRoles);
+        $(".parametroNombreRol").val(rol[0].nombreRol);
+        $(".parametroDescripcion").val(rol[0].descripcionRol);
+
+        if (rol[0].Activo == 1) {
+            html = '<a style="width: 100%;" class="btn form-conrtol btn-warning" href="/inactivarRol/'+rol[0].PKCatRoles+'"><b style="color:white;">Inactivar</b></a>';
+            $(".btnAccion").empty().html(html);
+        } else {
+            html = '<a style="width: 100%;" class="btn form-conrtol btn-info" href="/activarRol/'+rol[0].PKCatRoles+'"><b style="color:white;">Activar</b></a>';
             $(".btnAccion").empty().html(html);
         }
     }

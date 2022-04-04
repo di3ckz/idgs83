@@ -75,3 +75,5 @@ Route::get('/detalleRol/{id}','App\Http\Controllers\RolesController@detalleRol')
 
 // Modificaciones de insumos
 Route::post('actualizarPoblacion','App\Http\Controllers\PoblacionesController@actualizarPoblacion')->name('actualizarPoblacion');
+Route::post('actualizarProblema','App\Http\Controllers\ProblemasController@actualizarProblema')->name('actualizarProblema');
+Route::post('actualizarRol','App\Http\Controllers\RolesController@actualizarRol')->name('actualizarRol');

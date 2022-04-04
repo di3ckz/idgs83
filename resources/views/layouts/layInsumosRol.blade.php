@@ -26,16 +26,16 @@
         @foreach ($roles as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
+                <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->PKCatRoles }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
+                <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->nombreRol }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
+                <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->descripcionRol }}
                 </td>
-                <td class="table-data verModalRol" data-toggle='modal' data-target='#verModalRol' id="{{ $item->PKCatRoles }}">
+                <td class="table-data verModalInsumoRol" data-toggle='modal' data-target='#verModalInsumoRol' id="{{ $item->PKCatRoles }}">
                     {{ $item->fechaAlta }}
                 </td>
 

@@ -26,16 +26,16 @@
         @foreach ($tProblemas as $item)
 
             <tr class="table-row">
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
+                <td class="table-data verModalInsumoProblema" data-toggle='modal' data-target='#verModalInsumoProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->PKCatProblemas }}
                 </td>
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
+                <td class="table-data verModalInsumoProblema" data-toggle='modal' data-target='#verModalInsumoProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->nombreProblema }}
                 </td>
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
+                <td class="table-data verModalInsumoProblema" data-toggle='modal' data-target='#verModalInsumoProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->descripcionProblema }}
                 </td>
-                <td class="table-data verModalProblema" data-toggle='modal' data-target='#verModalProblema' id="{{ $item->PKCatProblemas }}">
+                <td class="table-data verModalInsumoProblema" data-toggle='modal' data-target='#verModalInsumoProblema' id="{{ $item->PKCatProblemas }}">
                     {{ $item->fechaAlta }}
                 </td>
 
