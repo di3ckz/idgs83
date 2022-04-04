@@ -169,15 +169,16 @@ $(document).ready(function(){
     }
 
     $(".verModalInsumoPoblacion").click( function(){
-
+        
         let id = $(this).attr("id");
+        console.log(id);
 
         $(".asd").css('filter','grayscale(0.1) blur(10px)');
         $.ajax({
             url:'/detallePoblacion/'+id,
             type:'get',
             success:  function (detallePoblacion) {
-                mapToFormInsumoRol(detallePoblacion);
+                mapToFormInsumoPoblacion(detallePoblacion);
                 $(".asd").css('filter','');
             },
             statusCode: {
@@ -192,7 +193,8 @@ $(document).ready(function(){
          });
     });
 
-    function mapToFormInsumoRol ( pob ) {
+    function mapToFormInsumoPoblacion ( pob ) {
+        console.log(pob);
         $("#PKCatPoblaciones").val(pob[0].PKCatPoblaciones);
         $(".parametroNombrePoblacion").val(pob[0].nombrePoblacion);
         $(".parametroCP").val(pob[0].codigoPostal);
@@ -215,7 +217,7 @@ $(document).ready(function(){
             url:'/detalleProblema/'+id,
             type:'get',
             success:  function (detalleProblema) {
-                mapToFormInsumoRol(detalleProblema);
+                mapToFormInsumoProblema(detalleProblema);
                 $(".asd").css('filter','');
             },
             statusCode: {
@@ -230,7 +232,7 @@ $(document).ready(function(){
          });
     });
 
-    function mapToFormInsumoRol ( pro ) {
+    function mapToFormInsumoProblema ( pro ) {
         $("#PKCatProblemas").val(pro[0].PKCatProblemas);
         $(".parametroNombreProblema").val(pro[0].nombreProblema);
         $(".parametroDescripcion").val(pro[0].descripcionProblema);

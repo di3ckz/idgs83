@@ -14,7 +14,8 @@ class UserController extends Controller
     public function login (Request $request) {
         $return = TblEmpleados::where([
                                         ["usuario",$request['usuario']],
-                                        ["contrasenia",$request['contrasenia']]
+                                        ["contrasenia",$request['contrasenia']],
+                                        ["Activo", 1]
                                      ])
                               ->get();
 
