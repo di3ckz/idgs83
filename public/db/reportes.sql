@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2022 a las 21:47:18
+-- Tiempo de generación: 04-04-2022 a las 02:49:33
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -236,8 +236,8 @@ CREATE TABLE `tbldetallereporte` (
 --
 
 INSERT INTO `tbldetallereporte` (`PKTblDetalleReporte`, `diagnostico`, `solucion`, `FKTblEmpleadosActualizo`, `fechaActualizacion`, `FKTblEmpleadosAtencion`, `fechaAtencion`, `FKTblEmpleadosAtediendo`, `fechaAtendiendo`) VALUES
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'asd', 'asdasd', 1, '2022-03-25 02:24:28', NULL, NULL, NULL, NULL);
+(4, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2022-03-25 07:09:14'),
+(5, NULL, NULL, 1, '2022-03-25 06:36:50', NULL, NULL, 1, '2022-03-25 07:07:58');
 
 -- --------------------------------------------------------
 
