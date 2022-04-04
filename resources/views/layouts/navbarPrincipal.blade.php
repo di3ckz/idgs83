@@ -15,10 +15,14 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Agregar <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">Insumos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li data-toggle="modal" data-target="#modalPoblacion"><a>Poblaci&oacute;n</a></li>
-                        <li data-toggle="modal" data-target="#modalProblema"><a>Tipo problema</a></li>
+                        <li data-toggle="modal" data-target="#modalPoblacion"><a>Agregar Poblaci&oacute;n</a></li>
+                        <li data-toggle="modal" data-target="#modalProblema"><a>Agregar Tipo Problema</a></li>
+                        <li data-toggle="modal" data-target="#modalRol"><a>Agregar Rol</a></li>
+                        <li data-toggle="modal"><a>Poblaciones</a></li>
+                        <li data-toggle="modal"><a>Problemas</a></li>
+                        <li data-toggle="modal"><a>Roles</a></li>
                     </ul>
                 </li>
                 <!--li class="dropdown">
@@ -41,4 +45,5 @@
 @include('layouts/modalReporte')
 @include('layouts/modalPoblacion')
 @include('layouts/modalProblema')
+@include('layouts/modalRol')
 @include('layouts/modalUsuario')

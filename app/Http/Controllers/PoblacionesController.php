@@ -33,7 +33,7 @@ class PoblacionesController extends Controller
                 DB::commit();
             }
 
-            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? back()->with('mensajeError', 'Ya existe la población') : back()->with('mensajeExito', 'Registro exitoso');
+            return !is_numeric($verificarExistencia) || count($verificarExistencia) == 0 ? back() : back();
 
         } catch (\Throwable $th) {
             Log::info($th);

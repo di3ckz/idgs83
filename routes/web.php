@@ -25,15 +25,16 @@ Route::get('/inicio','App\Http\Controllers\PageController@obtenerInsumos')->name
 
 // Rutas modulo de control reportes
 Route::post('registrarReporte','App\Http\Controllers\ReportesController@registrarReporte')->name('registrarReporte');
-Route::name('eliminarReporte')->delete('eliminarReporte/{id}',[ReportesController::class, 'eliminarReporte']);
 
-// Rutas catalogo de poblaciones
-Route::post('registrarPoblacion','App\Http\Controllers\PoblacionesController@registrarPoblacion')->name('registrarPoblacion');
-Route::name('eliminarPoblacion')->delete('eliminarPoblacion/{id}',[PoblacionesController::class, 'eliminarPoblacion']);
+// Rutas catalogos
+    // poblaciones
+    Route::post('registrarPoblacion','App\Http\Controllers\PoblacionesController@registrarPoblacion')->name('registrarPoblacion');
 
-// Rutas catalogo de problemas
-Route::post('registrarProblema','App\Http\Controllers\ProblemasController@registrarProblema')->name('registrarProblema');
-Route::name('eliminarProblema')->delete('eliminarProblema/{id}',[ProblemasController::class, 'eliminarProblema']);
+    // problemas
+    Route::post('registrarProblema','App\Http\Controllers\ProblemasController@registrarProblema')->name('registrarProblema');
+
+    // roles
+    Route::post('registrarRol','App\Http\Controllers\RolesController@registrarRol')->name('registrarRol');
 
 // Rutas con respecto a usuario/empleado
 Route::post('actualizarEmpleado','App\Http\Controllers\UserController@actualizarEmpleado')->name('actualizarEmpleado');
