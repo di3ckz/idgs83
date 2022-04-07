@@ -13,13 +13,13 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Nombre:</label>
                         <div class="col-sm-9">
-                            <input id="nombreRol" type="text" class="form-control" placeholder="Nombre Rol" required name="nombreRol">
+                            <input id="nombreRol" type="text" class="form-control" placeholder="Nombre Rol" required name="nombreRol" onkeypress="return soloLetras(event);">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Descripción del Rol:</label>
                         <div class="col-sm-9">
-                            <input id="descripcionRol" type="text" class="form-control" placeholder="Descripción del Rol" required name="descripcionRol">
+                            <input id="descripcionRol" type="text" class="form-control" placeholder="Descripción del Rol" required name="descripcionRol" onkeypress="return letrasYNumeros(event);">
                         </div>
                     </div>
                     <div class="form-group">

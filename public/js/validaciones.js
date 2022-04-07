@@ -1,4 +1,4 @@
-function lletrasYNumeros(e){
+function letrasYNumeros(e){
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyz0123456789";

@@ -11,13 +11,13 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Problema:</label>
                         <div class="col-sm-9">
-                            <input id="nombreProblema" type="text" class="form-control" placeholder="Problema" required name="nombreProblema">
+                            <input id="nombreProblema" type="text" class="form-control" placeholder="Problema" required name="nombreProblema" onkeypress="return soloLetras(event);">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Descripción del problema:</label>
                         <div class="col-sm-9">
-                            <input id="descripcionProblema" type="text" class="form-control" placeholder="Descripción del problema" required name="descripcionProblema">
+                            <input id="descripcionProblema" type="text" class="form-control" placeholder="Descripción del problema" required name="descripcionProblema" onkeypress="return letrasYNumeros(event);">
                         </div>
                     </div>
                     <div class="form-group">

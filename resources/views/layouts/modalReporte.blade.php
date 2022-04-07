@@ -36,14 +36,14 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Descripci&oacute;n del problema:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control" id="problema" placeholder="Descripci&oacute;n del problema" name="descripcionProblema"></textarea>
+                            <textarea rows="1" class="form-control" id="problema" placeholder="Descripci&oacute;n del problema" name="descripcionProblema" onkeypress="return letrasYNumeros(event);"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3">Observaciones:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control" id="observaciones" placeholder="Observaciones" name="observaciones"></textarea>
+                            <textarea rows="1" class="form-control" id="observaciones" placeholder="Observaciones" name="observaciones" onkeypress="return letrasYNumeros(event);"></textarea>
                         </div>
                     </div>
 

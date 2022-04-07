@@ -13,13 +13,13 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Nombre:</label>
                         <div class="col-sm-9">
-                            <input id="nombrePoblacion" type="text" class="form-control" placeholder="Nombre de la poblaci&oacute;n" required name="nombrePoblacion">
+                            <input id="nombrePoblacion" type="text" class="form-control" placeholder="Nombre de la poblaci&oacute;n" required name="nombrePoblacion" onkeypress="return soloLetras(event);">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Código postal:</label>
                         <div class="col-sm-9">
-                            <input id="nombrePoblacion" type="text" class="form-control" placeholder="Código postal" required name="codigoPostal">
+                            <input id="nombrePoblacion" type="text" class="form-control" placeholder="Código postal" required name="codigoPostal" onkeypress="return soloNumeros(event);" maxlength="5">
                         </div>
                     </div>
                     <div class="form-group">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2022 a las 21:31:13
+-- Tiempo de generación: 07-04-2022 a las 19:55:58
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -40,9 +40,9 @@ CREATE TABLE `catpoblaciones` (
 --
 
 INSERT INTO `catpoblaciones` (`PKCatPoblaciones`, `nombrePoblacion`, `codigoPostal`, `fechaAlta`, `Activo`) VALUES
-(1, 'Aasd', '52753', '2021-06-08', 0),
-(2, 'asd', '234', '2022-03-01', 0),
-(3, 'Acazulco werwer', '52753', '2022-04-04', 1);
+(1, 'San Pedro Cholula', '52753', '2021-06-08', 0),
+(2, 'Santiago', '50987', '2022-03-01', 0),
+(3, 'Acazulco', '52753', '2022-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -63,8 +63,8 @@ CREATE TABLE `catproblemas` (
 --
 
 INSERT INTO `catproblemas` (`PKCatProblemas`, `nombreProblema`, `descripcionProblema`, `fechaAlta`, `Activo`) VALUES
-(1, 'Antena movidafgh', 'asdasd', '2022-03-01', 0),
-(2, 'asd', 'asd', '2022-03-01', 0),
+(1, 'Antena movida', 'asdasd', '2022-03-01', 1),
+(2, 'Router dañado', 'asd', '2022-03-01', 1),
 (3, 'Cable roto', 'asderg', '2022-04-04', 1);
 
 -- --------------------------------------------------------
@@ -219,9 +219,9 @@ CREATE TABLE `tblclientes` (
 --
 
 INSERT INTO `tblclientes` (`PKTblClientes`, `FKTblDirecciones`, `nombreCliente`, `apellidoPaterno`, `apellidoMaterno`, `telefono`, `telefonoOpcional`, `fechaAlta`, `Activo`) VALUES
-(3, 6, 'asd', 'sdf', 'ert', '23423', '345345345', '2022-03-01', 1),
+(3, 6, 'Diego', 'Contreras', 'Dimas', '0123456789', '1234567890', '2022-03-01', 1),
 (4, 7, 'Adrián', 'Villa', 'Reyes', '7292271384', '', '2022-03-18', 1),
-(5, 9, 'asd', 'asdasd', 'sdfsdf', '234234', NULL, '2022-04-04', 1);
+(5, 9, 'José', 'Farfan', 'Ostio', '0987654321', NULL, '2022-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -246,9 +246,11 @@ CREATE TABLE `tbldetallereporte` (
 --
 
 INSERT INTO `tbldetallereporte` (`PKTblDetalleReporte`, `diagnostico`, `solucion`, `FKTblEmpleadosActualizo`, `fechaActualizacion`, `FKTblEmpleadosAtencion`, `fechaAtencion`, `FKTblEmpleadosAtediendo`, `fechaAtendiendo`) VALUES
-(4, 'asdwedwe', 'asd', 1, '2022-04-04 06:28:16', NULL, NULL, NULL, NULL),
-(5, NULL, NULL, 1, '2022-04-04 07:10:05', NULL, NULL, 1, '2022-04-04 07:09:54'),
-(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 'asdwedwe', 'asd', 1, '2022-04-04 06:28:16', 1, '2022-04-05 01:30:52', NULL, NULL),
+(5, NULL, NULL, 1, '2022-04-04 07:10:05', NULL, NULL, NULL, NULL),
+(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'Mordio el perro', 'Se cambio el cable', 1, '2022-04-06 02:50:36', 1, '2022-04-06 02:51:07', NULL, NULL),
+(9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -296,10 +298,11 @@ CREATE TABLE `tblempleados` (
 --
 
 INSERT INTO `tblempleados` (`PKTblEmpleados`, `FKCatRoles`, `nombreEmpleado`, `apellidoPaterno`, `apellidoMaterno`, `fechaAlta`, `usuario`, `contrasenia`, `Activo`) VALUES
-(1, 1, 'Adrián', 'Villa', 'Reyes', '2022-03-01', 'mclovin', '1234', 1),
+(1, 2, 'Carlos', 'Millan', 'Hinojosa', '2022-03-01', 'carlos', '1234', 1),
 (2, 1, 'asd', 'asdasd', 'asdasd', '2022-04-04', 'asd', 'asd', 0),
 (3, 1, 'Fabiola', 'Hernandez', 'Montiel', '2022-04-04', 'Fabi', '1234', 1),
-(4, 2, 'sdf wef wefw', 'sdfsdf', 'sdfsdf', '2022-04-04', 'sdf', 'sdf', 0);
+(4, 2, 'sdf wef wefw', 'sdfsdf', 'sdfsdf', '2022-04-04', 'sdf', 'sdf', 0),
+(5, 2, 'Carlos', 'Millan', 'Hinojosa', '2022-04-05', 'carlos', '12345', 1);
 
 -- --------------------------------------------------------
 
@@ -324,8 +327,10 @@ CREATE TABLE `tblreportes` (
 --
 
 INSERT INTO `tblreportes` (`PKTblReportes`, `FKCatProblemas`, `FKTblEmpleadosRecibio`, `FKCatStatus`, `FKTblDetalleReporte`, `FKTblClientes`, `descripcionProblema`, `observaciones`, `fechaAlta`) VALUES
-(3, 1, 1, 1, 4, 3, 'asdasd', 'asdasd', '2022-04-04 05:14:18'),
-(4, 1, 1, 1, 5, 4, 'No tiene internet hace dos días', 'Ningunaasdasdasd', '2022-04-04 02:09:45');
+(3, 1, 1, 2, 4, 3, 'asdasd', 'asdasd', '2022-04-04 20:30:52'),
+(4, 1, 1, 1, 5, 4, 'No tiene internet hace dos días', 'Ningunaasdasdasd', '2022-04-04 02:09:45'),
+(5, 3, 1, 2, 8, 4, 'kljnjkn', 'jknjknjkn', '2022-04-05 21:51:07'),
+(6, 2, 1, 1, 9, 3, 'Por una descarga electrica', 'dadad asda', '2022-04-06 02:47:56');
 
 -- --------------------------------------------------------
 
@@ -469,7 +474,7 @@ ALTER TABLE `tblclientes`
 -- AUTO_INCREMENT de la tabla `tbldetallereporte`
 --
 ALTER TABLE `tbldetallereporte`
-  MODIFY `PKTblDetalleReporte` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `PKTblDetalleReporte` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tbldirecciones`
@@ -481,13 +486,13 @@ ALTER TABLE `tbldirecciones`
 -- AUTO_INCREMENT de la tabla `tblempleados`
 --
 ALTER TABLE `tblempleados`
-  MODIFY `PKTblEmpleados` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `PKTblEmpleados` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tblreportes`
 --
 ALTER TABLE `tblreportes`
-  MODIFY `PKTblReportes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `PKTblReportes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas

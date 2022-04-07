@@ -64,19 +64,19 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3">Coordenadas:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Coordenadas" onkeypress="return soloNumerosp(event);" name="coordenadas">
+                            <input type="text" class="form-control" placeholder="Coordenadas" onkeypress="return soloNumeros(event);" name="coordenadas">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Direcci&oacute;n:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control" id="direccion" placeholder="Direcci&oacute;n" name="direccion" ></textarea>
+                            <textarea rows="1" class="form-control" id="direccion" placeholder="Direcci&oacute;n" name="direccion" onkeypress="return letrasYNumeros(event);"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Referencias:</label>
                         <div class="col-sm-9">
-                            <textarea rows="1" class="form-control" id="referencias" placeholder="Referencias" name="referencias"></textarea>
+                            <textarea rows="1" class="form-control" id="referencias" placeholder="Referencias" name="referencias" onkeypress="return letrasYNumeros(event);"></textarea>
                         </div>
                     </div>
 
