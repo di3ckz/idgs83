@@ -94,3 +94,6 @@ Route::post('registrarUsuario','App\Http\Controllers\UserController@registrarUsu
 Route::get('/inactivarCliente/{id}','App\Http\Controllers\ClientesController@inactivarCliente')->name('inactivarCliente');
 Route::get('/activarCliente/{id}','App\Http\Controllers\ClientesController@activarCliente')->name('activarCliente');
 Route::post('registrarCliente','App\Http\Controllers\ClientesController@registrarCliente')->name('registrarCliente');
+
+// rutas excel
+Route::get('/reporteExcel','App\Http\Controllers\ReportesController@reporteExcel')->name('reporteExcel');

@@ -12,6 +12,9 @@ use App\Models\TblDetalleReporte;
 use App\Models\TblReportes;
 use App\Http\Controllers\PageController;
 
+use App\Exports\ReportesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReportesController extends Controller
 {
 
@@ -161,6 +164,10 @@ class ReportesController extends Controller
             Log::info($th);
             return back();
         }
+    }
+
+    public function reporteExcel () {
+        return Excel::download(new ReportesExport, 'reportesPendientes.xlsx');
     }
 
 }
